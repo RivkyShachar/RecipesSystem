@@ -1,0 +1,39 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using RestSharp;
+using DP;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace RecipesSystem.GetwayServer.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class HebCalController : ControllerBase
+    {
+        // GET: api/<HebCalController>
+        [HttpGet]
+        public List<string> Get()
+        {
+            
+            string today = DateTime.Today.ToString("yyyy-MM-dd");
+            string SevenDaysFromNow = DateTime.Today.AddDays(10).ToString("yyyy-MM-dd");
+            
+            BL.HebCalLogic bl = new BL.HebCalLogic();
+            List<string> result = bl.IsHolidyWeek(today, SevenDaysFromNow);
+            return result;
+        }
+
+        // GET api/<HebCalController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/<HebCalController>
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+    }
+}
