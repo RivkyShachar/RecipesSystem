@@ -10,9 +10,11 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<USDAController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            BL.USDAlogic bl = new BL.USDAlogic();
+            string result = bl.GetFoodValus("apple");
+            return result;
         }
 
         // GET api/<USDAController>/5
