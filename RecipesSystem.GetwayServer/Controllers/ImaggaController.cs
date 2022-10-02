@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using DP;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,9 +11,14 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<ImaggaController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public bool Get()
         {
-            return new string[] { "value1", "value2" };
+            BL.ImaggaLogic bl = new BL.ImaggaLogic();
+            DP.ImaggaParamsDTO dp=new ImaggaParamsDTO();
+            dp.Title = "pizza";
+            dp.ImageUrl = "https://medias.hashulchan.co.il/www/uploads/2020/12/shutterstock_658408219-600x600.jpg";
+            bool result=bl.IsGoodPic(dp);
+            return result;
         }
 
         // GET api/<ImaggaController>/5

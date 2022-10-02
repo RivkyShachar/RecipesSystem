@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DP
 {
-    internal class ImaggaModel
+    public class ImaggaModel
     {
         public class Result
         {
