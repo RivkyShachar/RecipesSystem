@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DP
 {
-    internal class WeatherModel
+    public class WeatherModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
         public class Clouds
@@ -14,8 +14,8 @@ namespace DP
 
         public class Coord
         {
-            public int lon { get; set; }
-            public int lat { get; set; }
+            public double lon { get; set; }
+            public double lat { get; set; }
         }
 
         public class Main
@@ -26,8 +26,6 @@ namespace DP
             public double temp_max { get; set; }
             public int pressure { get; set; }
             public int humidity { get; set; }
-            public int sea_level { get; set; }
-            public int grnd_level { get; set; }
         }
 
         public class Root
@@ -49,6 +47,8 @@ namespace DP
 
         public class Sys
         {
+            public int type { get; set; }
+            public int id { get; set; }
             public string country { get; set; }
             public int sunrise { get; set; }
             public int sunset { get; set; }
@@ -66,7 +66,6 @@ namespace DP
         {
             public double speed { get; set; }
             public int deg { get; set; }
-            public double gust { get; set; }
         }
 
 

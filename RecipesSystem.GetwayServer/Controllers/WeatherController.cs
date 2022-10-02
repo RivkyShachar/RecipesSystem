@@ -10,10 +10,11 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<WeatherController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
             BL.WeatherLogic bl = new BL.WeatherLogic();
-            return new string[] { "value1", "value2" };
+            string result = bl.GetWeather("Haifa");
+            return result;
         }
 
         // GET api/<WeatherController>/5

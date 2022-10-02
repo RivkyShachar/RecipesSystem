@@ -1,4 +1,4 @@
-﻿using DP;
+﻿using static DP.WeatherModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,11 +17,20 @@ namespace BL
             {
                 myWeather = JsonConvert.DeserializeObject<Root>(myJson);
             }
-            foreach (var item in myWeather.items)
+            double currentWeather = myWeather.main.feels_like;
+            if (currentWeather <= 17)
             {
-                var a = item;
+                return "Cold";
             }
-            return "";
+            else if (currentWeather <= 27)
+            {
+                return "Nice";
+            }
+            else
+            {
+                return "Hot";
+            }
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace DAL
     {
         public string GetWeather(string city)
         {
-            string Url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid=9d542e14be75e524c11905e966f5c22b&units=metric";
+            string Url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid=98891b16fcfb1cb69c879bf2fb91c12a&units=metric";
 
             var client = new RestClient(Url);
 
