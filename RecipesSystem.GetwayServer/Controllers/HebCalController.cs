@@ -16,7 +16,7 @@ namespace RecipesSystem.GetwayServer.Controllers
         {
             
             string today = DateTime.Today.ToString("yyyy-MM-dd");
-            string SevenDaysFromNow = DateTime.Today.AddDays(10).ToString("yyyy-MM-dd");
+            string SevenDaysFromNow = DateTime.Today.AddDays(7).ToString("yyyy-MM-dd");
             
             BL.HebCalLogic bl = new BL.HebCalLogic();
             List<string> result = bl.IsHolidyWeek(today, SevenDaysFromNow);

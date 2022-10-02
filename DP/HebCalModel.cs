@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace DP
 {
+    //This is the format of the HebCal API 
     public class Item
     {
         public string title { get; set; }
