@@ -22,7 +22,20 @@ namespace RecipesSystem.AppServer.Controllers
         // GET: Recipes
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Recipe.ToListAsync());
+            HebCalAdapter Hadapter = new HebCalAdapter();
+            string Message = Hadapter.Check();
+            ViewData["HebCalMessage"] = Message;
+            WeatherAdapter Wadapter = new WeatherAdapter();
+            Message = Wadapter.Check("Haifa");
+            ViewData["WeatherMessage"] = Message;
+            return View(await _context.Recipe.ToListAsync());
+            ImaggaAdapter Iadapter = new ImaggaAdapter();
+            Message = Iadapter.Check("pizza","https://medias.hashulchan.co.il/www/uploads/2020/12/shutterstock_658408219-600x600.jpg");
+            ViewData["ImaggaMessage"] = Message;
+            USDAadapter Uadapter=new USDAadapter();
+            Message = Uadapter.Check("pizza", "x");
+            ViewData["USDAMessage"] = Message;
+            return View();
         }
 
         // GET: Recipes/Details/5

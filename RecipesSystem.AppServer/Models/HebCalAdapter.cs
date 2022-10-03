@@ -1,13 +1,15 @@
-﻿using RestSharp;
+﻿//using Microsoft.DotNet.Scaffolding.Shared.CodeModifier.CodeChange;
+using RecipesSystem;
+using RestSharp;
 
 namespace RecipesSystem.AppServer.Models
 {
-    public class WeatherAdapter
+    public class HebCalAdapter
     {
-        public string Check(string City)
+        public string Check()
         {
             //conect to gateway server
-            string Url = $"http://localhost:5149/api/Weather?city={City}";
+            string Url = $"http://localhost:5149/api/HebCal";
 
             var client = new RestClient(Url);
 
@@ -16,6 +18,7 @@ namespace RecipesSystem.AppServer.Models
             RestResponse response = client.Execute(request);
 
             return response.Content;
+            //returns json of list of holidays
         }
     }
 }

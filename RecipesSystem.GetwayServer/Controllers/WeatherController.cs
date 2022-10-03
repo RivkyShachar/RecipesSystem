@@ -11,7 +11,7 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<WeatherController>
         [HttpGet]
-        public string Get(string city="haifa")
+        public string Get(string city)
         {
             BL.WeatherLogic bl = new BL.WeatherLogic();
             return bl.GetWeather(city);

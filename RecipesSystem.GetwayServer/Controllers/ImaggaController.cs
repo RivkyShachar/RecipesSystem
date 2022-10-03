@@ -11,7 +11,7 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<ImaggaController>
         [HttpGet]
-        public string Get(string title="pizza",string imageURL= "https://medias.hashulchan.co.il/www/uploads/2020/12/shutterstock_658408219-600x600.jpg")
+        public string Get(string title,string imageURL)
         {
             BL.ImaggaLogic bl = new BL.ImaggaLogic();
             ImaggaParamsDTO dp=new ImaggaParamsDTO {Title=title,ImageUrl=imageURL};
