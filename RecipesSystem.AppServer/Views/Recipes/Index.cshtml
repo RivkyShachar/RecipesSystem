@@ -4,7 +4,6 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
-
 <!-- nav  -->
 <nav class="navbar">
     <div class="nav-center">
@@ -17,13 +16,21 @@
             </button>
         </div>
         <div class="nav-links">
-            <a href="index.html" class="nav-link"> home </a>
-            <a href="about.html" class="nav-link"> about </a>
-            <a href="tags.html" class="nav-link"> tags </a>
-            <a href="recipes.html" class="nav-link"> recipes </a>
+
+           @* <a href="@Url.Action("blog", "Recipes")">
+                Fruits &amp
+                <a asp-area="" asp-controller="Recipes" asp-action="Index">דף הבית</a>*@
+          
+           
+            <a href="Recipes/Index" class="nav-link"> Home </a>
+            @*<a href="index" class="nav-link"> home </a>*@
+            
+            <a href="Recipes/About" class="nav-link"> about </a>
+            <a href="Recipes/Tags" class="nav-link"> tags </a>
+            <a href="Recipes/recipes" class="nav-link"> recipes </a>
 
             <div class="nav-link contact-link">
-                <a href="contact.html" class="btn"> contact </a>
+                <a href="Recipes/contact" class="btn"> contact </a>
             </div>
         </div>
     </div>
@@ -96,12 +103,3 @@
     </section>
 </main>
 <!-- end of main -->
-<!-- footer -->
-<footer class="page-footer">
-    <p>
-        &copy; <span id="date"></span>
-        <span class="footer-logo">SimplyRecipes</span> Built by
-        <a href="https://www.johnsmilga.com/">Coding Addict</a>
-    </p>
-</footer>
-<script src="./js/app.js"></script>
