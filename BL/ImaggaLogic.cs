@@ -13,8 +13,11 @@ namespace BL
     {
         public string IsGoodPic(ImaggaParamsDTO data)
         {
+            //need to update these 5 strings
             string dairyFood = "";
             string meatyFood = "";
+            string commonDairy = "milk, butter, cheese";
+            string commonMeaty = "meat, beaf, chicken";
             string notKosherFood = "";
             List<string> tags = new List<string>();
             DAL.ImaggaAdapter dal = new DAL.ImaggaAdapter();
@@ -34,9 +37,9 @@ namespace BL
                         tags.Add("food");
                     if (data.Title.Contains(tag.tag.en) && tag.confidence > 80)
                         tags.Add("title");
-                    if (dairyFood.Contains(tag.tag.en) && tag.confidence > 50 && !tags.Contains("dairy"))
+                    if ((dairyFood.Contains(tag.tag.en)|| tag.tag.en.Contains(commonDairy)) && tag.confidence > 50 && !tags.Contains("dairy"))
                         tags.Add("dairy");
-                    if (meatyFood.Contains(tag.tag.en) && tag.confidence > 50 && !tags.Contains("meaty"))
+                    if ((meatyFood.Contains(tag.tag.en)|| tag.tag.en.Contains(commonMeaty)) && tag.confidence > 50 && !tags.Contains("meaty"))
                         tags.Add("meaty");
                 }
             }
