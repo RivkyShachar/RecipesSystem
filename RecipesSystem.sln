@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesSystem.AppServer", "RecipesSystem.AppServer\RecipesSystem.AppServer.csproj", "{3490040D-2737-4C40-BEC8-4590C4221A33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesSystem.AppServer", "RecipesSystem.AppServer\RecipesSystem.AppServer.csproj", "{3490040D-2737-4C40-BEC8-4590C4221A33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesSystem.GetwayServer", "RecipesSystem.GetwayServer\RecipesSystem.GetwayServer.csproj", "{5974C92A-A82A-43C5-BD49-EE8ED57D2A7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesSystem.GetwayServer", "RecipesSystem.GetwayServer\RecipesSystem.GetwayServer.csproj", "{5974C92A-A82A-43C5-BD49-EE8ED57D2A7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DP", "DP\DP.csproj", "{6DAA57F4-4993-4805-A65D-2A1089F0F419}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DP", "DP\DP.csproj", "{6DAA57F4-4993-4805-A65D-2A1089F0F419}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{B3F8ED12-979A-45BA-87F9-EC4B481548D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{B3F8ED12-979A-45BA-87F9-EC4B481548D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{279EAC98-7EA2-4A6C-A843-8A9DEBD9B37B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{279EAC98-7EA2-4A6C-A843-8A9DEBD9B37B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

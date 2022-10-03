@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using static DP.USDAparamsDTO;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,10 +11,10 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<USDAController>
         [HttpGet]
-        public string Get()
+        public Nutrient[] Get()
         {
             BL.USDAlogic bl = new BL.USDAlogic();
-            string result = bl.GetFoodValus("apple");
+            var result = bl.GetNutrientsValues("pizza");
             return result;
         }
 

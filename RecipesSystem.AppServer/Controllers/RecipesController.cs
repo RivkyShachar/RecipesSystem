@@ -22,14 +22,7 @@ namespace RecipesSystem.AppServer.Controllers
         // GET: Recipes
         public async Task<IActionResult> Index()
         {
-            //here we can call the gatwat server and ask if there is a holyday soon
-            HebHolidayAdapter Hadapter = new HebHolidayAdapter();
-            WeatherAdapter Wadapter = new WeatherAdapter();
-            string Message = Hadapter.Check();
-            ViewData["HolidayMessage"] = Message;
-            Message = Wadapter.Check("Haifa");
-            ViewData["WeatherMessage"] = Message;
-            return View(await _context.Recipe.ToListAsync());
+              return View(await _context.Recipe.ToListAsync());
         }
 
         // GET: Recipes/Details/5
@@ -63,16 +56,6 @@ namespace RecipesSystem.AppServer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Description,PrepInstructions,ImageURL")] Recipe recipe)
         {
-            ImageAdapter Iadapter= new ImageAdapter();
-            var IsValid=Iadapter.CheckIsFood(recipe.ImageURL);
-            if(!IsValid)
-            {
-                ViewData["ErrorMessage"] = "It's not a picture of somthing eatable";
-            }
-            else
-            {
-                ViewData["ErrorMessage"]=string.Empty;
-            }
             if (ModelState.IsValid)
             {
                 _context.Add(recipe);
@@ -173,6 +156,35 @@ namespace RecipesSystem.AppServer.Controllers
         private bool RecipeExists(int id)
         {
           return _context.Recipe.Any(e => e.Id == id);
+        }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult Error404()
+        {
+            return View();
+        }
+        public IActionResult Recipes()
+        {
+            return View();
+        }
+        public IActionResult SingleRecipe()
+        {
+            return View();
+        }
+        public IActionResult Tags()
+        {
+            return View();
+        }
+        public IActionResult TagTemplate()
+        {
+            return View();
         }
     }
 }

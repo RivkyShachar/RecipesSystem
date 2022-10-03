@@ -1,7 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RecipesSystem.AppServer.Models;
 using System.Diagnostics;
-
+//HebHolidayAdapter Hadapter = new HebHolidayAdapter();
+//WeatherAdapter Wadapter = new WeatherAdapter();
+//string Message = Hadapter.Check();
+//ViewData["HolidayMessage"] = Message;
+//Message = Wadapter.Check("Haifa");
+//ViewData["WeatherMessage"] = Message;
+//return View(await _context.Recipe.ToListAsync());
 namespace RecipesSystem.AppServer.Controllers
 {
     public class HomeController : Controller

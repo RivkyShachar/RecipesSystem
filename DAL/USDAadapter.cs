@@ -9,10 +9,10 @@ namespace DAL
     {
         //https://api.nal.usda.gov/fdc/v1/foods/search?query={data.Title}&pageSize=2&api_key=iuHCuFBxp4hhEOZyWA4RYLPvXjrOfqfd8q6J9yLo
         //iuHCuFBxp4hhEOZyWA4RYLPvXjrOfqfd8q6J9yLo
-        public string GetUSDA(string data)
+        public string GetUSDA(string recipeTitle)
         {
 
-            string Url = $"https://api.nal.usda.gov/fdc/v1/foods/search?query={data}&pageSize=2&api_key=iuHCuFBxp4hhEOZyWA4RYLPvXjrOfqfd8q6J9yLo";
+            string Url = $"https://api.nal.usda.gov/fdc/v1/foods/search?query={recipeTitle}&pageSize=2&api_key=iuHCuFBxp4hhEOZyWA4RYLPvXjrOfqfd8q6J9yLo";
 
             var client = new RestClient(Url);
 

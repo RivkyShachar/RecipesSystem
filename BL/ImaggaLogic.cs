@@ -26,6 +26,7 @@ namespace BL
                 foreach (var tag in myPicture.result.tags)
                     if (tag.tag.en == "food" && tag.confidence > 85)
                     {
+                        //need to go out of the foreach complitly!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         result = "food";
                         break;
                     }
@@ -33,6 +34,7 @@ namespace BL
                 foreach (var tag in myPicture.result.tags)
                     if (data.Title.Contains(tag.tag.en) && tag.confidence > 80)
                     {
+                        //need to go out of the foreach complitly!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         result = "title";
                         break;
                     }

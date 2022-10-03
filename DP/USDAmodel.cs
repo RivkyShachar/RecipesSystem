@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DP
 {
-    internal class USDAmodel
+    public class USDAmodel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
         public class Aggregations
