@@ -11,13 +11,13 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<ImaggaController>
         [HttpGet]
-        public bool Get()
+        public string Get()
         {
             BL.ImaggaLogic bl = new BL.ImaggaLogic();
             DP.ImaggaParamsDTO dp=new ImaggaParamsDTO();
             dp.Title = "pizza";
             dp.ImageUrl = "https://medias.hashulchan.co.il/www/uploads/2020/12/shutterstock_658408219-600x600.jpg";
-            bool result=bl.IsGoodPic(dp);
+            string result=bl.IsGoodPic(dp);
             return result;
         }
 

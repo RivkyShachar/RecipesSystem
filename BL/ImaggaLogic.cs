@@ -5,47 +5,53 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Root = DP.ImaggaModel.Root;
+using static DP.USDAmodel;
 
 namespace BL
 {
     public class ImaggaLogic
     {
-        public bool IsGoodPic(ImaggaParamsDTO data)
+        public string IsGoodPic(ImaggaParamsDTO data)
         {
-            string result = "false";
+            string dairyFood = "";
+            string meatyFood = "";
+            string notKosherFood = "";
+            List<string> tags = new List<string>();
             DAL.ImaggaAdapter dal = new DAL.ImaggaAdapter();
             Root myPicture = null;
             if (data.ImageUrl == null)
-                return false;
+                return "Error: wrong URL";
             string myJson = dal.GetImageInformation(data.ImageUrl);
             if (myJson != null)
             {
                 myPicture = JsonConvert.DeserializeObject<Root>(myJson);
             }
             if (myPicture != null && myPicture.status.type == "success")
+            {
                 foreach (var tag in myPicture.result.tags)
+                {
+                    if (notKosherFood.Contains(tag.tag.en) && tag.confidence > 50)
+                        return "Error: the food is not kosher";
                     if (tag.tag.en == "food" && tag.confidence > 85)
-                    {
-                        result = "food";
-                        break;
-                    }
-            if(result=="food")
-                foreach (var tag in myPicture.result.tags)
+                        tags.Add("food");
                     if (data.Title.Contains(tag.tag.en) && tag.confidence > 80)
-                    {
-                        result = "title";
-                        break;
-                    }
-            //need to check if it's kosher
-            if (result == "title")
-                return true;
-            return false;
-
-
-
-            
+                        tags.Add("title");
+                    if (dairyFood.Contains(tag.tag.en) && tag.confidence > 50 && !tags.Contains("dairy"))
+                        tags.Add("dairy");
+                    if (meatyFood.Contains(tag.tag.en) && tag.confidence > 50 && !tags.Contains("meaty"))
+                        tags.Add("meaty");
+                }
+            }
+            else 
+                return "Error: somthing got wrong, can't read the image";
+            if(!tags.Contains("food"))
+                return "Error: the food in not eaten";
+            if (!tags.Contains("title"))
+                return "Error: no match title and picture";
+            if (tags.Contains("dairy") && tags.Contains("meaty"))
+                return "Error: the food is not kosher";
+            return "good image";
         }
-
     }
 }
 /*
