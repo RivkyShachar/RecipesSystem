@@ -23,9 +23,7 @@ namespace BL
                 return "Error: wrong URL";
             string myJson = dal.GetImageInformation(data.ImageUrl);
             if (myJson != null)
-            {
                 myPicture = JsonConvert.DeserializeObject<Root>(myJson);
-            }
             if (myPicture != null && myPicture.status.type == "success")
             {
                 foreach (var tag in myPicture.result.tags)

@@ -17,28 +17,18 @@ namespace BL
             Root myHolyday = null;
             string myJson = dal.GetComingWeek(today, SevenDaysFromNow);
             if (myJson != null)
-            {
                 myHolyday = JsonConvert.DeserializeObject<Root>(myJson);
-            }
             List<string> holidays = new List<string>();
             foreach (var item in myHolyday.items)
-            {
                 if (item.category == "holiday")
-                {
                     if (item.hebrew!=null)
                         foreach(string holiday in theHolidays)
-                        {
                             if (item.hebrew.Contains(holiday) && !holidays.Contains(holiday)&& item.hebrew != "פסח שני")
                             {
                                 holidays.Add(holiday);
                                 break;
                             }
-                        }
-                }
-            }
             return holidays;
-
-
         }
     }
 }

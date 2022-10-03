@@ -14,13 +14,10 @@ namespace RecipesSystem.GetwayServer.Controllers
         [HttpGet]
         public List<string> Get()
         {
-            
             string today = DateTime.Today.ToString("yyyy-MM-dd");
             string SevenDaysFromNow = DateTime.Today.AddDays(7).ToString("yyyy-MM-dd");
-            
             BL.HebCalLogic bl = new BL.HebCalLogic();
-            List<string> result = bl.IsHolidyWeek(today, SevenDaysFromNow);
-            return result;
+            return bl.IsHolidyWeek(today, SevenDaysFromNow);
         }
 
         // GET api/<HebCalController>/5

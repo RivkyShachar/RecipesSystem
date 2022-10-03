@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using static DP.ImaggaModel;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,11 +11,10 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<WeatherController>
         [HttpGet]
-        public string Get()
+        public string Get(string city="haifa")
         {
             BL.WeatherLogic bl = new BL.WeatherLogic();
-            string result = bl.GetWeather("Haifa");
-            return result;
+            return bl.GetWeather(city);
         }
 
         // GET api/<WeatherController>/5

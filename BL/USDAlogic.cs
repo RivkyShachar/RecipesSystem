@@ -17,32 +17,21 @@ namespace BL
         //string theNutrients = "Protein, Total lipid, Carbohydrate, Energy, Sugars, Sodium";
         public List<string> GetNutrientsValues(RecipeTitle recipeTitle)
         {
-            //Nutrient[] nutrients=new Nutrient[6];
             List<string> nutrients=new List<string>();
             List<string> nutrientsNames = new List<string>();
             DAL.USDAadapter dal = new DAL.USDAadapter();
             Root myUSDA = null;
             string myJson = dal.GetUSDA(recipeTitle.Title);
             if (myJson != null)
-            {
                 myUSDA = JsonConvert.DeserializeObject<Root>(myJson);
-            }
-            //int idx = 0;
             foreach(var i in myUSDA.foods)
-            {
-                if (recipeTitle.KeyWord == "" || i.lowercaseDescription.Contains(recipeTitle.KeyWord))
-                {
+                if (recipeTitle.KeyWord == "x" || i.lowercaseDescription.Contains(recipeTitle.KeyWord))
                     foreach(var j in i.foodNutrients)
-                    {
                         if (theNutrients.Contains(j.nutrientName) && !nutrientsNames.Contains(j.nutrientName))
                         {
                             nutrients.Add($"{j.nutrientName} {j.value}{j.unitName}");
                             nutrientsNames.Add(j.nutrientName);
                         }
-                    }
-                }
-                    
-            }
             return nutrients;
 
         }

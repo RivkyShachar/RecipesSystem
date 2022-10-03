@@ -14,23 +14,13 @@ namespace BL
             Root myWeather = null;
             string myJson = dal.GetWeather(City);
             if (myJson != null)
-            {
                 myWeather = JsonConvert.DeserializeObject<Root>(myJson);
-            }
             double currentWeather = myWeather.main.feels_like;
             if (currentWeather <= 17)
-            {
                 return "Cold";
-            }
-            else if (currentWeather <= 27)
-            {
+            else if (currentWeather <= 27)     
                 return "Nice";
-            }
-            else
-            {
-                return "Hot";
-            }
-
+            else return "Hot";
         }
     }
 }
