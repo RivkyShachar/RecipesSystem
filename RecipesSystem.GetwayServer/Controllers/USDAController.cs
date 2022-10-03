@@ -11,10 +11,12 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<USDAController>
         [HttpGet]
-        public Nutrient[] Get()
+        public List<string> Get()
         {
             BL.USDAlogic bl = new BL.USDAlogic();
-            var result = bl.GetNutrientsValues("pizza");
+            RecipeTitle dp = new RecipeTitle { Title = "15-minute cherry tomato pasta",KeyWord="pasta" };
+
+            var result = bl.GetNutrientsValues(dp);
             return result;
         }
 

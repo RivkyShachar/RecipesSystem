@@ -10,62 +10,38 @@ using System.Linq;
 
 namespace BL
 {
-    /*Protein
-     * Calcium
-     * Iron
-     * Vitamin A
-     * Vitamin C
-     * Protein
-     * Total lipid
-     * Carbohydrate
-     * Energy
-     * Sugars
-     * Fiber
-     * Potassium
-     * Sodium
-     * Cholesterol
-     * Fatty acids
-     * Fatty acids
-     * Protein
-     * Total lipid
-     * Carbohydrate
-     * Carbohydrate
-     * Energy
-     * Sugars
-     * Fiber
-     * Calcium
-     * Iron
-     * Sodium
-     * 
-     * 
-     * Protein
-     * Total lipid
-     * Carbohydrate
-     * Energy
-     * Sugars
-     * Sodium
-     */
     public class USDAlogic
     {
-        public Nutrient[] GetNutrientsValues(string data)
+        //need to write the ecact way how it written example link https://api.nal.usda.gov/fdc/v1/foods/search?query=15-minute%20cherry%20tomato%20pasta&pageSize=2&api_key=iuHCuFBxp4hhEOZyWA4RYLPvXjrOfqfd8q6J9yLo
+        string theNutrients = "Protein, Total lipid (fat), Carbohydrate, by difference, Energy, Sugars, total including NLEA, Sodium, Na, Fiber, Cholesterol, Fatty acids, Potassium, Calcium, Iron, Vitamin A, Vitamin C, total ascorbic acid";
+        //string theNutrients = "Protein, Total lipid, Carbohydrate, Energy, Sugars, Sodium";
+        public List<string> GetNutrientsValues(RecipeTitle recipeTitle)
         {
-            Nutrient[] nutrients=new Nutrient[6];
+            //Nutrient[] nutrients=new Nutrient[6];
+            List<string> nutrients=new List<string>();
+            List<string> nutrientsNames = new List<string>();
             DAL.USDAadapter dal = new DAL.USDAadapter();
             Root myUSDA = null;
-            string myJson = dal.GetUSDA(data);
+            string myJson = dal.GetUSDA(recipeTitle.Title);
             if (myJson != null)
             {
                 myUSDA = JsonConvert.DeserializeObject<Root>(myJson);
             }
-            int idx = 0;
-            foreach(var i in myUSDA.foods[0].foodNutrients)
+            //int idx = 0;
+            foreach(var i in myUSDA.foods)
             {
-                if (i.nutrientName == "Sodium" || i.nutrientName == "Sugars" || i.nutrientName == "Energy" || i.nutrientName == "Carbohydrate" || i.nutrientName == "Protein" || i.nutrientName == "Total lipid")
+                if (recipeTitle.KeyWord == "" || i.lowercaseDescription.Contains(recipeTitle.KeyWord))
                 {
-                    //if the nutrient is not in the list already so
-                    nutrients[idx] = new Nutrient { Name = i.nutrientName, UnitName = i.unitName, Value = i.value };
-                    idx++;
+                    foreach(var j in i.foodNutrients)
+                    {
+                        if (theNutrients.Contains(j.nutrientName) && !nutrientsNames.Contains(j.nutrientName))
+                        {
+                            nutrients.Add($"{j.nutrientName} {j.value}{j.unitName}");
+                            nutrientsNames.Add(j.nutrientName);
+                        }
+                    }
                 }
+                    
             }
             return nutrients;
 

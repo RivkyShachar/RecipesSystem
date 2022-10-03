@@ -12,5 +12,10 @@ namespace DP
             public string UnitName { get; set; }
             public double Value { get; set; }
         }
+        public class RecipeTitle
+        {
+            public string Title;
+            public string KeyWord = "";
+        }
     }
 }
