@@ -3,9 +3,137 @@
     ViewData["Title"] = "Contact";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
 
+	<title>&#1488;&#1502;&#1492;&#1493;&#1514; &#1502;&#1489;&#1513;&#1500;&#1493;&#1514; &#1489;&#1497;&#1495;&#1491; | &#1492;&#1493;&#1505;&#1508;&#1514; &#1502;&#1514;&#1499;&#1493;&#1503;</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<meta http-equiv="Content-Language" content="HE">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="icon" type="image/png" href="~/images/favicon3.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Simply Recipes || Final</title>
+	<!-- favicon -->
+	<link rel="shortcut icon" href="~/assets/favicon.ico" type="image/x-icon" />
+	<!-- normalize -->
+	<link rel="stylesheet" href="~/css/normalize.css" />
+	<!-- font-awesome -->
+	<link rel="stylesheet"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+	<!-- main css -->
+	<link rel="stylesheet" href="~/css/main.css" />
+	<style>
+		h2 {
+			margin-top: 0px !important;
+		}
+
+		label {
+			display: inline-block;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		input, textarea {
+			box-sizing: border-box;
+		}
+
+		textarea {
+			height: 250px;
+		}
+
+		#body-content {
+			font-size: 130%;
+		}
+
+		.form-control {
+			background-color: #ffffff;
+			border: 1px solid #cccccc;
+			border-radius: 4px;
+			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+			color: #555555;
+			display: block;
+			font-size: 100%;
+			line-height: 1.42857;
+			padding: 6px 12px;
+			transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+			vertical-align: middle;
+			width: 100%;
+		}
+
+		.next-btn {
+			background: #e08989 url("../images/icon-arrow-left.png") no-repeat scroll 10px center;
+			border: 0 none;
+			border-radius: 40px;
+			color: #fff !important;
+			float: left;
+			font-size: 30px;
+			font-weight: bold;
+			line-height: 50px;
+			margin-left: 30px;
+			padding: 0 20px 0 40px;
+		}
+
+		.form-group {
+			margin-bottom: 15px;
+		}
+
+		.file-input {
+			border-width: 0px;
+			box-shadow: none;
+			background-color: inherit;
+			height: inherit;
+		}
+		.validation-summary-errors, .field-validation-error {
+			color: red;
+		}
+
+		.input-validation-error {
+			border-color: red;
+		}
+
+		textarea.description {
+			height: 100px;
+		}
+	
+	</style>
+
+	<script src="https://imaot.co.il/Scripts/jquery-2.1.3.js"></script>
+	<script src="https://imaot.co.il/Scripts/jquery/jquery.customSelect.min.js"></script>
+	<script src="https://imaot.co.il/Scripts/imaot.js"></script>
+	<script src="https://imaot.co.il/Scripts/jquery/iscroll.js"></script>
+	<script src="https://imaot.co.il/Scripts/jquery/carousel.js"></script>
+
+	<link href="https://imaot.co.il/css/normalize.css" rel="stylesheet" />
+	<link href="https://imaot.co.il/css/alef/aleph_stylesheet.css" rel="stylesheet" />
+	<link href="https://imaot.co.il/Content/jquery.fancybox.css" rel="stylesheet" />
+	<link href="https://imaot.co.il/Content/style-addition.css" rel="stylesheet" />
+	<link href="https://imaot.co.il/Content/popupsNew.css" rel="stylesheet" />
+	<link href="https://imaot.co.il/Content/addtohomescreen.css" rel="stylesheet" />
+	<link href="https://imaot.co.il/css/imaot.css" rel="stylesheet" />
+
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-57229912-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+
+
+
+	<script type='text/javascript'>let temScript = document.createElement('script'); temScript.src = 'https://adncdnend.azureedge.net/adtags/imaot.adn.js'; document.getElementsByTagName('head')[0].append(temScript);</script>
+
+</head>
+<body>
 <!-- nav  -->
-<nav class="navbar">
+	<nav class="navbar">
     <div class="nav-center">
         <div class="nav-header">
             <a href="@Url.Action("Index", "Recipes") " class="nav-logo">
@@ -30,7 +158,7 @@
     </div>
 </nav>
 <!-- end of nav -->
-<main class="page">
+@*<main class="page">
     <section class="contact-container">
         <article class="contact-info">
             <h3>Want To Get In Touch?</h3>
@@ -97,5 +225,416 @@
             <!-- end of single recipe -->
         </div>
     </section>
+</main>*@
+	<div id="fb-root"></div>
+	<main class="page">
+		
+		<div class="centeredContent">
+			<div class="pageBG">
+				<h2>&#1492;&#1493;&#1505;&#1508;&#1514; &#1502;&#1514;&#1499;&#1493;&#1503;</h2>
+				<div class="col-md-12 " style="padding-bottom:40px;padding-left:40px;padding-right:40px;padding-top:10px" id="body-content">
+					<div>
+						<div style="padding: 5px" class="row"></div>
+						<div class="row">
+							<form action="/Recipe/Create?InsertionMode=Replace&amp;LoadingElementDuration=0&amp;OnFailure=Failure&amp;AllowCache=False" class="addRecipeFrm" enctype="multipart/form-data" id="addRecipeFrm" method="post">
+								<input id="CreateBy" name="CreateBy" type="hidden" value="" />	
+								<div class="form-group">
+									<label for="Title">כותרת מתכון* :</label>
+									<input class="form-control" data-val="true" data-val-length="&#1513;&#1491;&#1492;&#32;&#39;&#1499;&#1493;&#1514;&#1512;&#1514;&#32;&#1502;&#1514;&#1499;&#1493;&#1503;&#39;&#32;&#1495;&#1497;&#1497;&#1489;&#32;&#1500;&#1492;&#1497;&#1493;&#1514;&#32;&#1506;&#1501;&#32;&#1500;&#1508;&#1495;&#1493;&#1514;&#32;2&#32;&#1488;&#1493;&#1514;&#1497;&#1493;&#1514;" data-val-length-max="100" data-val-length-min="2" data-val-required="&#1513;&#1491;&#1492;&#32;&#39;&#1499;&#1493;&#1514;&#1512;&#1514;&#32;&#1502;&#1514;&#1499;&#1493;&#1503;&#39;&#32;&#1492;&#1497;&#1504;&#1493;&#32;&#1513;&#1491;&#1492;&#32;&#1495;&#1493;&#1489;&#1492;." id="Title" name="Recipe.Title" placeholder="&#1499;&#1514;&#1489;&#1497;&#32;&#1488;&#1514;&#32;&#1499;&#1493;&#1514;&#1512;&#1514;&#32;&#1492;&#1502;&#1514;&#1499;&#1493;&#1503;" type="text" value="" />
+									<span class="field-validation-valid" data-valmsg-for="Recipe.Title" data-valmsg-replace="true"></span>
+								</div>
+								<div class="form-group">
+									<label for="Description">זמן הכנה :</label>
+									<textarea class="form-control&#32;description" cols="20" data-val="true" data-val-length="The&#32;field&#32;&#1512;&#1511;&#1506;&#32;&#1502;&#1514;&#1499;&#1493;&#1503;&#32;must&#32;be&#32;a&#32;string&#32;with&#32;a&#32;maximum&#32;length&#32;of&#32;500." data-val-length-max="20" id="PreperationTime" name="Recipe.Description" placeholder="&#1499;&#1488;&#1503;&#32;&#1488;&#1514;&#32;&#1497;&#1499;&#1493;&#1500;&#1492;&#32;&#1500;&#1492;&#1513;&#1493;&#1493;&#1497;&#1509;&#32;&#1489;&#1502;&#1514;&#1499;&#1493;&#1503;&#32;&#1493;&#1500;&#1506;&#1493;&#1491;&#1491;&#32;&#1488;&#1514;&#32;&#1492;&#1488;&#1502;&#1492;&#1493;&#1514;&#32;&#1513;&#1500;&#1504;&#1493;&#32;&#1500;&#1510;&#1508;&#1493;&#1514;&#32;&#1489;&#1493;&#32;:)" rows="2">
+                                    </textarea>
+								</div>
+								<div class="form-group">
+									<label for="Description">זמן בישול :</label>
+									<textarea class="form-control&#32;description" cols="20" data-val="true" data-val-length="The&#32;field&#32;&#1512;&#1511;&#1506;&#32;&#1502;&#1514;&#1499;&#1493;&#1503;&#32;must&#32;be&#32;a&#32;string&#32;with&#32;a&#32;maximum&#32;length&#32;of&#32;500." data-val-length-max="20" id="CookingTime" name="Recipe.Description" placeholder="&#1499;&#1488;&#1503;&#32;&#1488;&#1514;&#32;&#1497;&#1499;&#1493;&#1500;&#1492;&#32;&#1500;&#1492;&#1513;&#1493;&#1493;&#1497;&#1509;&#32;&#1489;&#1502;&#1514;&#1499;&#1493;&#1503;&#32;&#1493;&#1500;&#1506;&#1493;&#1491;&#1491;&#32;&#1488;&#1514;&#32;&#1492;&#1488;&#1502;&#1492;&#1493;&#1514;&#32;&#1513;&#1500;&#1504;&#1493;&#32;&#1500;&#1510;&#1508;&#1493;&#1514;&#32;&#1489;&#1493;&#32;:)" rows="2">
+                                    </textarea>
+								</div>
+								<div class="form-group">
+									<label for="Description">לכמה מנות :</label>
+									<textarea class="form-control&#32;description" cols="20" data-val="true" data-val-length="The&#32;field&#32;&#1512;&#1511;&#1506;&#32;&#1502;&#1514;&#1499;&#1493;&#1503;&#32;must&#32;be&#32;a&#32;string&#32;with&#32;a&#32;maximum&#32;length&#32;of&#32;500." data-val-length-max="20" id="NumberOfDiners" name="Recipe.Description" placeholder="&#1499;&#1488;&#1503;&#32;&#1488;&#1514;&#32;&#1497;&#1499;&#1493;&#1500;&#1492;&#32;&#1500;&#1492;&#1513;&#1493;&#1493;&#1497;&#1509;&#32;&#1489;&#1502;&#1514;&#1499;&#1493;&#1503;&#32;&#1493;&#1500;&#1506;&#1493;&#1491;&#1491;&#32;&#1488;&#1514;&#32;&#1492;&#1488;&#1502;&#1492;&#1493;&#1514;&#32;&#1513;&#1500;&#1504;&#1493;&#32;&#1500;&#1510;&#1508;&#1493;&#1514;&#32;&#1489;&#1493;&#32;:)" rows="2">
+                                    </textarea>
+								</div>
+								<div class="form-group">
+									<label for="CategoryId">קטגוריה* :</label>
+									<select class="form-control" data-val="true" data-val-number="The&#32;field&#32;&#1511;&#1496;&#1490;&#1493;&#1512;&#1497;&#1492;&#32;must&#32;be&#32;a&#32;number." data-val-required="&#1513;&#1491;&#1492;&#32;&#39;&#1511;&#1496;&#1490;&#1493;&#1512;&#1497;&#1492;&#39;&#32;&#1492;&#1497;&#1504;&#1493;&#32;&#1513;&#1491;&#1492;&#32;&#1495;&#1493;&#1489;&#1492;." id="CategoryId" name="Recipe.CategoryId">
+										<option value="">&#1489;&#1495;&#1512;&#1497; &#1502;&#1492;&#1512;&#1513;&#1497;&#1502;&#1492;</option>
+										<option value="19">&#1506;&#1493;&#1490;&#1493;&#1514;</option>
+										<option value="25">&#1506;&#1493;&#1490;&#1497;&#1493;&#1514;</option>
+										<option value="29">&#1505;&#1500;&#1496;&#1497;&#1501;</option>
+										<option value="10">&#1502;&#1488;&#1508;&#1497;&#1501;</option>
+										<option value="7">&#1514;&#1489;&#1513;&#1497;&#1500;&#1497;&#1501;</option>
+										<option value="30">&#1508;&#1513;&#1496;&#1497;&#1491;&#1493;&#1514;</option>
+										<option value="13">&#1506;&#1493;&#1507;</option>
+										<option value="3">&#1491;&#1490;&#1497;&#1501;</option>
+										<option value="24">&#1491;&#1497;&#1488;&#1496;&#1496;&#1497;&#1501;</option>
+										<option value="45">&#1508;&#1497;&#1510;&#1492;</option>
+										<option value="27">&#1514;&#1493;&#1505;&#1508;&#1493;&#1514;</option>
+										<option value="32">&#1511;&#1497;&#1504;&#1493;&#1495;&#1497; &#1499;&#1493;&#1505;&#1493;&#1514;</option>
+										<option value="2">&#1488;&#1493;&#1512;&#1494;</option>
+										<option value="12">&#1497;&#1512;&#1511;&#1493;&#1514;</option>
+										<option value="14">&#1500;&#1495;&#1502;&#1497;&#1501;</option>
+										<option value="28">&#1511;&#1497;&#1504;&#1493;&#1495;&#1497;&#1501;</option>
+										<option value="18">&#1508;&#1505;&#1496;&#1492;</option>
+										<option value="15">&#1500;&#1500;&#1488; &#1490;&#1500;&#1493;&#1496;&#1503;</option>
+										<option value="23">&#1512;&#1488;&#1513;&#1493;&#1504;&#1493;&#1514;</option>
+										<option value="26">&#1500;&#1497;&#1500;&#1491;&#1497;&#1501;</option>
+										<option value="33">&#1490;&#1500;&#1497;&#1491;&#1493;&#1514;</option>
+										<option value="21">&#1496;&#1489;&#1506;&#1493;&#1504;&#1497;&#1497;&#1501;</option>
+										<option value="17">&#1512;&#1497;&#1489;&#1493;&#1514;</option>
+										<option value="20">&#1489;&#1513;&#1512;</option>
+										<option value="16">&#1502;&#1513;&#1511;&#1488;&#1493;&#1514;</option>
+										<option value="1">&#1502;&#1512;&#1511;&#1497;&#1501;</option>
+										<option value="22">&#1510;&#1502;&#1495;&#1493;&#1504;&#1497;&#1497;&#1501;</option>
+										<option value="48">&#1513;&#1497;&#1489;&#1493;&#1500;&#1514; &#1513;&#1493;&#1506;&#1500;</option>
+										<option value="49">&#1488;&#1512;&#1493;&#1495;&#1493;&#1514; &#1489;&#1493;&#1511;&#1512;</option>
+										<option value="50">&#1513;&#1493;&#1504;&#1493;&#1514; </option>
+									</select>
+									<span class="field-validation-valid" data-valmsg-for="Recipe.CategoryId" data-valmsg-replace="true"></span>
+								</div>
+						       <div class="form-group">
+									<label for="Components">כלים* :</label>
+									<textarea class="form-control" cols="20" data-val="true" data-val-required="&#1513;&#1491;&#1492;&#32;&#39;&#1502;&#1512;&#1499;&#1497;&#1489;&#1497;&#1501;&#39;&#32;&#1492;&#1497;&#1504;&#1493;&#32;&#1513;&#1491;&#1492;&#32;&#1495;&#1493;&#1489;&#1492;." id="Components" name="Components" placeholder="&#1499;&#1514;&#1489;&#1497;&#32;&#1499;&#1500;&#32;&#1502;&#1512;&#1499;&#1497;&#1489;&#32;&#1489;&#1513;&#1493;&#1512;&#1492;.&#32;&#1489;&#1502;&#1497;&#1491;&#1492;&#32;&#1493;&#1514;&#1512;&#1510;&#1497;&#32;&#1500;&#1492;&#1493;&#1505;&#1497;&#1507;&#32;&#1499;&#1493;&#1514;&#1512;&#1493;&#1514;&#32;&#1500;&#1502;&#1511;&#1489;&#1509;&#32;&#1502;&#1512;&#1499;&#1497;&#1489;&#1497;&#1501;,&#32;&#1492;&#1493;&#1505;&#1497;&#1508;&#1497;&#32;&#1488;&#1514;&#32;&#1492;&#1505;&#1497;&#1502;&#1503;&#32;&#1504;&#1511;&#1493;&#1491;&#1493;&#1514;&#1497;&#1497;&#1501;&#32;(:)&#32;&#1489;&#1505;&#1497;&#1493;&#1501;&#32;&#1488;&#1493;&#1514;&#1492;&#32;&#1499;&#1493;&#1514;&#1512;&#1514;" rows="2">
+</textarea>
+							
+								<div class="form-group">
+									<label for="Components">מרכיבים* :</label>
+									<textarea class="form-control" cols="20" data-val="true" data-val-required="&#1513;&#1491;&#1492;&#32;&#39;&#1502;&#1512;&#1499;&#1497;&#1489;&#1497;&#1501;&#39;&#32;&#1492;&#1497;&#1504;&#1493;&#32;&#1513;&#1491;&#1492;&#32;&#1495;&#1493;&#1489;&#1492;." id="Components" name="Components" placeholder="&#1499;&#1514;&#1489;&#1497;&#32;&#1499;&#1500;&#32;&#1502;&#1512;&#1499;&#1497;&#1489;&#32;&#1489;&#1513;&#1493;&#1512;&#1492;.&#32;&#1489;&#1502;&#1497;&#1491;&#1492;&#32;&#1493;&#1514;&#1512;&#1510;&#1497;&#32;&#1500;&#1492;&#1493;&#1505;&#1497;&#1507;&#32;&#1499;&#1493;&#1514;&#1512;&#1493;&#1514;&#32;&#1500;&#1502;&#1511;&#1489;&#1509;&#32;&#1502;&#1512;&#1499;&#1497;&#1489;&#1497;&#1501;,&#32;&#1492;&#1493;&#1505;&#1497;&#1508;&#1497;&#32;&#1488;&#1514;&#32;&#1492;&#1505;&#1497;&#1502;&#1503;&#32;&#1504;&#1511;&#1493;&#1491;&#1493;&#1514;&#1497;&#1497;&#1501;&#32;(:)&#32;&#1489;&#1505;&#1497;&#1493;&#1501;&#32;&#1488;&#1493;&#1514;&#1492;&#32;&#1499;&#1493;&#1514;&#1512;&#1514;" rows="2">
+</textarea>
+									<span class="field-validation-valid" data-valmsg-for="Components" data-valmsg-replace="true"></span>
+								</div>
+								<div class="form-group">
+									<label for="PreparationSteps">אופן הכנה* :</label>
+									<textarea class="form-control" cols="20" data-val="true" data-val-required="&#1513;&#1491;&#1492;&#32;&#39;&#1488;&#1493;&#1508;&#1503;&#32;&#1492;&#1499;&#1504;&#1492;&#39;&#32;&#1492;&#1497;&#1504;&#1493;&#32;&#1513;&#1491;&#1492;&#32;&#1495;&#1493;&#1489;&#1492;." id="PreparationSteps" name="PreparationSteps" placeholder="&#1499;&#1514;&#1489;&#1497;&#32;&#1499;&#1488;&#1503;&#32;&#1488;&#1514;&#32;&#1488;&#1493;&#1508;&#1503;&#32;&#1492;&#1499;&#1504;&#1514;&#32;&#1492;&#1502;&#1514;&#1499;&#1493;&#1503;,&#32;&#1489;&#1500;&#1495;&#1497;&#1510;&#1492;&#32;&#1506;&#1500;&#32;&#1488;&#1504;&#1496;&#1512;&#32;&#1514;&#1508;&#1514;&#1495;&#32;&#1508;&#1505;&#1511;&#1492;&#32;&#1495;&#1491;&#1513;&#1492;&#32;&#1493;&#1492;&#1497;&#1488;&#32;&#1514;&#1502;&#1493;&#1505;&#1508;&#1512;&#32;&#1489;&#1488;&#1493;&#1508;&#1503;&#32;&#1488;&#1493;&#1496;&#1493;&#1502;&#1496;&#1497;" rows="2">
+</textarea>
+									<span class="field-validation-valid" data-valmsg-for="PreparationSteps" data-valmsg-replace="true"></span>
+								</div>
+								<div class="form-group">
+									<label for="ImageUpload">העלאת תמונה :</label>
+									<input type="file" name="ImageUpload" id="ImageUpload" class="form-control file-input" accept="image/*" />
+									<span>העלאת תמונה באיכות טובה</span>
+								</div>
+								<!-- S T E P    I M A G E s    U P L O A D -->
+								<div class="form-group">
+									<label for="StepImageUploadAlt">העלאת תמונות נוספות:</label>
+									<input type="text" id="StepImageUploadAlt" class="form-control" placeholder="תיאור של התמונה" />
+									<input id="StepImageUpload" name="Browse" type="file" accept="image/*" class="form-control file-input" />
+								
+								</div>
+								<div id="stepImagesContainer" class="form-group"></div>
+								<div class="StepImageUploadContainer" style="display: none;">
+									<div style="position:relative;">
+										<span style="position:absolute; top:0; right:0; background-color:#fff; color:red; padding:3px;" class="StepImageUpload_Remove">X</span>
+										<
+											
+									id="StepImageUploadImg" src="" alt="" style="width: 280px;" />
+									</div>
+								</div>
+								<div style="display: none;" id="StepImagesHiddenContainer">
+									<input type="hidden" name="StepImages[XXX].ImagePath" id="StepImageUploadUrl" value="" />
+									<input type="hidden" id="StepImageAlt" name="StepImages[XXX].Alt" />
+									<input type="hidden" name="StepImages[XXX].StepOrder" value="XXX" />
+									<span></span>
+								</div>
+								<div class="form-group">
+									<a class="next-btn" id="btn-submit">אישור</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div id="loginA" class="login-dialog" style="width:570px; display: none;">
+					<div class="title">
+						<h2>הוספת מתכון</h2>
+					</div>
+					<h3>
+						 תודה שהעלת מתכון  למבשלות :)<br />
+					
+					</h3>
+					
+				</div>
+				<div id="waitForCreateContainer" style="width:570px; height:200px; display: none;">
+					<div class="title">
+						<h2>אנא המתיני</h2>
+					</div>
+					<h3>אנא המתיני מספר שניות, ברגעים אלה המתכון שלך נקלט באתר</h3>
+				</div>
+				<div id="waitForCreateContainerVideo" style="width:570px; height:200px; display: none;">
+					<div class="title">
+						<h2>אנא המתיני</h2>
+					</div>
+					<h3>אנא המתיני, ברגעים אלה המתכון שלך נקלט באתר. הפעולה עשוייה להמשך מספר דקות, אנא העזרי בסבלנות!</h3>
+					<div id="floatingCirclesG" class="loadinganimation" style="display:block;">
+						<div class="f_circleG" id="frotateG_01"></div>
+						<div class="f_circleG" id="frotateG_02"></div>
+						<div class="f_circleG" id="frotateG_03"></div>
+						<div class="f_circleG" id="frotateG_04"></div>
+						<div class="f_circleG" id="frotateG_05"></div>
+						<div class="f_circleG" id="frotateG_06"></div>
+						<div class="f_circleG" id="frotateG_07"></div>
+						<div class="f_circleG" id="frotateG_08"></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
 </main>
 
+
+
+
+
+	
+
+	@*<script src="/Scripts/jquery.unobtrusive-ajax.js"></script>
+	<script src="/Scripts/jquery.validate.js"></script>
+	<script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+	<script src="/Scripts/jquery.bxslider.min.js"></script>
+	<script src="/Scripts/bootstrap.min.js"></script>
+	<script src="/Scripts/jquery.fancybox.js"></script>
+	<script src="/Scripts/jquery.fancybox.pack.js"></script>
+	<script src="/Scripts/jquery.sidr.min.js"></script>
+	<script src="/Scripts/AjaxUtility.js"></script>
+	<script src="/Scripts/scripts.js"></script>
+	<script src="/Scripts/addtohomescreen.js"></script>
+	<script src="/Scripts/bookmark-this.js"></script>
+	<script src="/Content/ckeditor/ckeditor.js"></script>
+	<script src="/Content/ckeditor/uilanguages/languages.js"></script>
+	<script src="/Content/ckeditor/lang/he.js"></script>*@
+
+	<script>
+		$(document).ready(function () {
+			var done;
+			var formOpened = false;
+			var registered = false;
+			var isSubmitted = false;
+			var isVideo = false;
+			var stepImagesCounter = 0;
+
+			$("#uploadBtnVideo").change(function () {
+				$("#uploadFile2").val(document.getElementById("uploadBtnVideo").files[0].name);
+				isVideo = true;
+			});
+
+			function Failure(data) {
+				alert("error");
+				$("#finished").attr('id', 'done');
+				$.fancybox.close();
+			}
+
+			$("[id^='facebookShortLink']").click(function () {
+				if (!formOpened) {
+					formOpened = true;
+					//Will try to poll the server every 3 seconds
+					(function pollServer() {
+						$.ajax({
+							url: "/Account/registeredToFacebook",
+							type: "GET",
+							success: function (data) {
+
+								if ($('#done', $('<div/>').html(data)).length > 0) {
+									registered = true;
+									$("#facebookBtnContainer").html(data);
+									$("#ajaxLoginAForm").html('');
+
+								}
+
+							},
+							dataType: 'html',
+							contentType: false,
+							processData: false,
+							complete: setTimeout(function () { if (!registered) pollServer(); }, 2000),
+							//will timeout if request takes longer than 2 seconds
+							timeout: 2000
+						})
+					})();
+
+					//opens the new tab
+					var win = window.open('/Account/ExternalLoginANewTab', '_blank');
+					win.focus();
+				}
+			});
+
+			// Prevent multiple submits manually
+			$("#btn-submitR").click(function (evt) {
+				if (!!evt.preventDefault) {
+					evt.preventDefault();
+				}
+				var $form = $('#addRecipeFrm');
+				if ($form.valid() && !isSubmitted) {
+					isSubmitted = true;
+					if (!isVideo) {
+						$.fancybox("#waitForCreateContainer", {
+							'closeClick': false,
+							'closeBtn': false,
+							'enableEscapeButton': false,
+							helpers: {
+								overlay: { closeClick: false }
+							},
+							keys: {
+								close: null
+							},
+							afterClose: function () { isSubmitted = true; }
+						});
+
+						$("#waitForCreateContainer").fancybox();
+					}
+					else {
+						$.fancybox("#waitForCreateContainerVideo", {
+							'closeClick': false,
+							'closeBtn': false,
+							'enableEscapeButton': false,
+							helpers: {
+								overlay: { closeClick: false }
+							},
+							keys: {
+								close: null
+							},
+							afterClose: function () { isSubmitted = true; }
+						});
+
+						$("#waitForCreateContainerVideo").fancybox();
+					}
+
+					$form.submit();
+				}
+				else {
+					var firstError = $('.input-validation-error').first();
+					if (!!firstError) {
+						firstError.focus();
+					}
+				}
+			});
+
+			$("#btn-submit").click(function (evt) {
+				if (!!evt && !!evt.preventDefault) {
+					evt.preventDefault();
+				}
+				var $form = $('#addRecipeFrm');
+				if ($form.valid() && !isSubmitted) {
+					isSubmitted = true;
+
+					$.fancybox.open([$("#loginA")], {
+						// it's important ro revert default settings so we can catch click events
+						helpers: {
+							overlay: {
+								closeClick: false // default is true
+							}
+						},
+						afterClose: function () { isSubmitted = false; }
+					});
+					(function isLoginComplete() {
+						var elementExists = !!document.getElementById("done");
+						if (elementExists) {
+							$("#done").attr('id', 'finished');
+
+							//$.fancybox.close();
+							$.fancybox("#waitForCreateContainer", {
+								'closeClick': false,
+								'closeBtn': false,
+								'enableEscapeButton': false,
+								helpers: {
+									overlay: { closeClick: false }
+								},
+								keys: {
+									close: null
+								},
+								afterClose: function () { isSubmitted = true; }
+							});
+
+							$("#waitForCreateContainer").fancybox();
+							$("#addRecipeFrm").submit();
+
+							setTimeout(function () {
+
+								$("#finished").attr('id', 'done');
+								$.fancybox.close();
+
+							}, 3000);
+						}
+						else {
+							setTimeout(function () { isLoginComplete(); }, 2000);
+						}
+					})();
+				}
+				else {
+					var firstError = $('.input-validation-error').first();
+					if (!!firstError) {
+						firstError.focus();
+					}
+				}
+			});
+
+			var uploadImage = function uploadImage(imageFileInput, imageUrlInput, imageContainer, imageSrc, removeBtn) {
+
+				$("#" + imageFileInput).change(function () {
+					var formData = new FormData();
+					var file = document.getElementById(imageFileInput).files[0];
+					formData.append(imageFileInput, file);
+					$.ajax({
+						type: "POST",
+						url: '/Recipe/UploadStepImage',
+						data: formData,
+						headers: ajaxUtility.getAntiForgeryTokenHeaders(),
+						dataType: 'json',
+						contentType: false,
+						processData: false,
+						success: function (response) {
+							$("#StepImageUploadUrl").val(response);
+							$("#StepImageUploadImg")[0].src = response;
+							var alt = $("#StepImageUploadAlt").val();
+							$("#StepImageAlt").val(alt);
+							$("#StepImagesHiddenContainer").find("span").html(alt);
+							$("#StepImageUploadAlt").val("");
+							$("#StepImageUpload").val("");
+
+							var hiddens = $("#StepImagesHiddenContainer").html();
+							hiddens = hiddens
+								.replace(new RegExp("XXX", 'g'), stepImagesCounter)
+								.replace(' id="StepImageUploadUrl"', '')
+								.replace(' id="StepImageAlt"', '')
+							hiddens = $(hiddens);
+
+							var newImage = $(".StepImageUploadContainer").html().replace(' id="StepImageUploadImg"', '');
+							var newImageContainer = $("<div></div>");
+							newImage = $(newImage);
+							newImageContainer.append(newImage).append(hiddens);
+							$("#stepImagesContainer").prepend(newImageContainer);
+
+							newImage.find("." + removeBtn).click(function () {
+								$(this).parent().parent().remove();
+								stepImagesCounter--;
+								var localCounter = +stepImagesCounter - 1;
+								$("#stepImagesContainer").children().each(function () {
+									$(this).find("input").each(function () {
+										var attrb = $(this).attr("name");
+										var str1 = attrb.substr(0, attrb.indexOf("[") + 1);
+										var str2 = attrb.substr(attrb.indexOf("]"));
+										$(this).attr("name", str1 + localCounter + str2);
+									});
+									$(this).find("[name$='.StepOrder']").val(localCounter);
+									localCounter--;
+								});
+							});
+							stepImagesCounter++;
+						},
+						error: function (error) {
+							alert("שגיאה");
+						}
+					});
+				});
+			};
+			uploadImage("StepImageUpload", "StepImageUploadUrl", "StepImageUploadContainer", "StepImageUploadImg", "StepImageUpload_Remove");
+		});
+
+	</script>
+
+
+
+
+
+</body>
+</html>
