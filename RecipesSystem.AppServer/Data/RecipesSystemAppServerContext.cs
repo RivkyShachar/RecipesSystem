@@ -15,5 +15,9 @@ namespace RecipesSystem.AppServer.Data
         }
 
         public DbSet<RecipesSystem.AppServer.Models.Recipe> Recipe { get; set; } = default!;
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Recipe>().ToTable("Recipe");
+        }
     }
 }

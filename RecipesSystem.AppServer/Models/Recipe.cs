@@ -12,12 +12,12 @@ namespace RecipesSystem.AppServer.Models
         [DisplayName("Preparation instructions")]
         public string PrepInstructions { get; set; }
 
-        [DisplayName("Title key word")]
-        public string KeyWord { get; set; }
+        //[DisplayName("Title key word")]
+       // public string KeyWord { get; set; }
 
         [DisplayName("Image URL")]
         public string ImageURL { get; set; }
-        public string TimeToMake { get; set; }
+       // public string TimeToMake { get; set; }
         public List<RTag> RTags { get; set; }
 
         public List<Nutriant> Nutriants { get; set; }

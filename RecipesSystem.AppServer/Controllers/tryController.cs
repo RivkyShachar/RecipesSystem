@@ -10,35 +10,22 @@ using RecipesSystem.AppServer.Models;
 
 namespace RecipesSystem.AppServer.Controllers
 {
-    public class RecipesController : Controller
+    public class tryController : Controller
     {
         private readonly RecipesSystemAppServerContext _context;
 
-        public RecipesController(RecipesSystemAppServerContext context)
+        public tryController(RecipesSystemAppServerContext context)
         {
             _context = context;
         }
 
-        // GET: Recipes
+        // GET: try
         public async Task<IActionResult> Index()
         {
-            HebCalAdapter Hadapter = new HebCalAdapter();
-            string Message = Hadapter.Check();
-            ViewData["HebCalMessage"] = Message;
-            WeatherAdapter Wadapter = new WeatherAdapter();
-            Message = Wadapter.Check("Haifa");
-            ViewData["WeatherMessage"] = Message;
-            ImaggaAdapter Iadapter = new ImaggaAdapter();
-            Message = Iadapter.Check("pizza","https://medias.hashulchan.co.il/www/uploads/2020/12/shutterstock_658408219-600x600.jpg");
-            ViewData["ImaggaMessage"] = Message;
-            USDAadapter Uadapter=new USDAadapter();
-            Message = Uadapter.Check("pizza", "x");
-            ViewData["USDAMessage"] = Message;
-            //return View(await _context.Recipe.ToListAsync());
-            return View();
+              return View(await _context.Recipe.ToListAsync());
         }
 
-        // GET: Recipes/Details/5
+        // GET: try/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Recipe == null)
@@ -56,29 +43,29 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-        // GET: Recipes/Create
+        // GET: try/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Recipes/Create
+        // POST: try/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,PrepInstructions,ImageURL,KeyWord,TimeToMake")] Recipe recipe)
+        public async Task<IActionResult> Create([Bind("Id,Description,PrepInstructions,KeyWord,ImageURL,TimeToMake")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(recipe);
-                //await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(recipe);
         }
 
-        // GET: Recipes/Edit/5
+        // GET: try/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Recipe == null)
@@ -94,12 +81,12 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-        // POST: Recipes/Edit/5
+        // POST: try/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,PrepInstructions,ImageURL,KeyWord,TimeToMake")] Recipe recipe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,PrepInstructions,KeyWord,ImageURL,TimeToMake")] Recipe recipe)
         {
             if (id != recipe.Id)
             {
@@ -129,7 +116,7 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-        // GET: Recipes/Delete/5
+        // GET: try/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Recipe == null)
@@ -147,7 +134,7 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-        // POST: Recipes/Delete/5
+        // POST: try/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -169,35 +156,6 @@ namespace RecipesSystem.AppServer.Controllers
         private bool RecipeExists(int id)
         {
           return _context.Recipe.Any(e => e.Id == id);
-        }
-
-        public IActionResult About()
-        {
-            return View();
-        }
-        public IActionResult Contact()
-        {
-            return View();
-        }
-        public IActionResult Error404()
-        {
-            return View();
-        }
-        public IActionResult Recipes()
-        {
-            return View();
-        }
-        public IActionResult SingleRecipe()
-        {
-            return View();
-        }
-        public IActionResult Tags()
-        {
-            return View();
-        }
-        public IActionResult TagTemplate()
-        {
-            return View();
         }
     }
 }

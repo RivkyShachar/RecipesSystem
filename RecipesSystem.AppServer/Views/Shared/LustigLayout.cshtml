@@ -45,6 +45,16 @@
             <a href="@Url.Action("Tags", "Recipes") " class="nav-link"> tags </a>
             <a href="@Url.Action("Recipes", "Recipes") " class="nav-link"> recipes </a>
              <a href="@Url.Action("Create", "Recipes") " class="nav-link"> Add new recipe </a>
+             
+             @if (ViewData["HebCalMessage"]!="_")
+             {
+                    <a href="@Url.Action("Tags", "Recipes") " class="nav-link"> @ViewData["HebCalMessage"] </a>
+             }
+             @if (ViewData["WeatherMessage"] != "_")
+             {
+                    <a href="@Url.Action("Tags", "Recipes") " class="nav-link"> @ViewData["WeatherMessage"] </a>
+             }
+
 
             <div class="nav-link contact-link">
                 <a href="@Url.Action("Contact", "Recipes") " class="btn"> contact </a>

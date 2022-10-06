@@ -15,7 +15,14 @@ namespace RecipesSystem.AppServer.Models
 
             RestResponse response = client.Execute(request);
 
-            return response.Content;
+            string temperature= response.Content;
+
+            if (temperature.Contains("Hot"))
+                return "Recipes for hot days";
+            else if (temperature.Contains("Cold"))
+                return "Recipes for cold days";
+            return "_";
+
         }
     }
 }
