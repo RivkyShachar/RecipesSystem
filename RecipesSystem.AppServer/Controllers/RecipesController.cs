@@ -24,17 +24,36 @@ namespace RecipesSystem.AppServer.Controllers
         {
             HebCalAdapter Hadapter = new HebCalAdapter();
             string Message = Hadapter.Check();
-            ViewData["HebCalMessage"] = Message;
+            if (Message.Contains("סוכות"))
+            {
+                Message = "in this case we need to add recipes for sukot to the muadafim!";
+                ViewData["HebCalMessage"] = Message;
+            }
+            if (Message.Contains("חנוכה"))
+            {
+                Message = "in this case we need to add recipes for chanuka to the muadafim!";
+                ViewData["HebCalMessage"] = Message;
+            }
+            //need to do also for the rest of the holidays
             WeatherAdapter Wadapter = new WeatherAdapter();
             Message = Wadapter.Check("Haifa");
-            ViewData["WeatherMessage"] = Message;
-            return View(await _context.Recipe.ToListAsync());
+            if(Message.Contains("Hot"))
+            {
+                Message = "in this case we need to add recipes for the summer to the muadafim!";
+                ViewData["WeatherMessage"] = Message;
+            }
+            else if(Message.Contains("Cold"))
+            {
+                Message = "in this case we need to add recipes for the winter to the muadafim!";
+                ViewData["WeatherMessage"] = Message;
+            }
             ImaggaAdapter Iadapter = new ImaggaAdapter();
             Message = Iadapter.Check("pizza","https://medias.hashulchan.co.il/www/uploads/2020/12/shutterstock_658408219-600x600.jpg");
             ViewData["ImaggaMessage"] = Message;
             USDAadapter Uadapter=new USDAadapter();
             Message = Uadapter.Check("pizza", "x");
             ViewData["USDAMessage"] = Message;
+            //return View(await _context.Recipe.ToListAsync());
             return View();
         }
 
@@ -67,12 +86,12 @@ namespace RecipesSystem.AppServer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,PrepInstructions,ImageURL")] Recipe recipe)
+        public async Task<IActionResult> Create([Bind("Id,Description,PrepInstructions,ImageURL,KeyWord,TimeToMake")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(recipe);
-                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(recipe);
@@ -99,7 +118,7 @@ namespace RecipesSystem.AppServer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,PrepInstructions,ImageURL")] Recipe recipe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,PrepInstructions,ImageURL,KeyWord,TimeToMake")] Recipe recipe)
         {
             if (id != recipe.Id)
             {

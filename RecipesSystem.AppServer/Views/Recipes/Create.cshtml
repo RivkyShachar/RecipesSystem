@@ -4,10 +4,21 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
-
-<h1>Create</h1>
-
-<h4>Recipe</h4>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simply Recipes || Final</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="~/assets/favicon.ico" type="image/x-icon" />
+    <!-- normalize -->
+    <link rel="stylesheet" href="~/css/normalize.css" />
+    <!-- font-awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="~/css/main.css" />
+</head>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,6 +38,16 @@
                 <label asp-for="ImageURL" class="control-label"></label>
                 <input asp-for="ImageURL" class="form-control" />
                 <span asp-validation-for="ImageURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeyWord" class="control-label"></label>
+                <input asp-for="KeyWord" class="form-control" />
+                <span asp-validation-for="KeyWord" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeToMake" class="control-label"></label>
+                <input asp-for="TimeToMake" class="form-control" />
+                <span asp-validation-for="TimeToMake" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
