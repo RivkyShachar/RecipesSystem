@@ -12,93 +12,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 	<meta http-equiv="Content-Language" content="HE">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<link rel="icon" type="image/png" href="~/images/favicon3.png" />
+	@*<link rel="icon" type="image/png" href="~/images/favicon3.png" />*@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Simply Recipes || Final</title>
 	<!-- favicon -->
 	<link rel="shortcut icon" href="~/assets/favicon.ico" type="image/x-icon" />
 	<!-- normalize -->
 	<link rel="stylesheet" href="~/css/normalize.css" />
+
 	<!-- font-awesome -->
 	<link rel="stylesheet"
 		  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
 	<!-- main css -->
 	<link rel="stylesheet" href="~/css/main.css" />
-	<style>
-		h2 {
-			margin-top: 0px !important;
-		}
-
-		label {
-			display: inline-block;
-			font-weight: bold;
-			margin-bottom: 5px;
-		}
-
-		input, textarea {
-			box-sizing: border-box;
-		}
-
-		textarea {
-			height: 250px;
-		}
-
-		#body-content {
-			font-size: 130%;
-		}
-
-		.form-control {
-			background-color: #ffffff;
-			border: 1px solid #cccccc;
-			border-radius: 4px;
-			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-			color: #555555;
-			display: block;
-			font-size: 100%;
-			line-height: 1.42857;
-			padding: 6px 12px;
-			transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-			vertical-align: middle;
-			width: 100%;
-		}
-
-		.next-btn {
-			background: #e08989 url("../images/icon-arrow-left.png") no-repeat scroll 10px center;
-			border: 0 none;
-			border-radius: 40px;
-			color: #fff !important;
-			float: left;
-			font-size: 30px;
-			font-weight: bold;
-			line-height: 50px;
-			margin-left: 30px;
-			padding: 0 20px 0 40px;
-		}
-
-		.form-group {
-			margin-bottom: 15px;
-		}
-
-		.file-input {
-			border-width: 0px;
-			box-shadow: none;
-			background-color: inherit;
-			height: inherit;
-		}
-		.validation-summary-errors, .field-validation-error {
-			color: red;
-		}
-
-		.input-validation-error {
-			border-color: red;
-		}
-
-		textarea.description {
-			height: 100px;
-		}
 	
-	</style>
-
 	<script src="https://imaot.co.il/Scripts/jquery-2.1.3.js"></script>
 	<script src="https://imaot.co.il/Scripts/jquery/jquery.customSelect.min.js"></script>
 	<script src="https://imaot.co.il/Scripts/imaot.js"></script>
@@ -132,82 +59,13 @@
 
 </head>
 <body>
-
-@*<main class="page">
-    <section class="contact-container">
-        <article class="contact-info">
-            <h3>Want To Get In Touch?</h3>
-            <p>
-                Four dollar toast biodiesel plaid salvia actually pickled banjo
-                bespoke mlkshk intelligentsia edison bulb synth.
-            </p>
-            <p>Cardigan prism bicycle rights put a bird on it deep v.</p>
-            <p>
-                Hashtag swag health goth air plant, raclette listicle fingerstache
-                cold-pressed fanny pack bicycle rights cardigan poke.
-            </p>
-        </article>
-        <article>
-            <form class="form contact-form">
-                <div class="form-row">
-                    <label html="name" class="form-label">your name</label>
-                    <input type="text" name="name" id="name" class="form-input" />
-                </div>
-                <div class="form-row">
-                    <label html="email" class="form-label">your email</label>
-                    <input type="text" name="email" id="email" class="form-input" />
-                </div>
-                <div class="form-row">
-                    <label html="message" class="form-label">message</label>
-                    <textarea name="message" id="message" class="form-textarea"></textarea>
-                </div>
-                <button type="submit" class="btn btn-block">
-                    submit
-                </button>
-            </form>
-        </article>
-    </section>
-    <!-- featured recipes -->
-    <section class="featured-recipes">
-        <h5 class="featured-title">Look At This Awesomesouce!</h5>
-        <div class="recipes-list">
-            <!-- single recipe -->
-            <a href="@Url.Action("SingleRecipe", "Recipes") " class="recipe">
-                <img src="~/assets/recipes/recipe-1.jpeg"
-                     class="img recipe-img"
-                     alt="" />
-                <h5>Carne Asada</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            <!-- end of single recipe -->
-            <!-- single recipe -->
-            <a href="@Url.Action("SingleRecipe", "Recipes") "class="recipe">
-                <img src="~/assets/recipes/recipe-2.jpeg"
-                     class="img recipe-img"
-                     alt="" />
-                <h5>Greek Ribs</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            <!-- end of single recipe -->
-            <!-- single recipe -->
-            <a href= "@Url.Action("SingleRecipe", "Recipes") " class="recipe">
-                <img src="~/assets/recipes/recipe-3.jpeg"
-                     class="img recipe-img"
-                     alt="" />
-                <h5>Vegetable Soup</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            <!-- end of single recipe -->
-        </div>
-    </section>
-</main>*@
 	<div id="fb-root"></div>
 	<main class="page">
 		
 		<div class="centeredContent">
 			<div class="pageBG">
 				<h2>&#1492;&#1493;&#1505;&#1508;&#1514; &#1502;&#1514;&#1499;&#1493;&#1503;</h2>
-				<div class="col-md-12 " style="padding-bottom:40px;padding-left:40px;padding-right:40px;padding-top:10px" id="body-content">
+				<div class="col-md-12 " @*style="padding-bottom:40px;padding-left:40px;padding-right:40px;padding-top:10px" id="body-content"*@>
 					<div>
 						<div style="padding: 5px" class="row"></div>
 						<div class="row">
@@ -274,7 +132,7 @@
 									<label for="Components">כלים* :</label>
 									<textarea class="form-control" cols="20" data-val="true" data-val-required="&#1513;&#1491;&#1492;&#32;&#39;&#1502;&#1512;&#1499;&#1497;&#1489;&#1497;&#1501;&#39;&#32;&#1492;&#1497;&#1504;&#1493;&#32;&#1513;&#1491;&#1492;&#32;&#1495;&#1493;&#1489;&#1492;." id="Components" name="Components" placeholder="&#1499;&#1514;&#1489;&#1497;&#32;&#1499;&#1500;&#32;&#1502;&#1512;&#1499;&#1497;&#1489;&#32;&#1489;&#1513;&#1493;&#1512;&#1492;.&#32;&#1489;&#1502;&#1497;&#1491;&#1492;&#32;&#1493;&#1514;&#1512;&#1510;&#1497;&#32;&#1500;&#1492;&#1493;&#1505;&#1497;&#1507;&#32;&#1499;&#1493;&#1514;&#1512;&#1493;&#1514;&#32;&#1500;&#1502;&#1511;&#1489;&#1509;&#32;&#1502;&#1512;&#1499;&#1497;&#1489;&#1497;&#1501;,&#32;&#1492;&#1493;&#1505;&#1497;&#1508;&#1497;&#32;&#1488;&#1514;&#32;&#1492;&#1505;&#1497;&#1502;&#1503;&#32;&#1504;&#1511;&#1493;&#1491;&#1493;&#1514;&#1497;&#1497;&#1501;&#32;(:)&#32;&#1489;&#1505;&#1497;&#1493;&#1501;&#32;&#1488;&#1493;&#1514;&#1492;&#32;&#1499;&#1493;&#1514;&#1512;&#1514;" rows="2">
 </textarea>
-							
+							</div>
 								<div class="form-group">
 									<label for="Components">מרכיבים* :</label>
 									<textarea class="form-control" cols="20" data-val="true" data-val-required="&#1513;&#1491;&#1492;&#32;&#39;&#1502;&#1512;&#1499;&#1497;&#1489;&#1497;&#1501;&#39;&#32;&#1492;&#1497;&#1504;&#1493;&#32;&#1513;&#1491;&#1492;&#32;&#1495;&#1493;&#1489;&#1492;." id="Components" name="Components" placeholder="&#1499;&#1514;&#1489;&#1497;&#32;&#1499;&#1500;&#32;&#1502;&#1512;&#1499;&#1497;&#1489;&#32;&#1489;&#1513;&#1493;&#1512;&#1492;.&#32;&#1489;&#1502;&#1497;&#1491;&#1492;&#32;&#1493;&#1514;&#1512;&#1510;&#1497;&#32;&#1500;&#1492;&#1493;&#1505;&#1497;&#1507;&#32;&#1499;&#1493;&#1514;&#1512;&#1493;&#1514;&#32;&#1500;&#1502;&#1511;&#1489;&#1509;&#32;&#1502;&#1512;&#1499;&#1497;&#1489;&#1497;&#1501;,&#32;&#1492;&#1493;&#1505;&#1497;&#1508;&#1497;&#32;&#1488;&#1514;&#32;&#1492;&#1505;&#1497;&#1502;&#1503;&#32;&#1504;&#1511;&#1493;&#1491;&#1493;&#1514;&#1497;&#1497;&#1501;&#32;(:)&#32;&#1489;&#1505;&#1497;&#1493;&#1501;&#32;&#1488;&#1493;&#1514;&#1492;&#32;&#1499;&#1493;&#1514;&#1512;&#1514;" rows="2">
@@ -357,29 +215,6 @@
 			</div>
 		</div>
 </main>
-
-
-
-
-
-	
-
-	@*<script src="/Scripts/jquery.unobtrusive-ajax.js"></script>
-	<script src="/Scripts/jquery.validate.js"></script>
-	<script src="/Scripts/jquery.validate.unobtrusive.js"></script>
-	<script src="/Scripts/jquery.bxslider.min.js"></script>
-	<script src="/Scripts/bootstrap.min.js"></script>
-	<script src="/Scripts/jquery.fancybox.js"></script>
-	<script src="/Scripts/jquery.fancybox.pack.js"></script>
-	<script src="/Scripts/jquery.sidr.min.js"></script>
-	<script src="/Scripts/AjaxUtility.js"></script>
-	<script src="/Scripts/scripts.js"></script>
-	<script src="/Scripts/addtohomescreen.js"></script>
-	<script src="/Scripts/bookmark-this.js"></script>
-	<script src="/Content/ckeditor/ckeditor.js"></script>
-	<script src="/Content/ckeditor/uilanguages/languages.js"></script>
-	<script src="/Content/ckeditor/lang/he.js"></script>*@
-
 	<script>
 		$(document).ready(function () {
 			var done;
