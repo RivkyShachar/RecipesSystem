@@ -185,6 +185,7 @@ namespace RecipesSystem.AppServer.Controllers
         }
         public IActionResult Recipes()
         {
+
             return View();
         }
         public IActionResult SingleRecipe()
