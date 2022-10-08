@@ -7,12 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RecipesSystem.AppServer.Data;
 using RecipesSystem.AppServer.Models;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
 
 namespace RecipesSystem.AppServer.Controllers
 {
     public class RecipesController : Controller
     {
         private readonly RecipesSystemAppServerContext _context;
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "oHU6Of5kBX6xhgbTQTCjugE2ppPu8j59NkkDmfgz",
+            BasePath = "https://myrecipes-6198e-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+        IFirebaseClient client;
 
         public RecipesController(RecipesSystemAppServerContext context)
         {
