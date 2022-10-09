@@ -27,8 +27,8 @@ namespace RecipesSystem.AppServer.Controllers
         IFirebaseClient client;
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "oHU6Of5kBX6xhgbTQTCjugE2ppPu8j59NkkDmfgz",
-            BasePath = "https://myrecipes-6198e-default-rtdb.asia-southeast1.firebasedatabase.app/"
+            AuthSecret = "OFkkezOWr12hCkSqWc1mN5QgOoV205UckwHQWZzg",
+            BasePath = "https://recipessystem-8404a-default-rtdb.firebaseio.com/"
         };
 
 
@@ -36,8 +36,8 @@ namespace RecipesSystem.AppServer.Controllers
         // GET: HomeController
         public ActionResult Index()
         {
-            string authSecret = "oHU6Of5kBX6xhgbTQTCjugE2ppPu8j59NkkDmfgz";
-            string basePath = "https://myrecipes-6198e-default-rtdb.asia-southeast1.firebasedatabase.app/";
+            string authSecret = "OFkkezOWr12hCkSqWc1mN5QgOoV205UckwHQWZzg";
+            string basePath = "https://recipessystem-8404a-default-rtdb.firebaseio.com/";
             string senderAppName = "myRecipes";
 
 
