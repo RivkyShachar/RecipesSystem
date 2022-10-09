@@ -34,8 +34,7 @@ namespace RecipesSystem.AppServer.Controllers
         //}
 
 
-        public const string AuthenticationScheme="";
-        public void AddAuthentication(string defaultScheme = "defaulte") { }
+
         //public AuthenticationBuilder AddAuthentication(this IServiceCollection services);
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -47,14 +46,15 @@ namespace RecipesSystem.AppServer.Controllers
         public ActionResult Index()
         {
             client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Get("NewRecipe");
-            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
-            var list = new List<NewRecipe>();
-            foreach (var item in data)
-            {
-                list.Add(JsonConvert.DeserializeObject<NewRecipe>(((JProperty)item).Value.ToString()));
-            }
-            return View(list);
+            //FirebaseResponse response = client.Get("myRecipes");
+            AddStudentToFirebase();
+            //dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+            //var list = new List<NewRecipe>();
+            //foreach (var item in data)
+            //{
+            //    list.Add(JsonConvert.DeserializeObject<NewRecipe>(((JProperty)item).Value.ToString()));
+            //}
+            return View();
         }
 
         [HttpGet]
@@ -68,7 +68,7 @@ namespace RecipesSystem.AppServer.Controllers
         {
             try
             {
-                AddStudentToFirebase(newRecipe);
+                //AddStudentToFirebase(newRecipe);
                 ModelState.AddModelError(string.Empty, "Added Successfully");
             }
             catch (Exception ex)
@@ -79,13 +79,15 @@ namespace RecipesSystem.AppServer.Controllers
             return View();
         }
 
-        private void AddStudentToFirebase(NewRecipe newRecipe)
+        //private void AddStudentToFirebase(NewRecipe newRecipe)
+        private void AddStudentToFirebase()
         {
             client = new FireSharp.FirebaseClient(config);
-            var data = newRecipe;
-            PushResponse response = client.Push("NewRecipe/", data);
-            data.Id = response.Result.name;
-            SetResponse setResponse = client.Set("NewRecipe/" + data.Id, data);
+            //var data = newRecipe;
+            NewRecipe newRecipe1 = new NewRecipe { CookingTime = "c", Description = "d", ImageURL = "i", KeyWord = "k", MakingTime = "m", PrepInstructions = "p" };
+            PushResponse response = client.Push("NewRecipe/", newRecipe1);
+            newRecipe1.Id = response.Result.name;
+            SetResponse setResponse = client.Set("NewRecipe/" + newRecipe1.Id, newRecipe1);
         }
 
 

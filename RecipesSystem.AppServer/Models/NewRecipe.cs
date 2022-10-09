@@ -19,8 +19,8 @@ namespace RecipesSystem.AppServer.Models
         public string ImageURL { get; set; }
         public string MakingTime { get; set; }
         public string CookingTime { get; set; }
-        public List<RTag> RTags { get; set; }
+        //public List<RTag> RTags { get; set; }
 
-        public List<Nutriant> Nutriants { get; set; }
+        //public List<Nutriant> Nutriants { get; set; }
     }
 }
