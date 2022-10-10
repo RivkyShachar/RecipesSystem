@@ -12,9 +12,9 @@ namespace RecipesSystem.AppServer.Models
         [DisplayName("Preparation instructions")]
         public string PrepInstructions { get; set; }
 
-        public List<string> Tools { get; set; }  //כלים להכנת המתכון מה צריך  
+        public string Tools { get; set; }  //כלים להכנת המתכון מה צריך  
 
-        public List<string> Integredient { get; set; }//מרכיבים 
+        public string Integredient { get; set; }//מרכיבים 
 
         //[DisplayName("Title key word")]
         // public string KeyWord { get; set; }
@@ -22,9 +22,9 @@ namespace RecipesSystem.AppServer.Models
         [DisplayName("Image URL")]
         public string ImageURL { get; set; }
 
-        public DateTime TimeToMake { get; set; }//זמן הכנה
+        public DateTimeKind TimeToMake { get; set; }//זמן הכנה
 
-        public DateTime cookingTime { get; set; }//זמן בישול
+        public DateTimeKind cookingTime { get; set; }//זמן בישול
 
         public int Diners { get; set; }//כמה סועדים 
 
