@@ -1,1 +1,89 @@
 http://meta-pa.blogspot.com/2017/08/firebase.html read what is firebase heberw
+
+
+
+
+
+
+
+
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBRopkhwPpVHC9y46zKd03DS4-kj4gdoUM",
+    authDomain: "myrecipes-6198e.firebaseapp.com",
+    projectId: "myrecipes-6198e",
+    storageBucket: "myrecipes-6198e.appspot.com",
+    messagingSenderId: "517373958387",
+    appId: "1:517373958387:web:6d805e2343d47686cc7f86"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+
+
+
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("path/to/serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+
+firebase secret: oHU6Of5kBX6xhgbTQTCjugE2ppPu8j59NkkDmfgz
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBMgy_8VsgQhqXs3ApY-fDwy2Vo_YVHPsI",
+    authDomain: "recipessystem-12326.firebaseapp.com",
+    projectId: "recipessystem-12326",
+    storageBucket: "recipessystem-12326.appspot.com",
+    messagingSenderId: "300892643504",
+    appId: "1:300892643504:web:06e2d25e911e14c5a35b75"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+
+
+
+https://myrecipes-6198e-default-rtdb.asia-southeast1.firebasedatabase.app/
+

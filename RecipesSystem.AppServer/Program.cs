@@ -2,8 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using RecipesSystem.AppServer.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<RecipesSystemAppServerContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("RecipesSystemAppServerContext") ?? throw new InvalidOperationException("Connection string 'RecipesSystemAppServerContext' not found.")));
+//builder.Services.AddDbContext<RecipesSystemAppServerContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("RecipesSystemAppServerContext") ?? throw new InvalidOperationException("Connection string 'RecipesSystemAppServerContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -23,6 +23,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Recipes}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
