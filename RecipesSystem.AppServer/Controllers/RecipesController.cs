@@ -66,6 +66,30 @@ namespace RecipesSystem.AppServer.Controllers
         //}
 
         // GET: Recipes/Create
+
+        [HttpPost]
+        public ActionResult Create(NewRecipe newRecipe)
+        {
+            try
+            {
+                AddRecipeToFirebase(newRecipe);
+                ModelState.AddModelError(string.Empty, "Added Successfully");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return View();
+        }
+        private void AddRecipeToFirebase(NewRecipe newRecipe)
+        {
+            client = new FireSharp.FirebaseClient(config);
+            var data = newRecipe;
+            PushResponse response = client.Push("NewRecipe/", data);
+            data.Id = response.Result.name;
+            SetResponse setResponse = client.Set("NewRecipe/" + data.Description, data);
+        }
         public IActionResult Create()
         {
             return View();
