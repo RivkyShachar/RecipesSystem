@@ -161,20 +161,20 @@ namespace RecipesSystem.AppServer.Controllers
             return View();
         }
 
-        // POST: HomeController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //// POST: HomeController/Delete/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Delete(int id, IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         [HttpGet]
         public ActionResult Edit(string id)
@@ -189,15 +189,15 @@ namespace RecipesSystem.AppServer.Controllers
         public ActionResult Edit(NewRecipe newRecipe)
         {
             client = new FireSharp.FirebaseClient(config);
-            SetResponse response = client.Set("NewRecipe/" + newRecipe.Id, newRecipe);
+            SetResponse response = client.Set("NewRecipe/" + newRecipe.Description, newRecipe);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string description)
         {
             client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Delete("NewRecipe/" + id);
+            FirebaseResponse response = client.Delete("NewRecipe/" + description);
             return RedirectToAction("Index");
         }
     }
