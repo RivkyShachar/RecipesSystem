@@ -18,8 +18,8 @@ namespace RecipesSystem.AppServer.Controllers
         //private readonly RecipesSystemAppServerContext _context;
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "oHU6Of5kBX6xhgbTQTCjugE2ppPu8j59NkkDmfgz",
-            BasePath = "https://myrecipes-6198e-default-rtdb.asia-southeast1.firebasedatabase.app/"
+            AuthSecret = "OFkkezOWr12hCkSqWc1mN5QgOoV205UckwHQWZzg",
+            BasePath = "https://recipessystem-8404a-default-rtdb.firebaseio.com/"
         };
         IFirebaseClient client;
 
@@ -68,7 +68,7 @@ namespace RecipesSystem.AppServer.Controllers
         // GET: Recipes/Create
 
         [HttpPost]
-        public ActionResult Create(NewRecipe newRecipe)
+        public ActionResult Create(Recipe newRecipe)
         {
             try
             {
@@ -82,13 +82,70 @@ namespace RecipesSystem.AppServer.Controllers
 
             return View();
         }
-        private void AddRecipeToFirebase(NewRecipe newRecipe)
+        private void AddRecipeToFirebase(Recipe newRecipe)
         {
             client = new FireSharp.FirebaseClient(config);
-            var data = newRecipe;
-            PushResponse response = client.Push("NewRecipe/", data);
-            data.Id = response.Result.name;
-            SetResponse setResponse = client.Set("NewRecipe/" + data.Description, data);
+            Recipe data = newRecipe;
+            if(data != null)
+            {
+                if(data.Tag==Models.Enum.Tags.BREAKFASTANDBRUNCH)
+                {
+                         PushResponse response = client.Push("BREAKFASTANDBRUNCH/", data);
+                         data.Id = response.Result.name;
+                        SetResponse setResponse = client.Set("BREAKFASTANDBRUNCH/" + data.Description, data);
+                }
+
+              else  if (data.Tag == Models.Enum.Tags.DRINKS)
+                {
+                    PushResponse response = client.Push("DRINKS/", data);
+                    data.Id = response.Result.name;
+                    SetResponse setResponse = client.Set("DRINKS/" + data.Description, data);
+                }
+
+                else if (data.Tag == Models.Enum.Tags.APPETIZERSANDSNACKS)
+                {
+                    PushResponse response = client.Push("APPETIZERSANDSNACKS/", data);
+                    data.Id = response.Result.name;
+                    SetResponse setResponse = client.Set("APPETIZERSANDSNACKS/" + data.Description, data);
+                }
+
+                else if (data.Tag == Models.Enum.Tags.BREADRECIPES)
+                {
+                    PushResponse response = client.Push("BREADRECIPES/", data);
+                    data.Id = response.Result.name;
+                    SetResponse setResponse = client.Set("BREADRECIPES/" + data.Description, data);
+                }
+
+                else if (data.Tag == Models.Enum.Tags.DINNERRECIPES)
+                {
+                    PushResponse response = client.Push("DINNERRECIPES/", data);
+                    data.Id = response.Result.name;
+                    SetResponse setResponse = client.Set("DINNERRECIPES/" + data.Description, data);
+                }
+
+                else if (data.Tag == Models.Enum.Tags.EVERYDAYCOOKING)
+                {
+                    PushResponse response = client.Push("EVERYDAYCOOKING/", data);
+                    data.Id = response.Result.name;
+                    SetResponse setResponse = client.Set("EVERYDAYCOOKING/" + data.Description, data);
+                }
+
+                else if (data.Tag == Models.Enum.Tags.LUNCHRECIPES)
+                {
+                    PushResponse response = client.Push("LUNCHRECIPES/", data);
+                    data.Id = response.Result.name;
+                    SetResponse setResponse = client.Set("LUNCHRECIPES/" + data.Description, data);
+                }
+
+                else if (data.Tag == Models.Enum.Tags.MAINDISHES)
+                {
+                    PushResponse response = client.Push("MAINDISHES/", data);
+                    data.Id = response.Result.name;
+                    SetResponse setResponse = client.Set("MAINDISHES/" + data.Description, data);
+                }
+
+
+            }
         }
         public IActionResult Create()
         {

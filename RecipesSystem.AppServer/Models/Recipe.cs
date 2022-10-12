@@ -6,7 +6,7 @@ namespace RecipesSystem.AppServer.Models
 
     public class Recipe
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [DisplayName("Description of the recipe")]
         public string Description { get; set; }
