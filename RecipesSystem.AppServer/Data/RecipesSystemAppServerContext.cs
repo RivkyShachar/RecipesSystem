@@ -7,17 +7,17 @@ using RecipesSystem.AppServer.Models;
 
 namespace RecipesSystem.AppServer.Data
 {
-    //public class RecipesSystemAppServerContext : DbContext
-    //{
-    //    public RecipesSystemAppServerContext (DbContextOptions<RecipesSystemAppServerContext> options)
-    //        : base(options)
-    //    {
-    //    }
+    public class RecipesSystemAppServerContext : DbContext
+    {
+        public RecipesSystemAppServerContext(DbContextOptions<RecipesSystemAppServerContext> options)
+            : base(options)
+        {
+        }
 
-    //    public DbSet<RecipesSystem.AppServer.Models.Recipe> Recipe { get; set; } = default!;
-    //    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    //    {
-    //        modelBuilder.Entity<Recipe>().ToTable("Recipe");
-    //    }
-    //}
+        public DbSet<RecipesSystem.AppServer.Models.Recipe> Recipe { get; set; } = default!;
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Recipe>().ToTable("Recipe");
+        }
+    }
 }

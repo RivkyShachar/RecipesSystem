@@ -11,8 +11,9 @@ using RecipesSystem.AppServer.Data;
 
 namespace RecipesSystem.AppServer.Migrations
 {
-    //[DbContext(typeof(RecipesSystemAppServerContext))]
-    //Migration("20220929181929_InitialCreate")]
+    [DbContext(typeof(RecipesSystemAppServerContext))]
+    [ Migration("20220929181929_InitialCreate")]
+
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

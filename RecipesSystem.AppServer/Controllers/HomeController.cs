@@ -1,6 +1,4 @@
-﻿using FireSharp.Config;
-using FireSharp.Interfaces;
-using FireSharp.Response;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
@@ -19,12 +17,12 @@ namespace RecipesSystem.AppServer.Controllers
             _logger = logger;
         }
 
-        IFirebaseClient client;
-        IFirebaseConfig config = new FirebaseConfig
-        {
-            AuthSecret = "OFkkezOWr12hCkSqWc1mN5QgOoV205UckwHQWZzg",
-            BasePath = "https://recipessystem-8404a-default-rtdb.firebaseio.com/"
-        };
+        //IFirebaseClient client;
+        //IFirebaseConfig config = new FirebaseConfig
+        //{
+        //    AuthSecret = "OFkkezOWr12hCkSqWc1mN5QgOoV205UckwHQWZzg",
+        //    BasePath = "https://recipessystem-8404a-default-rtdb.firebaseio.com/"
+        //};
 
 
 
@@ -36,46 +34,46 @@ namespace RecipesSystem.AppServer.Controllers
             string senderAppName = "myRecipes";
 
 
-            client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response1 = client.Get("NewRecipe");
+            //client = new FireSharp.FirebaseClient(config);
+            //FirebaseResponse response1 = client.Get("NewRecipe");
 
-            if (response1.Body != "null")
-            {
-                dynamic data1 = JsonConvert.DeserializeObject<dynamic>(response1.Body);
-                var list = new List<NewRecipe>();
-                foreach (var item in data1)
-                {
-                    list.Add(JsonConvert.DeserializeObject<NewRecipe>(((JProperty)item).Value.ToString()));
-                }
-
-
+            //if (response1.Body != "null")
+            //{
+            //    dynamic data1 = JsonConvert.DeserializeObject<dynamic>(response1.Body);
+            //    var list = new List<NewRecipe>();
+            //    foreach (var item in data1)
+            //    {
+            //        list.Add(JsonConvert.DeserializeObject<NewRecipe>(((JProperty)item).Value.ToString()));
+            //    }
 
 
-                return View(list);
 
 
+            //    return View(list);
 
 
 
 
 
 
-            }
 
-            if (client != null && !string.IsNullOrEmpty(basePath))
-            {
 
-                NewRecipe newRecipe1 = new NewRecipe { CookingTime = "30 min", Description = "fish", ImageURL = "theurl", KeyWord = "c", MakingTime = "50 min", PrepInstructions = "add,mix,dkdf" };
-                PushResponse response2 = client.Push("NewRecipe/", newRecipe1);
-                newRecipe1.Id = response2.Result.name;
-                SetResponse setResponse = client.Set("NewRecipe/" + newRecipe1.Description, newRecipe1);
-                //var data = new
-                //{
-                //    Name = "Test",
-                //    Mobile = "123456"
-                //};
-                //var response = client.Push("doc/", data);
-            }
+            //}
+
+            //if (client != null && !string.IsNullOrEmpty(basePath))
+            //{
+
+            //    NewRecipe newRecipe1 = new NewRecipe { CookingTime = "30 min", Description = "fish", ImageURL = "theurl", KeyWord = "c", MakingTime = "50 min", PrepInstructions = "add,mix,dkdf" };
+            //    PushResponse response2 = client.Push("NewRecipe/", newRecipe1);
+            //    newRecipe1.Id = response2.Result.name;
+            //    SetResponse setResponse = client.Set("NewRecipe/" + newRecipe1.Description, newRecipe1);
+            //    //var data = new
+            //    //{
+            //    //    Name = "Test",
+            //    //    Mobile = "123456"
+            //    //};
+            //    //var response = client.Push("doc/", data);
+            //}
             return View();
         }
 
@@ -83,10 +81,10 @@ namespace RecipesSystem.AppServer.Controllers
         [HttpGet]
         public ActionResult Details(string description)
         {
-            client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Get("NewRecipe/" + description);
-            NewRecipe data = JsonConvert.DeserializeObject<NewRecipe>(response.Body);
-            return View(data);
+            //client = new FireSharp.FirebaseClient(config);
+            //FirebaseResponse response = client.Get("NewRecipe/" + description);
+            //NewRecipe data = JsonConvert.DeserializeObject<NewRecipe>(response.Body);
+            return View();
         }
 
         // GET: HomeController/Create
@@ -127,11 +125,11 @@ namespace RecipesSystem.AppServer.Controllers
 
         private void AddStudentToFirebase(NewRecipe newRecipe)
         {
-            client = new FireSharp.FirebaseClient(config);
-            var data = newRecipe;
-            PushResponse response = client.Push("NewRecipe/", data);
-            data.Id = response.Result.name;
-            SetResponse setResponse = client.Set("NewRecipe/" + data.Description, data);
+        //    client = new FireSharp.FirebaseClient(config);
+        //    var data = newRecipe;
+        //    PushResponse response = client.Push("NewRecipe/", data);
+        //    data.Id = response.Result.name;
+        //    SetResponse setResponse = client.Set("NewRecipe/" + data.Description, data);
         }
 
         // GET: HomeController/Edit/5
@@ -179,25 +177,25 @@ namespace RecipesSystem.AppServer.Controllers
         [HttpGet]
         public ActionResult Edit(string id)
         {
-            client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Get("NewRecipe/" + id);
-            NewRecipe data = JsonConvert.DeserializeObject<NewRecipe>(response.Body);
-            return View(data);
+            //client = new FireSharp.FirebaseClient(config);
+            //FirebaseResponse response = client.Get("NewRecipe/" + id);
+            //NewRecipe data = JsonConvert.DeserializeObject<NewRecipe>(response.Body);
+            return View();
         }
 
         [HttpPost]
         public ActionResult Edit(NewRecipe newRecipe)
         {
-            client = new FireSharp.FirebaseClient(config);
-            SetResponse response = client.Set("NewRecipe/" + newRecipe.Description, newRecipe);
+            //client = new FireSharp.FirebaseClient(config);
+            //SetResponse response = client.Set("NewRecipe/" + newRecipe.Description, newRecipe);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public ActionResult Delete(string description)
         {
-            client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Delete("NewRecipe/" + description);
+            //client = new FireSharp.FirebaseClient(config);
+            //FirebaseResponse response = client.Delete("NewRecipe/" + description);
             return RedirectToAction("Index");
         }
     }
