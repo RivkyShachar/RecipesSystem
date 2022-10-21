@@ -87,3 +87,18 @@ firebase secret: oHU6Of5kBX6xhgbTQTCjugE2ppPu8j59NkkDmfgz
 
 https://myrecipes-6198e-default-rtdb.asia-southeast1.firebasedatabase.app/
 
+            HebCalAdapter Hadapter = new HebCalAdapter();
+            string Message = Hadapter.Check();
+            ViewData["HebCalMessage"] = Message;
+            WeatherAdapter Wadapter = new WeatherAdapter();
+            Message = Wadapter.Check("Haifa");
+            ViewData["WeatherMessage"] = Message;
+            ImaggaAdapter Iadapter = new ImaggaAdapter();
+            Message = Iadapter.Check("pizza","https://medias.hashulchan.co.il/www/uploads/2020/12/shutterstock_658408219-600x600.jpg");
+            ViewData["ImaggaMessage"] = Message;
+            USDAadapter Uadapter=new USDAadapter();
+            Message = Uadapter.Check("pizza", "x");
+            ViewData["USDAMessage"] = Message;
+            //return View(await _context.Recipe.ToListAsync());
+            return View();
+

@@ -3,7 +3,7 @@ using static RecipesSystem.AppServer.Models.Enum;
 
 namespace RecipesSystem.AppServer.Models
 {
-
+    public enum Tags { BREADRECIPES, EVERYDAYCOOKING, LUNCHRECIPES, DINNERRECIPES, MAINDISHES, BREAKFASTANDBRUNCH, DRINKS, APPETIZERSANDSNACKS }
     public class Recipe
     {
         public int Id { get; set; }
@@ -32,7 +32,7 @@ namespace RecipesSystem.AppServer.Models
         [DisplayName("Diners size")]
         public int Diners { get; set; }//כמה סועדים 
 
-        [DisplayName("Tags")]
+        //[DisplayName("Tags")]
         public Tags Tag { get; set; }
 
         [DisplayName("Nutriant")]
