@@ -10,7 +10,7 @@ using RecipesSystem.AppServer.Data;
 
 namespace RecipesSystem.AppServer.Migrations
 {
-    //[DbContext(typeof(RecipesSystemAppServerContext))]
+    [DbContext(typeof(RecipesSystemAppServerContext))]
     partial class RecipesSystemAppServerContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

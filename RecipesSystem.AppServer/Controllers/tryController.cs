@@ -2,128 +2,160 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using FireSharp.Response;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using RecipesSystem.AppServer.Data;
 using RecipesSystem.AppServer.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNetCore.Authentication;
-
 
 namespace RecipesSystem.AppServer.Controllers
 {
-    [Authorize]
     public class tryController : Controller
     {
-        //private readonly RecipesSystemAppServerContext _context;
+        private readonly RecipesSystemAppServerContext _context;
 
-        //public tryController(RecipesSystemAppServerContext context)
-        //{
-        //    _context = context;
-        //}
-
-
-
-        //public AuthenticationBuilder AddAuthentication(this IServiceCollection services);
-        IFirebaseConfig config = new FirebaseConfig
+        public tryController(RecipesSystemAppServerContext context)
         {
-            AuthSecret = "oHU6Of5kBX6xhgbTQTCjugE2ppPu8j59NkkDmfgz",
-            BasePath = "https://myrecipes-6198e-default-rtdb.asia-southeast1.firebasedatabase.app/"
-        };
-        IFirebaseClient client;
-        // GET: Student
-        public ActionResult Index()
+            _context = context;
+        }
+
+        // GET: try
+        public async Task<IActionResult> Index()
         {
-            client = new FireSharp.FirebaseClient(config);
-            //FirebaseResponse response = client.Get("myRecipes");
-            AddStudentToFirebase();
-            //dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
-            //var list = new List<NewRecipe>();
-            //foreach (var item in data)
-            //{
-            //    list.Add(JsonConvert.DeserializeObject<NewRecipe>(((JProperty)item).Value.ToString()));
-            //}
+            return View(await _context.Recipe.ToListAsync());
+        }
+
+        // GET: try/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Recipe == null)
+            {
+                return NotFound();
+            }
+
+            var recipe = await _context.Recipe
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+
+            return View(recipe);
+        }
+
+        // GET: try/Create
+        public IActionResult Create()
+        {
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
+        // POST: try/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(NewRecipe newRecipe)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Description,PrepInstructions,KeyWord,ImageURL,TimeToMake")] Recipe recipe)
         {
-            try
+            if (ModelState.IsValid)
             {
-                //AddStudentToFirebase(newRecipe);
-                ModelState.AddModelError(string.Empty, "Added Successfully");
+                _context.Add(recipe);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
-            }
-
-            return View();
+            return View(recipe);
         }
 
-        //private void AddStudentToFirebase(NewRecipe newRecipe)
-        private void AddStudentToFirebase()
+        // GET: try/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            client = new FireSharp.FirebaseClient(config);
-            //var data = newRecipe;
-            NewRecipe newRecipe1 = new NewRecipe { CookingTime = "c", Description = "d", ImageURL = "i", KeyWord = "k", MakingTime = "m", PrepInstructions = "p" };
-            PushResponse response = client.Push("NewRecipe/", newRecipe1);
-            newRecipe1.Id = response.Result.name;
-            SetResponse setResponse = client.Set("NewRecipe/" + newRecipe1.Id, newRecipe1);
+            if (id == null || _context.Recipe == null)
+            {
+                return NotFound();
+            }
+
+            var recipe = await _context.Recipe.FindAsync(id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            return View(recipe);
         }
 
+        // POST: try/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,PrepInstructions,KeyWord,ImageURL,TimeToMake")] Recipe recipe)
+        {
+            if (id != recipe.Id)
+            {
+                return NotFound();
+            }
 
-        //[HttpGet]
-        //public ActionResult Detail(string id)
-        //{
-        //    client = new FireSharp.FirebaseClient(config);
-        //    FirebaseResponse response = client.Get("NewRecipe/" + id);
-        //    NewRecipe data = JsonConvert.DeserializeObject<NewRecipe>(response.Body);
-        //    return View(data);
-        //}
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(recipe);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!RecipeExists(recipe.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(recipe);
+        }
 
-        //[HttpGet]
-        //public ActionResult Edit(string id)
-        //{
-        //    client = new FireSharp.FirebaseClient(config);
-        //    FirebaseResponse response = client.Get("NewRecipe/" + id);
-        //    NewRecipe data = JsonConvert.DeserializeObject<NewRecipe>(response.Body);
-        //    return View(data);
-        //}
+        // GET: try/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null || _context.Recipe == null)
+            {
+                return NotFound();
+            }
 
-        //[HttpPost]
-        //public ActionResult Edit(NewRecipe newRecipe)
-        //{
-        //    client = new FireSharp.FirebaseClient(config);
-        //    SetResponse response = client.Set("NewRecipe/" + newRecipe.Id, newRecipe);
-        //    return RedirectToAction("Index");
-        //}
+            var recipe = await _context.Recipe
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
 
-        //[HttpGet]
-        //public ActionResult Delete(string id)
-        //{
-        //    client = new FireSharp.FirebaseClient(config);
-        //    FirebaseResponse response = client.Delete("NewRecipe/" + id);
-        //    return RedirectToAction("Index");
-        //}
+            return View(recipe);
+        }
 
+        // POST: try/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if (_context.Recipe == null)
+            {
+                return Problem("Entity set 'RecipesSystemAppServerContext.Recipe'  is null.");
+            }
+            var recipe = await _context.Recipe.FindAsync(id);
+            if (recipe != null)
+            {
+                _context.Recipe.Remove(recipe);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool RecipeExists(int id)
+        {
+            return _context.Recipe.Any(e => e.Id == id);
+        }
     }
 }
