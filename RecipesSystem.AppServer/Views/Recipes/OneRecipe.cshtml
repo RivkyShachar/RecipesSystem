@@ -1,0 +1,90 @@
+﻿@model IEnumerable<RecipesSystem.AppServer.Models.Recipe>
+
+@{
+    ViewData["Title"] = "OneRecipe";
+    Layout = "~/Views/Shared/LustigLayout.cshtml";
+}
+
+<h1>OneRecipe</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrepInstructions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tools)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeToMake)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CookingTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diners)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tag)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+@if(Model!=null)
+{
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrepInstructions)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tools)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ingredients)
+                    </td>
+                    <td>
+                        <img src=@item.ImageURL @Html.DisplayFor(modelItem => item.ImageURL)/>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TimeToMake)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CookingTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diners)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tag)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+}
+
+}
+    </tbody>
+</table>

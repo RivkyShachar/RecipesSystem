@@ -99,7 +99,7 @@ namespace RecipesSystem.AppServer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Tag")] Recipe recipe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag")] Recipe recipe)
         {
             if (id != recipe.Id)
             {
@@ -198,6 +198,10 @@ namespace RecipesSystem.AppServer.Controllers
             return View();
         }
         public IActionResult TagTemplate()
+        {
+            return View();
+        }
+        public IActionResult OneRecipe()
         {
             return View();
         }
