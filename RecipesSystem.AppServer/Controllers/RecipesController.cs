@@ -189,17 +189,28 @@ namespace RecipesSystem.AppServer.Controllers
 
             return View(await _context.Recipe.ToListAsync());
         }
-        public IActionResult SingleRecipe()
+        public async Task<IActionResult> SingleRecipe(int? id)
         {
-            return View();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var recipe = await _context.Recipe
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            return View(recipe);
         }
-        public IActionResult Tags()
+        public async Task<IActionResult> Tags()
         {
-            return View();
+            return View(await _context.Recipe.ToListAsync());
         }
-        public IActionResult TagTemplate()
+        public async Task<IActionResult> TagTemplate()
         {
-            return View();
+            return View(await _context.Recipe.ToListAsync());
         }
     }
 }
