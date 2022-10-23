@@ -184,10 +184,10 @@ namespace RecipesSystem.AppServer.Controllers
         {
             return View();
         }
-        public IActionResult Recipes()
+        public async Task<IActionResult> Recipes()
         {
 
-            return View();
+            return View(await _context.Recipe.ToListAsync());
         }
         public IActionResult SingleRecipe()
         {
