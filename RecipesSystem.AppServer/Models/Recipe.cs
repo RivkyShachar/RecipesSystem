@@ -27,7 +27,7 @@ namespace RecipesSystem.AppServer.Models
         public string TimeToMake { get; set; }//זמן הכנה
 
         [DisplayName(" Cooking Time")]
-        public string  cookingTime { get; set; }//זמן בישול
+        public string  CookingTime { get; set; }//זמן בישול
 
         [DisplayName("Diners size")]
         public int Diners { get; set; }//כמה סועדים 
