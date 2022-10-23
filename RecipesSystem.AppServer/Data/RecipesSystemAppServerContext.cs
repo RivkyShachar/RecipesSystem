@@ -24,10 +24,7 @@ namespace RecipesSystem.AppServer.Data
                 .Property(c => c.Tag)
                 .HasConversion<string>();
 
-    //    public DbSet<RecipesSystem.AppServer.Models.Recipe> Recipe { get; set; } = default!;
-    //    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    //    {
-    //        modelBuilder.Entity<Recipe>().ToTable("Recipe");
-    //    }
-    //}
+            base.OnModelCreating(modelBuilder);
+        }
+    }
 }

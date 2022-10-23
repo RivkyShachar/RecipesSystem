@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RecipesSystem.AppServer.Models.NewRecipe>
+﻿@*@model IEnumerable<RecipesSystem.AppServer.Models.NewRecipe>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,6 +9,7 @@
 
 <p>
     @*<a asp-action="Create">Create New</a>*@
+    @*
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -77,3 +78,4 @@
     </tbody>
 </table>
 
+*@

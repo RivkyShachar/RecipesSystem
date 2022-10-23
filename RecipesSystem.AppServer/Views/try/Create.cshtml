@@ -1,10 +1,10 @@
-﻿@model RecipesSystem.AppServer.Models.NewRecipe
+﻿@*@model RecipesSystem.AppServer.Models.NewRecipe
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
 
-@{
+@*@{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="~/css/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     @*<link rel="icon" type="image/png" href="~/images/favicon3.png" />*@
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- favicon -->
     <link rel="shortcut icon" href="~/assets/favicon.ico" type="image/x-icon" />
     <!-- normalize -->
@@ -66,7 +66,7 @@
             <input asp-for="KeyWord" class="form-control" />
             <span asp-validation-for="KeyWord" class="text-danger"></span>
             </div>*@
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="CookingTime" class="control-label"></label>
                 <input asp-for="CookingTime" class="form-control" />
                 <span asp-validation-for="CookingTime" class="text-danger"></span>
@@ -92,3 +92,4 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+*@

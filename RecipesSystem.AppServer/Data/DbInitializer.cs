@@ -21,10 +21,10 @@ namespace RecipesSystem.AppServer.Data
             var recipes = new Recipe[]
             {
                 new Recipe{Description="a",PrepInstructions="b",ImageURL="c",Tag= 0},
-                new Recipe{Description="f",PrepInstructions="b",ImageURL="cd",Tag=Models.Enum.Tags.APPETIZERSANDSNACKS },
-                new Recipe{Description="af",PrepInstructions="b",ImageURL="sc",Tag=Models.Enum.Tags.APPETIZERSANDSNACKS },
-                new Recipe{Description="ad",PrepInstructions="b",ImageURL="cf",Tag=Models.Enum.Tags.APPETIZERSANDSNACKS  },
-                new Recipe{Description="ad",PrepInstructions="b",ImageURL="ct",Tag=Models.Enum.Tags.APPETIZERSANDSNACKS  },
+                new Recipe{Description="f",PrepInstructions="b",ImageURL="cd",Tag=Models.Tags.APPETIZERSANDSNACKS },
+                new Recipe{Description="af",PrepInstructions="b",ImageURL="sc",Tag=Tags.APPETIZERSANDSNACKS },
+                new Recipe{Description="ad",PrepInstructions="b",ImageURL="cf",Tag=Tags.APPETIZERSANDSNACKS  },
+                new Recipe{Description="ad",PrepInstructions="b",ImageURL="ct",Tag=Tags.APPETIZERSANDSNACKS  },
             };
             foreach (Recipe r in recipes)
             {
