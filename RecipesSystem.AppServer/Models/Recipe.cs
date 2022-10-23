@@ -32,7 +32,7 @@ namespace RecipesSystem.AppServer.Models
         [DisplayName("Diners size")]
         public int Diners { get; set; }//כמה סועדים 
 
-        //[DisplayName("Tags")]
+        [DisplayName("Tags")]
         public Tags Tag { get; set; }
 
         [DisplayName("Nutriant")]

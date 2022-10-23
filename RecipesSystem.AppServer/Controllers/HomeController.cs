@@ -88,25 +88,25 @@ namespace RecipesSystem.AppServer.Controllers
         //        }
 
         //        // GET: HomeController/Create
-        //        public ActionResult Create()
-        //        {
-        //            return View();
-        //        }
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-        //        // POST: HomeController/Create
-        //        //[HttpPost]
-        //        //[ValidateAntiForgeryToken]
-        //        //public ActionResult Create(IFormCollection collection)
-        //        //{
-        //        //    try
-        //        //    {
-        //        //        return RedirectToAction(nameof(Index));
-        //        //    }
-        //        //    catch
-        //        //    {
-        //        //        return View();
-        //        //    }
-        //        //}
+      //  POST: HomeController/Create
+       [HttpPost]
+       [ValidateAntiForgeryToken]
+        public ActionResult Create(IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
         //        [HttpPost]
         //        public ActionResult Create(NewRecipe newRecipe)
         //        {
