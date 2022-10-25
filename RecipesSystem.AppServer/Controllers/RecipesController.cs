@@ -71,14 +71,9 @@ namespace RecipesSystem.AppServer.Controllers
             if (ModelState.IsValid)
             {
                 GetNutriants(recipe);//מוסיף את הערכים התזונתיים שלו
-                if (IsGoodPicture(recipe))//בדיקה עם התמונה טובה
-                {
-                    _context.Add(recipe);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                    ModelState.AddModelError(string.Empty, "Worng Image");
+                _context.Add(recipe);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View(recipe);
         }
@@ -90,7 +85,7 @@ namespace RecipesSystem.AppServer.Controllers
                 return true;
             else
                 return false;
-
+            
         }
 
         public void GetNutriants(Recipe recipe)//פונקציה שתכניס לי את הערכים התוזנתיים של המתכון על ידי שימוש בשרת 
@@ -249,10 +244,12 @@ namespace RecipesSystem.AppServer.Controllers
             return View(await _context.Recipe.ToListAsync());
         }
 
-        public async Task<IActionResult> TagTemplate()//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+        public async Task<IActionResult> TagTemplate(Tags t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
         {
-         //IEnumerable<Recipe>recipes=await _context.Recipe.Any()
-            return View();
+
+            IEnumerable<Recipe> recipes = _context.Recipe.Where(m => m.Tag == t);
+            
+            return View(recipes);
         }
     }
 }

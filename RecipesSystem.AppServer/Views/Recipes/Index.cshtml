@@ -44,14 +44,15 @@
         <div class="tags-container">
             <h4>recipes</h4>
             <div class="tags-list">
-                <a href="@Url.Action("TagTemplate", "Recipes") ">Bread Recipes </a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Every Day Cooking </a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Lunch Recipes </a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Dinner Recipes </a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Main Dishes</a>
-                <a href="@Url.Action("TagTemplate", "Recipes") ">  Breakfast And Brunch</a>
-                <a href="@Url.Action("TagTemplate", "Recipes") ">  Drinks</a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Appetizers And Snacks </a>
+                @for (int i = 0; i < 8; i++)
+                {
+                    int size = @Model.Where(m => m.Tag == (Tags)i).Count();
+                    if (size > 0)
+                    {
+                        Tags t = (Tags)i;
+                        <a href="@Url.Action("TagTemplate", "Recipes",new{t=(Tags)i})">@t.ToString() </a>
+                    }
+                }
             </div>
         </div>
         <!-- end of tag container -->

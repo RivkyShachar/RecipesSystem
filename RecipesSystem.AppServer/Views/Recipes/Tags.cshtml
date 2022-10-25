@@ -8,68 +8,113 @@
 <main class="page">
     <section class="tags-wrapper">
         <!-- single tag -->
-        
-        <a href="@Url.Action("TagTemplate", "Recipes", new { EnumNumber=0})" class="tag">
-            <h5>Breakfast</h5>
-            <img src="~/assets/mealsCategory/brakefast.jpg"
-                 class="img recipe-img"
-                 alt="" />
-            <p></p>
-        </a>
-        <!-- end of single tag -->
-        <!-- single tag -->
-        <a href="@Url.Action("TagTemplate", "Recipes")" class="tag">
+        @{
+            int i = @Model.Where(m => m.Tag == Tags.BREAKFASTANDBRUNCH).Count();
+            if(i>0)//בדיקה שיש מתכונים בקטדוריה הזו שאם לא שלא יציג 
+            {
+                   <a href="@Url.Action("TagTemplate", "Recipes", new { t=Tags.BREAKFASTANDBRUNCH})" class="tag">@*ישלח נתונים של נקטגוריה הספיציפית*@
+                    <h5>Breakfast</h5>
+                    <img src="~/assets/mealsCategory/brakefast.jpg"
+                    class="img recipe-img"
+                   alt="" />
+                  <p>@i.ToString() Recipes</p>@*את כמות המתכונים שיש בכל קטגוריה*@
+                </a>
+            }
+
+        }
+        @{
+           
+             i = @Model.Where(m => m.Tag == Tags.LUNCHRECIPES).Count();
+             if(i>0)
+             {
+            <a href="@Url.Action("TagTemplate", "Recipes",new {t=Tags.LUNCHRECIPES})" class="tag">
             <h5>Lunch</h5>
             <img src="~/assets/mealsCategory/Lanch.jpg"
                  class="img recipe-img"
                  alt="" />
-            <p>2 recipe</p>
-        </a>
-        <!-- end of single tag -->
-        <!-- single tag -->
-        <a href="@Url.Action("TagTemplate", "Recipes")" class="tag">
+            <p>@i.ToString() Recipes</p>
+                </a>
+            }
+        }
+        @{
+            i = @Model.Where(m => m.Tag == Tags.DINNERRECIPES).Count();
+            if(i>0)
+            {
+            <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.DINNERRECIPES})" class="tag">
             <h5>Dinner </h5>
             <img src="~/assets/mealsCategory/dinner.jpg"
                  class="img recipe-img"
                  alt="" />
-            <p>3 recipe</p>
-        </a>
-        <!-- end of single tag -->
-        <!-- single tag -->
-        <a href="@Url.Action("TagTemplate", "Recipes")" class="tag">
+            <p>@i.ToString() Recipes</p>
+                </a>
+            }
+        }
+        @{
+            i = @Model.Where(m => m.Tag == Tags.APPETIZERSANDSNACKS).Count();
+            if(i>0)
+            {
+            <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.APPETIZERSANDSNACKS})" class="tag">
             <h5>Dessert</h5>
-     <img src="~/assets/mealsCategory/Desert.jpg"
+               <img src="~/assets/mealsCategory/Desert.jpg"
                  class="img recipe-img"
                  alt="" />
-            <p>4 recipe</p>
-        </a>
-        <!-- end of single tag -->
-        <!-- single tag -->
-        <a href="@Url.Action("TagTemplate", "Recipes")" class="tag">
-            <h5>Holiday And Seasonal Recipes</h5>
+            <p>@i.ToString() Recipes</p>
+                </a>
+            }
+        }
+        @{
+            i = @Model.Where(m => m.Tag == Tags.MAINDISHES).Count();
+            if(i>0){
+            <a href="@Url.Action("TagTemplate", "Recipes",new {t=Tags.MAINDISHES})" class="tag">
+            <h5>Main Dishes</h5>
             <img src="~/assets/mealsCategory/Holiday And Seasonal Recipes.jpg"
                  class="img recipe-img"
                  alt="" />
-            <p>1 recipe</p>
-        </a>
-        <!-- end of single tag -->
-        <!-- single tag -->
-        <a href="@Url.Action("TagTemplate", "Recipes")" class="tag">
-            <h5>healthy food recipes</h5>
+            <p>@i.ToString() Recipes</p>
+                </a>
+            }
+        }
+        @{
+            i = @Model.Where(m => m.Tag == Tags.EVERYDAYCOOKING).Count();
+            if(i>0)
+            {
+            <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.EVERYDAYCOOKING})" class="tag">
+            <h5>Every day Cooking</h5>
                <img src="~/assets/mealsCategory/HelthyFood.jpg"
                  class="img recipe-img"
                  alt="" />
-            <p>1 recipe</p>
+            <p>@i.ToString() Recipes</p>
         </a>
-        <!-- end of single tag -->
-        <!-- single tag -->
-        <a href="@Url.Action("TagTemplate", "Recipes")" class="tag">
-            <h5>Recipes By Diet</h5>
+            }
+
+        }
+        @{
+            i = @Model.Where(m => m.Tag == Tags.DRINKS).Count();
+            if(i>0)
+            {
+            <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.DRINKS})" class="tag">
+            <h5>Drinks</h5>
                <img src="~/assets/mealsCategory/DiattetyFood.jpg"
                  class="img recipe-img"
                    alt="" />
-            <p>1 recipe</p>
+            <p>@i.ToString() Recipes</p>
         </a>
+            }
+        }
+        @{
+            i = @Model.Where(m => m.Tag == Tags.BREADRECIPES).Count();
+            if(i>0)
+            {
+        <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.BREADRECIPES})" class="tag">
+        <img src="~/assets/mealsCategory/DiattetyFood.jpg"
+             class="img recipe-img"
+             alt="" />
+        <p>@i.ToString() Recipes</p>
+        </a>
+            }
+        }
+
+
         <!-- end of single tag -->
     </section>
 </main>

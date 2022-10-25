@@ -33,18 +33,13 @@
         </div>
         <div class="nav-links">
 
-           @* <a href="@Url.Action("blog", "Recipes")">
-                Fruits &amp
-                <a asp-area="" asp-controller="Recipes" asp-action="Index">דף הבית</a>*@
-          
+         
            
             <a href="@Url.Action("Index", "Recipes") " class="nav-link"> Home </a>
-            @*<a href="index" class="nav-link"> home </a>*@
-            
             <a href="@Url.Action("About", "Recipes") " class="nav-link"> about </a>
             <a href="@Url.Action("Tags", "Recipes") " class="nav-link"> tags </a>
             <a href="@Url.Action("Recipes", "Recipes") " class="nav-link"> recipes </a>
-             <a href="@Url.Action("Create", "Recipes") " class="nav-link"> Add new recipe </a>
+            <a href="@Url.Action("Create", "Recipes") " class="nav-link"> Add new recipe </a>
              
              @if (ViewData["HebCalMessage"]!="_")
              {

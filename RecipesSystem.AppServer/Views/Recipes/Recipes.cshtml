@@ -12,14 +12,23 @@
         <div class="tags-container">
             <h4>Categories</h4>
             <div class="tags-list">
-                <a href="@Url.Action("TagTemplate", "Recipes") ">Bread Recipes </a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Every Day Cooking </a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Lunch Recipes </a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Dinner Recipes </a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Main Dishes</a>
-                <a href="@Url.Action("TagTemplate", "Recipes") ">  Breakfast And Brunch</a>
-                <a href="@Url.Action("TagTemplate", "Recipes") ">  Drinks</a>
-                <a href="@Url.Action("TagTemplate", "Recipes") "> Appetizers And Snacks </a>
+                @for(int i=0;i<8;i++)
+                {
+                    int size = @Model.Where(m => m.Tag ==(Tags)i).Count();
+                    if(size>0)
+                    {
+                        Tags t = (Tags)i;                        
+                        <a href="@Url.Action("TagTemplate", "Recipes",new{t=(Tags)i})">@t.ToString() </a>
+                    }
+                }
+              @*  <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.BREADRECIPES}) ">Bread Recipes </a>
+                <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.EVERYDAYCOOKING}) "> Every Day Cooking </a>
+                <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.LUNCHRECIPES}) "> Lunch Recipes </a>
+                <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.DINNERRECIPES}) "> Dinner Recipes </a>
+                <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.MAINDISHES}) "> Main Dishes</a>
+                <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.BREAKFASTANDBRUNCH}) ">  Breakfast And Brunch</a>
+                <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.DRINKS}) ">  Drinks</a>
+                <a href="@Url.Action("TagTemplate", "Recipes",new{t=Tags.APPETIZERSANDSNACKS}) "> Appetizers And Snacks </a>*@
             </div>
         </div>
         <!-- end of tag container -->
