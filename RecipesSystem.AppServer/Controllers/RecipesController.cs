@@ -14,6 +14,8 @@ namespace RecipesSystem.AppServer.Controllers
     public class RecipesController : Controller
     {
         private readonly RecipesSystemAppServerContext _context;
+     
+
         public RecipesController(RecipesSystemAppServerContext context)
         {
             _context = context;
@@ -31,11 +33,8 @@ namespace RecipesSystem.AppServer.Controllers
             ImaggaAdapter Iadapter = new ImaggaAdapter();
             Message = Iadapter.Check("pizza", "https://medias.hashulchan.co.il/www/uploads/2020/12/shutterstock_658408219-600x600.jpg");
             ViewData["ImaggaMessage"] = Message;
-            USDAadapter Uadapter = new USDAadapter();
-            Message = Uadapter.Check("pizza", "x");
-            ViewData["USDAMessage"] = Message;
             return View(await _context.Recipe.ToListAsync());
-            //return View();
+           
         }
 
         // GET: Recipes/Details/5
@@ -67,15 +66,51 @@ namespace RecipesSystem.AppServer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag")] Recipe recipe)
+        public async Task<IActionResult> Create([Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(recipe);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                GetNutriants(recipe);//מוסיף את הערכים התזונתיים שלו
+                if (IsGoodPicture(recipe))//בדיקה עם התמונה טובה
+                {
+                    _context.Add(recipe);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                    ModelState.AddModelError(string.Empty, "Worng Image");
             }
             return View(recipe);
+        }
+        public bool IsGoodPicture(Recipe recipe)
+        {
+            ImaggaAdapter Iadapter = new ImaggaAdapter();
+            string Message = Iadapter.Check(recipe.Description, recipe.ImageURL);
+            if (Message == "good image")
+                return true;
+            else
+                return false;
+
+        }
+
+        public void GetNutriants(Recipe recipe)//פונקציה שתכניס לי את הערכים התוזנתיים של המתכון על ידי שימוש בשרת 
+        {
+
+            USDAadapter Uadapter = new USDAadapter();
+            GetwayServer.Controllers.USDAController controller = new GetwayServer.Controllers.USDAController();
+            List <DP.USDAparamsDTO.Nutrient> nutriants= controller.Get(recipe.Description, "x");   //שולחת את התיאור של המתכון לשרת שיביא לי את הערכים התזונתיים שלו
+            recipe.Nutriants= new List<Nutriant>();
+            Nutriant nutrient=new Nutriant();
+            foreach(DP.USDAparamsDTO.Nutrient nutr in nutriants)
+            {
+                nutrient.Value = nutr.Value;
+                nutrient.Name = nutr.Name;
+                nutrient.UnitOfMesurment = nutr.UnitName;//לא בטוחה שזה המקביל שלו אבל נבדוק
+                recipe.Nutriants.Add(nutrient);
+
+            }
+
+
         }
 
         // GET: Recipes/Edit/5
@@ -176,19 +211,23 @@ namespace RecipesSystem.AppServer.Controllers
         {
             return View();
         }
+
         public IActionResult Contact()
         {
             return View();
         }
+
         public IActionResult Error404()
         {
             return View();
         }
+
         public async Task<IActionResult> Recipes()
         {
 
             return View(await _context.Recipe.ToListAsync());
         }
+
         public async Task<IActionResult> SingleRecipe(int? id)
         {
 
@@ -204,13 +243,16 @@ namespace RecipesSystem.AppServer.Controllers
             }
             return View(recipe);
         }
+
         public async Task<IActionResult> Tags()
         {
             return View(await _context.Recipe.ToListAsync());
         }
-        public async Task<IActionResult> TagTemplate()
+
+        public async Task<IActionResult> TagTemplate()//יציג רשימה מסוננת לפי הקטגוריה של המתכון
         {
-            return View(await _context.Recipe.ToListAsync());
+         //IEnumerable<Recipe>recipes=await _context.Recipe.Any()
+            return View();
         }
     }
 }

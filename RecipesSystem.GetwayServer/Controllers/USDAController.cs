@@ -11,7 +11,7 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<USDAController>
         [HttpGet]
-        public List<string> Get(string title, string keyWord)
+        public List<Nutrient> Get(string title, string keyWord)
         {
             BL.USDAlogic bl = new BL.USDAlogic();
             RecipeTitle dp = new RecipeTitle { Title = title ,KeyWord=keyWord };
