@@ -15,11 +15,14 @@ namespace RecipesSystem.AppServer.Data
             : base(options)
         {
         }
+
+      
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Recipe>()
                 .ToTable("Recipe");
-            
+
             modelBuilder.Entity<Recipe>().Property(c => c.Description).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.CookingTime).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.Tag).HasConversion<string>();
@@ -38,5 +41,8 @@ namespace RecipesSystem.AppServer.Data
 
             base.OnModelCreating(modelBuilder);
         }
+
+
+
     }
 }

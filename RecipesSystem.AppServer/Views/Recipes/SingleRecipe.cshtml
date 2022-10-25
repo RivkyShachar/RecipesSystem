@@ -42,10 +42,9 @@
                         <p>@Html.DisplayFor(modelItem => Model.Diners)</p>
                     </article>
                 </div>
-                <p class="recipe-tags">
-                    Tags : <@Html.DisplayFor(modelItem => Model.Tag)</a>
-                   
-                </p>
+                <div class="recipe-tags">
+                    Tags : <a href=@Html.Display(Model.Tag.ToString())></a>@*not good*@
+                </div>
             </article>
         </section>
         <!-- content -->
@@ -98,11 +97,15 @@
                     <p class="single-ingredient">1 cup skim milk</p>
                 </div>
                 <div>
-                    <h4>tools</h4>
-                    <p class="single-tool">Hand Blender</p>
-                    <p class="single-tool">Large Heavy Pot With Lid</p>
-                    <p class="single-tool">Measuring Spoons</p>
-                    <p class="single-tool">Measuring Cups</p>
+                    <h4>Nutriant</h4>@*//שיניתי מכלים לערכים תזונתיים*@
+
+                    @if(Model.Nutriants!=null)//צריך לבדוק איך עושים את הקשיור בין הטבלאות שייציג את הנתונים של המתכון הזה
+                            @foreach (var ntur in Model.Nutriants)@*//עובר על הערכים התזונתיים של המאכל ומציג אותם*@
+                            {
+                                <p class="single-tool">@Html.Display(ntur.Name,ntur.Value)</p>
+                              
+                            }
+
                 </div>
             </article>
         </section>

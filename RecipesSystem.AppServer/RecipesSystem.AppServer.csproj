@@ -29,4 +29,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DP\DP.csproj" />
+    <ProjectReference Include="..\RecipesSystem.GetwayServer\RecipesSystem.GetwayServer.csproj" />
+  </ItemGroup>
+
 </Project>

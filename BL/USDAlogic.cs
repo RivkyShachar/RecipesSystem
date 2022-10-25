@@ -15,9 +15,9 @@ namespace BL
         //need to write the ecact way how it written example link https://api.nal.usda.gov/fdc/v1/foods/search?query=15-minute%20cherry%20tomato%20pasta&pageSize=2&api_key=iuHCuFBxp4hhEOZyWA4RYLPvXjrOfqfd8q6J9yLo
         string theNutrients = "Protein, Total lipid (fat), Carbohydrate, by difference, Energy, Sugars, total including NLEA, Sodium, Na, Fiber, Cholesterol, Fatty acids, Potassium, Calcium, Iron, Vitamin A, Vitamin C, total ascorbic acid";
         //string theNutrients = "Protein, Total lipid, Carbohydrate, Energy, Sugars, Sodium";
-        public List<string> GetNutrientsValues(RecipeTitle recipeTitle)
+        public List<Nutrient> GetNutrientsValues(RecipeTitle recipeTitle)//שינוי
         {
-            List<string> nutrients=new List<string>();
+            List<Nutrient> nutrients=new List<Nutrient>();//שינוי
             List<string> nutrientsNames = new List<string>();
             DAL.USDAadapter dal = new DAL.USDAadapter();
             Root myUSDA = null;
@@ -25,13 +25,23 @@ namespace BL
             if (myJson != null)
                 myUSDA = JsonConvert.DeserializeObject<Root>(myJson);
             foreach(var i in myUSDA.foods)
+            { 
                 if (recipeTitle.KeyWord == "x" || i.lowercaseDescription.Contains(recipeTitle.KeyWord))
+                {
                     foreach(var j in i.foodNutrients)
+                    { 
                         if (theNutrients.Contains(j.nutrientName) && !nutrientsNames.Contains(j.nutrientName))
                         {
-                            nutrients.Add($"{j.nutrientName} {j.value}{j.unitName}");
+                           Nutrient nutrient = new Nutrient();
+                            nutrient.Value = j.value;
+                            nutrient.Name = j.nutrientName;
+                            nutrient.UnitName = j.unitName;
+                            nutrients.Add(nutrient);//הוספת הערכים התזונתיים לתוך הרשימה
                             nutrientsNames.Add(j.nutrientName);
-                        }
+                         }
+                     }
+                }
+            }
             return nutrients;
 
         }
