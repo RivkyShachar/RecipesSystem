@@ -4,6 +4,7 @@ using System.Text;
 
 namespace DP
 {
+    //format of the imagga api
     public class ImaggaModel
     {
         public class Result

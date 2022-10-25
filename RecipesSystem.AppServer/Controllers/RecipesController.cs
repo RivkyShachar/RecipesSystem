@@ -68,7 +68,8 @@ namespace RecipesSystem.AppServer.Controllers
         {
             if (ModelState.IsValid)
             {
-                GetNutriants(recipe);//מוסיף את הערכים התזונתיים שלו
+                //add the nutrients
+                GetNutriants(recipe);
                 ImaggaAdapter Iadapter = new ImaggaAdapter();
                 string Message = Iadapter.Check(recipe.Description, recipe.ImageURL,recipe.Tag.ToString());
                 if (Message == "\"good image\"")//בדיקה עם התמונה טובה
@@ -83,12 +84,15 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-        public void GetNutriants(Recipe recipe)//פונקציה שתכניס לי את הערכים התוזנתיים של המתכון על ידי שימוש בשרת 
+        //use the api server to insert the nutrients of the recipe
+        public void GetNutriants(Recipe recipe)
         {
 
             USDAadapter Uadapter = new USDAadapter();
             GetwayServer.Controllers.USDAController controller = new GetwayServer.Controllers.USDAController();
-            List <DP.USDAparamsDTO.Nutrient> nutriants= controller.Get(recipe.Description, "x");   //שולחת את התיאור של המתכון לשרת שיביא לי את הערכים התזונתיים שלו
+            
+            //send the title of the recipe to the server
+            List <DP.USDAparamsDTO.Nutrient> nutriants= controller.Get(recipe.Description, "x"); 
             recipe.Nutriants= new List<Nutriant>();
             Nutriant nutrient=new Nutriant();
             foreach(DP.USDAparamsDTO.Nutrient nutr in nutriants)

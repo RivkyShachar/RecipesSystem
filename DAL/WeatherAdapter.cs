@@ -5,6 +5,7 @@ using System.Text;
 
 namespace DAL
 {
+    //returns the current weather in that city
     public class WeatherAdapter
     {
         public string GetWeather(string city)

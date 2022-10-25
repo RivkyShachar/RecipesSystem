@@ -5,6 +5,7 @@ using System.Text;
 
 namespace DP
 {
+    //format of the USDA api
     public class USDAmodel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
