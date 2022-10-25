@@ -31,8 +31,6 @@ namespace RecipesSystem.AppServer.Controllers
             Message = Wadapter.Check("Haifa");
             ViewData["WeatherMessage"] = Message;
             ImaggaAdapter Iadapter = new ImaggaAdapter();
-            Message = Iadapter.Check("pizza", "https://medias.hashulchan.co.il/www/uploads/2020/12/shutterstock_658408219-600x600.jpg");
-            ViewData["ImaggaMessage"] = Message;
             return View(await _context.Recipe.ToListAsync());
            
         }
@@ -71,26 +69,18 @@ namespace RecipesSystem.AppServer.Controllers
             if (ModelState.IsValid)
             {
                 GetNutriants(recipe);//מוסיף את הערכים התזונתיים שלו
-                if (IsGoodPicture(recipe))//בדיקה עם התמונה טובה
+                ImaggaAdapter Iadapter = new ImaggaAdapter();
+                string Message = Iadapter.Check(recipe.Description, recipe.ImageURL,recipe.Tag.ToString());
+                if (Message == "\"good image\"")//בדיקה עם התמונה טובה
                 {
                     _context.Add(recipe);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 else
-                    ModelState.AddModelError(string.Empty, "Worng Image");
+                    ModelState.AddModelError(string.Empty, Message);
             }
             return View(recipe);
-        }
-        public bool IsGoodPicture(Recipe recipe)
-        {
-            ImaggaAdapter Iadapter = new ImaggaAdapter();
-            string Message = Iadapter.Check(recipe.Description, recipe.ImageURL);
-            if (Message == "good image")
-                return true;
-            else
-                return false;
-
         }
 
         public void GetNutriants(Recipe recipe)//פונקציה שתכניס לי את הערכים התוזנתיים של המתכון על ידי שימוש בשרת 

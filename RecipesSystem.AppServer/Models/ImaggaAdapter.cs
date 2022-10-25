@@ -5,11 +5,11 @@ namespace RecipesSystem.AppServer.Models
 {
     public class ImaggaAdapter
     {
-        public string Check(string Title,string ImageURL)
+        public string Check(string Title,string ImageURL,string Tag)
         {
             //this class will ask the gateway server for nutriants values about food
             //conect to gateway server
-            string Url = $"http://localhost:5149/api/imagga?title={Title}&imageURL={ImageURL}";
+            string Url = $"http://localhost:5149/api/imagga?title={Title}&imageURL={ImageURL}&tag={Tag}";
 
             var client = new RestClient(Url);
 

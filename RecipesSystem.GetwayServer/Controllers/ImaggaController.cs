@@ -11,10 +11,10 @@ namespace RecipesSystem.GetwayServer.Controllers
     {
         // GET: api/<ImaggaController>
         [HttpGet]
-        public string Get(string title,string imageURL)
+        public string Get(string title,string imageURL,string tag)
         {
             BL.ImaggaLogic bl = new BL.ImaggaLogic();
-            ImaggaParamsDTO dp=new ImaggaParamsDTO {Title=title,ImageUrl=imageURL};
+            ImaggaParamsDTO dp=new ImaggaParamsDTO {Title=title,ImageUrl=imageURL,Tag=tag};
             return bl.IsGoodPic(dp);
         }
 
