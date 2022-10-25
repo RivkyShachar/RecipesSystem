@@ -1,17 +1,21 @@
-﻿@model IEnumerable<RecipesSystem.AppServer.Models.Recipe>
+﻿@model RecipesSystem.AppServer.Models.Recipe
+
 @{
     ViewData["Title"] = "SingleRecipe";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }      
 <main class="page">
     <div class="recipe-page">
+
         <section class="recipe-hero">
-            <img src="~/assets/recipes/recipe-4.jpeg"
+         
+            <img src="@Url.Content(Model.ImageURL)"
                  class="img recipe-hero-img" />
 
             <article class="recipe-info">
-                <h2>Banana Pancakes</h2>
+                <h2>@Html.DisplayFor(modelItem => Model.Description)</h2>
                 <p>
+                    //נצטרך לעשותץ אולי תיאור של מתכון קצת יותר ארוך לא יודעת לחשןב על משהו פה
                     Shabby chic humblebrag banh mi bushwick, banjo kale chips
                     meggings. Cred selfies sartorial, cloud bread disrupt blue bottle
                     seitan. Dreamcatcher tousled bitters, health goth vegan venmo
@@ -25,24 +29,22 @@
                     <article>
                         <i class="fas fa-clock"></i>
                         <h5>prep time</h5>
-                        <p>30 min.</p>
+                        <p>@Html.DisplayFor(modelItem => Model.TimeToMake) </p>
                     </article>
                     <article>
                         <i class="far fa-clock"></i>
                         <h5>cook time</h5>
-                        <p>15 min.</p>
+                        <p>@Html.DisplayFor(modelItem => Model.CookingTime)</p>
                     </article>
                     <article>
                         <i class="fas fa-user-friends"></i>
                         <h5>serving</h5>
-                        <p>6 servings</p>
+                        <p>@Html.DisplayFor(modelItem => Model.Diners)</p>
                     </article>
                 </div>
                 <p class="recipe-tags">
-                    Tags : <a href="@Url.Action("TagTemplate", "Recipes") ">beef</a>
-                    <a href="@Url.Action("TagTemplate", "Recipes") ">breakfast</a>
-                    <a href="@Url.Action("TagTemplate", "Recipes") ">pancakes</a>
-                    <a href="@Url.Action("TagTemplate", "Recipes") ">food</a>
+                    Tags : <@Html.DisplayFor(modelItem => Model.Tag)</a>
+                   
                 </p>
             </article>
         </section>
