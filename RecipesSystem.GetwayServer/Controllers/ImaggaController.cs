@@ -18,29 +18,29 @@ namespace RecipesSystem.GetwayServer.Controllers
             return bl.IsGoodPic(dp);
         }
 
-        // GET api/<ImaggaController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET api/<ImaggaController>/5
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
-        // POST api/<ImaggaController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //// POST api/<ImaggaController>
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
-        // PUT api/<ImaggaController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// PUT api/<ImaggaController>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // DELETE api/<ImaggaController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<ImaggaController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

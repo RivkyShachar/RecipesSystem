@@ -4,6 +4,7 @@ using System.Text;
 
 namespace DP
 {
+    //format of the weather api
     public class WeatherModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);

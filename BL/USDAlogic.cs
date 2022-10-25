@@ -15,8 +15,12 @@ namespace BL
         //need to write the ecact way how it written example link https://api.nal.usda.gov/fdc/v1/foods/search?query=15-minute%20cherry%20tomato%20pasta&pageSize=2&api_key=iuHCuFBxp4hhEOZyWA4RYLPvXjrOfqfd8q6J9yLo
         string theNutrients = "Protein, Total lipid (fat), Carbohydrate, by difference, Energy, Sugars, total including NLEA, Sodium, Na, Fiber, Cholesterol, Fatty acids, Potassium, Calcium, Iron, Vitamin A, Vitamin C, total ascorbic acid";
         //string theNutrients = "Protein, Total lipid, Carbohydrate, Energy, Sugars, Sodium";
-        public List<Nutrient> GetNutrientsValues(RecipeTitle recipeTitle)//שינוי
+
+
+        //returns all the nutrients of the recipe
+        public List<Nutrient> GetNutrientsValues(RecipeTitle recipeTitle)
         {
+            //sent the recipe title to get all the recipe
             List<Nutrient> nutrients=new List<Nutrient>();//שינוי
             List<string> nutrientsNames = new List<string>();
             DAL.USDAadapter dal = new DAL.USDAadapter();
@@ -24,6 +28,8 @@ namespace BL
             string myJson = dal.GetUSDA(recipeTitle.Title);
             if (myJson != null)
                 myUSDA = JsonConvert.DeserializeObject<Root>(myJson);
+            
+            //add all the relevant nutrients to the recipe
             foreach(var i in myUSDA.foods)
             { 
                 if (recipeTitle.KeyWord == "x" || i.lowercaseDescription.Contains(recipeTitle.KeyWord))
@@ -36,7 +42,9 @@ namespace BL
                             nutrient.Value = j.value;
                             nutrient.Name = j.nutrientName;
                             nutrient.UnitName = j.unitName;
-                            nutrients.Add(nutrient);//הוספת הערכים התזונתיים לתוך הרשימה
+
+                            //add all the nutrients into the list
+                            nutrients.Add(nutrient);
                             nutrientsNames.Add(j.nutrientName);
                          }
                      }
@@ -47,13 +55,4 @@ namespace BL
         }
     }
 }
-/*{"nutrientId":1093,"nutrientName":"Sodium, Na","nutrientNumber":"307","unitName":"MG","derivationCode":"LCCD","derivationDescription":"Calculated from a daily value percentage per serving size measure","derivationId":75,"value":0.0,"foodNutrientSourceId":9,"foodNutrientSourceCode":"12","foodNutrientSourceDescription":"Manufacturer's analytical; partial documentation","rank":5800,"indentLevel":1,"foodNutrientId":3145992,"percentDailyValue":0}
- * {"nutrientId":1003,"nutrientName":"Protein","nutrientNumber":"203","unitName":"G","derivationCode":"LCCS","derivationDescription":"Calculated from value per serving size measure","derivationId":70,"value":0.0,"foodNutrientSourceId":9,"foodNutrientSourceCode":"12","foodNutrientSourceDescription":"Manufacturer's analytical; partial documentation","rank":600,"indentLevel":1,"foodNutrientId":4587770,"percentDailyValue":0}
- * {"nutrientId":1005,"nutrientName":"Carbohydrate, by difference","nutrientNumber":"205","unitName":"G","derivationCode":"LCCS","derivationDescription":"Calculated from value per serving size measure","derivationId":70,"value":14.3,"foodNutrientSourceId":9,"foodNutrientSourceCode":"12","foodNutrientSourceDescription":"Manufacturer's analytical; partial documentation","rank":1110,"indentLevel":2,"foodNutrientId":4587771,"percentDailyValue":7}
- * {"nutrientId":1008,"nutrientName":"Energy","nutrientNumber":"208","unitName":"KCAL","derivationCode":"LCCS","derivationDescription":"Calculated from value per serving size measure","derivationId":70,"value":52.0,"foodNutrientSourceId":9,"foodNutrientSourceCode":"12","foodNutrientSourceDescription":"Manufacturer's analytical; partial documentation","rank":300,"indentLevel":1,"foodNutrientId":4587772,"percentDailyValue":0}
- * {"nutrientId":2000,"nutrientName":"Sugars, total including NLEA","nutrientNumber":"269","unitName":"G","derivationCode":"LCCS","derivationDescription":"Calculated from value per serving size measure","derivationId":70,"value":10.4,"foodNutrientSourceId":9,"foodNutrientSourceCode":"12","foodNutrientSourceDescription":"Manufacturer's analytical; partial documentation","rank":1510,"indentLevel":3,"foodNutrientId":4587773,"percentDailyValue":0}
- * {"nutrientId":1004,"nutrientName":"Total lipid (fat)","nutrientNumber":"204","unitName":"G","derivationCode":"LCSL","derivationDescription":"Calculated from a less than value per serving size measure","derivationId":73,"value":0.65,"foodNutrientSourceId":9,"foodNutrientSourceCode":"12","foodNutrientSourceDescription":"Manufacturer's analytical; partial documentation","rank":800,"indentLevel":1,"foodNutrientId":6376585,"percentDailyValue":0}
- * {"nutrientId":1093,"nutrientName":"Sodium, Na","nutrientNumber":"307","unitName":"MG","derivationCode":"LCCS","derivationDescription":"Calculated from value per serving size measure","derivationId":70,"value":15.0,"foodNutrientSourceId":9,"foodNutrientSourceCode":"12","foodNutrientSourceDescription":"Manufacturer's analytical; partial documentation","rank":5800,"indentLevel":1,"foodNutrientId":25213849,"percentDailyValue":1}
- * {"nutrientId":2000,"nutrientName":"Sugars, total including NLEA","nutrientNumber":"269","unitName":"G","derivationCode":"LCCS","derivationDescription":"Calculated from value per serving size measure","derivationId":70,"value":11.7,"foodNutrientSourceId":9,"foodNutrientSourceCode":"12","foodNutrientSourceDescription":"Manufacturer's analytical; partial documentation","rank":1510,"indentLevel":3,"foodNutrientId":25213848}
- * 
- */
+
