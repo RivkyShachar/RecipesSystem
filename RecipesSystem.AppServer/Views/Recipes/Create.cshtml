@@ -65,10 +65,10 @@
  
                 <span asp-validation-for="ImageURL" class="text-danger"></span>
             </div>
-           @* <div class="form-group">
-                <label asp-for="KeyWord" class="control-label"></label>
-                <input asp-for="KeyWord" class="form-control" />
-                <span asp-validation-for="KeyWord" class="text-danger"></span>
+          @*  <div class="form-group">@*העלאת תמונה בצורת בחירה של קובץ*@
+              @*  <label for="ImageUpload">Upload Image:</label>
+                <input type="file" name="ImageUpload" id="ImageUpload" class="form-control file-input" accept="image/*" />    
+                
             </div>*@
             <div class="form-group">
                 <label asp-for="TimeToMake" class="control-label"></label>

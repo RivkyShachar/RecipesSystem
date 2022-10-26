@@ -3,10 +3,19 @@
 @{
     ViewData["Title"] = "SingleRecipe";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
-}      
-<main class="page">
-    <div class="recipe-page">
+}
+<body>
+<div class="nav-center">
+    <div class="nav-links">
+        <div class="nav-link contact-link">
+            <a href="@Url.Action("Contact", "Recipes",new{id=Model.Id}) " class="btn">Rate The Recipe </a>
+        </div>
+    </div>
+        </div>
 
+<main class="page">
+<div class="recipe-page">
+  
         <section class="recipe-hero">
          
             <img src="@Url.Content(Model.ImageURL)"
@@ -111,3 +120,4 @@
         </section>
     </div>
 </main>
+</body>

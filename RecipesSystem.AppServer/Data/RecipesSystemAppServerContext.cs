@@ -26,7 +26,8 @@ namespace RecipesSystem.AppServer.Data
             modelBuilder.Entity<Recipe>().Property(c => c.Description).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.CookingTime).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.Tag).HasConversion<string>();
-
+            modelBuilder.Entity<Recipe>().Property(c => c.Note).HasConversion<string>();
+            modelBuilder.Entity<Recipe>().Property(c => c.Rate).HasConversion<string>();
 
             modelBuilder.Entity<Recipe>()
                 .Property(c => c.Tag)

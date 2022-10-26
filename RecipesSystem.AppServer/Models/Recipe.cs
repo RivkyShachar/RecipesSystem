@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
-
+using System.Drawing;
+using System.Security.Policy;
 
 namespace RecipesSystem.AppServer.Models
 {
@@ -38,7 +39,10 @@ namespace RecipesSystem.AppServer.Models
         [DisplayName("Nutriant")]
         public List<Nutriant> Nutriants { get; set; }
 
+        [DisplayName("Write Note")]
+        public string Note { get; set; } = "";//note about the recipe
 
+        public string Rate { get; set; } ="";//rate of the recipe
 
     }
   

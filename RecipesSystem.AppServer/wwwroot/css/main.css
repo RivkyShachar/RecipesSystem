@@ -316,6 +316,7 @@ Navbar
 }
 
 .contact-link a {
+
   padding: 0.15rem 1rem;
 }
 
@@ -350,7 +351,7 @@ Navbar
   }
   .contact-link {
     margin-right: 0;
-    margin-left: auto;
+    margin-left:  auto;
   }
 }
 /*

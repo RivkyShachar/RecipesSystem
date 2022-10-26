@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Build.Evaluation;
 using Microsoft.EntityFrameworkCore;
 using RecipesSystem.AppServer.Data;
 using RecipesSystem.AppServer.Models;
@@ -128,7 +129,7 @@ namespace RecipesSystem.AppServer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag")] Recipe recipe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag,Rate, Note")] Recipe recipe)
         {
             if (id != recipe.Id)
             {
@@ -139,7 +140,96 @@ namespace RecipesSystem.AppServer.Controllers
             {
                 try
                 {
-                    _context.Update(recipe);
+                    var model = await _context.Recipe.FindAsync(id);
+                    Recipe r = new Recipe();
+                    r.Id = recipe.Id;
+                    r.Rate=recipe.Rate;
+                    r.Note= recipe.Note;
+                    if(recipe.ImageURL==null)
+                    {
+                        r.ImageURL=model.ImageURL;
+                    }
+                    else
+                    {
+                        r.ImageURL=recipe.ImageURL;
+                    }
+                    if (recipe.Tools==null)
+                    {
+                        r.Tools = model.Tools;
+
+                    }
+                    else
+                    {
+                        r.Tools=recipe.Tools;
+                    }
+                    if(recipe.CookingTime==null)
+                    {
+                        r.CookingTime = model.CookingTime;
+                    }
+                    else
+                    {
+                        r.CookingTime = recipe.CookingTime;
+                    }
+                  if(recipe.Ingredients==null)
+                    {
+                        r.Ingredients =model.Ingredients;
+                    }
+                    else
+                    {
+                       r.Ingredients=recipe.Ingredients;
+                    }
+                    if (recipe.Diners ==0)
+                    {
+                        r.Diners = model.Diners;
+                    }
+                    else
+                    {
+                        r.Diners = recipe.Diners;
+                    }
+                    if (recipe.TimeToMake== null)
+                    {
+                        r.TimeToMake = model.TimeToMake;
+                    }
+                    else
+                    {
+                        r.TimeToMake = recipe.TimeToMake;
+                    }
+                    if (recipe.Tag== 0)
+                    {
+                        r.Tag = model.Tag;
+                    }
+                    else
+                    {
+                        r.Tag = recipe.Tag;
+                    }
+                    if (recipe.Tag == 0)
+                    {
+                        r.Description= model.Description;
+                    }
+                    else
+                    {
+                        r.Description = recipe.Description;
+                    }
+                    if (recipe.Tag == 0)
+                    {
+                        r.PrepInstructions = model.PrepInstructions;
+                    }
+                    else
+                    {
+                        r.PrepInstructions = recipe.PrepInstructions;
+                    }                 
+               
+                    r.Nutriants = new List<Nutriant>();
+                    if(model.Nutriants != null)
+                    { 
+                    foreach(var item in model.Nutriants)
+                    {
+                        r.Nutriants.Add(item);
+                    }
+                    }
+                    _context.Remove(model);
+                    _context.Add(r);
+                    //_context.Update(r);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -206,10 +296,156 @@ namespace RecipesSystem.AppServer.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+    
+        public async Task<IActionResult> Contact(int? id)
         {
-            return View();
+            if (id == null || _context.Recipe == null)
+            {
+                return NotFound();
+            }
+
+            var recipe = await _context.Recipe.FindAsync(id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            return View(recipe);
         }
+
+
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>Contact(int id, [Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag,Rate, Note")] Recipe recipe)
+        {
+            if (id != recipe.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var model = await _context.Recipe.FindAsync(id);
+                    Recipe r = new Recipe();
+                    r.Id = recipe.Id;
+                    r.Rate = recipe.Rate;
+                    r.Note = recipe.Note;
+                    if (recipe.ImageURL == null)
+                    {
+                        r.ImageURL = model.ImageURL;
+                    }
+                    else
+                    {
+                        r.ImageURL = recipe.ImageURL;
+                    }
+                    if (recipe.Tools == null)
+                    {
+                        r.Tools = model.Tools;
+
+                    }
+                    else
+                    {
+                        r.Tools = recipe.Tools;
+                    }
+                    if (recipe.CookingTime == null)
+                    {
+                        r.CookingTime = model.CookingTime;
+                    }
+                    else
+                    {
+                        r.CookingTime = recipe.CookingTime;
+                    }
+                    if (recipe.Ingredients == null)
+                    {
+                        r.Ingredients = model.Ingredients;
+                    }
+                    else
+                    {
+                        r.Ingredients = recipe.Ingredients;
+                    }
+                    if (recipe.Diners == 0)
+                    {
+                        r.Diners = model.Diners;
+                    }
+                    else
+                    {
+                        r.Diners = recipe.Diners;
+                    }
+                    if (recipe.TimeToMake == null)
+                    {
+                        r.TimeToMake = model.TimeToMake;
+                    }
+                    else
+                    {
+                        r.TimeToMake = recipe.TimeToMake;
+                    }
+                    if (recipe.Tag == 0)
+                    {
+                        r.Tag = model.Tag;
+                    }
+                    else
+                    {
+                        r.Tag = recipe.Tag;
+                    }
+                    if (recipe.Tag == 0)
+                    {
+                        r.Description = model.Description;
+                    }
+                    else
+                    {
+                        r.Description = recipe.Description;
+                    }
+                    if (recipe.Tag == 0)
+                    {
+                        r.PrepInstructions = model.PrepInstructions;
+                    }
+                    else
+                    {
+                        r.PrepInstructions = recipe.PrepInstructions;
+                    }
+
+                    r.Nutriants = new List<Nutriant>();
+                    if (model.Nutriants != null)
+                    {
+                        foreach (var item in model.Nutriants)
+                        {
+                            r.Nutriants.Add(item);
+                        }
+                    }
+                    _context.Remove(model);
+                    _context.Add(r);
+                    //_context.Update(r);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!RecipeExists(recipe.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(recipe);
+        }
+
+
+
+
+
+
+
+
+
 
         public IActionResult Error404()
         {
@@ -250,10 +486,7 @@ namespace RecipesSystem.AppServer.Controllers
             
             return View(recipes);
         }
-        public IActionResult OneRecipe()
-        {
-            return View();
-        }
+      
     }
 }
 
