@@ -45,6 +45,7 @@ namespace RecipesSystem.AppServer.Models
         public string Rate { get; set; } ="";//rate of the recipe
 
         public Holidays Holiday { get; set; }//the date of the rating
+
         public Weathers Weather { get; set; }//the weather in the rating
 
     }

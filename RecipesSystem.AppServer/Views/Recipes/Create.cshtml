@@ -1,49 +1,35 @@
 ﻿@model RecipesSystem.AppServer.Models.Recipe
-
 @{
     ViewData["Title"] = "Create";
-    //Layout = "~/Views/Shared/LustigLayout.cshtml";
+    Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simply Recipes || Final</title>
-    <!-- favicon -->
-    <link rel="shortcut icon" href="~/assets/favicon.ico" type="image/x-icon" />
-    <!-- normalize -->
-    <link rel="stylesheet" href="~/css/normalize.css" />
-    <!-- font-awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-    <!-- main css -->
-    <link rel="stylesheet" href="~/css/main.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	@*<link rel="icon" type="image/png" href="~/images/favicon3.png" />*@
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- favicon -->
-	<link rel="shortcut icon" href="~/assets/favicon.ico" type="image/x-icon" />
-	<!-- normalize -->
-	<link rel="stylesheet" href="~/css/normalize.css" />
+   
+    <style>
+        .form-control {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+            color: #555555;
+            display: block;
+            font-size: 100%;
+            line-height: 1.42857;
+            padding: 6px 12px;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+            vertical-align: middle;
+            width: 100%;
+        }
 
-	<!-- font-awesome -->
-	<link rel="stylesheet"
-		  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-	<!-- main css -->
-	<link rel="stylesheet" href="~/css/main.css" />
-    <link rel='stylesheet' id='contact-form-7-css' href='https://ranveerbrar.com/wp-content/plugins/contact-form-7/includes/css/styles.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='rb-style-css' href='https://ranveerbrar.com/wp-content/themes/ranveer-brar/style.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='rb-style-bs-css' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='rb-dev-style-css' href='https://ranveerbrar.com/wp-content/themes/ranveer-brar/rb-style.css?rf=96&ver=6.0.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='rb-mobile-style-css' href='https://ranveerbrar.com/wp-content/themes/ranveer-brar/css/mobile_menu.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='rb-hover-css' href='https://ranveerbrar.com/wp-content/themes/ranveer-brar/css/hover.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='noto-font-css' href='https://fonts.googleapis.com/css2?family=Noto+Serif%3Aital%2Cwght%400%2C400%3B0%2C700%3B1%2C400&display=swap&ver=6.0.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='worksans-font-css' href='https://fonts.googleapis.com/css2?family=Work+Sans%3Aital%2Cwght%400%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B1%2C400%3B1%2C500&#038;display=swap&#038;ver=6.0.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='slider-tiny-carousel-css-css' href='https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='qlwapp-css' href='https://ranveerbrar.com/wp-content/plugins/wp-whatsapp-chat/assets/frontend/css/frontend.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='addtoany-css' href='https://ranveerbrar.com/wp-content/plugins/add-to-any/addtoany.min.css' type='text/css' media='all' />
+    </style>
+
+
 </head>
-<hr />
+<body>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -141,7 +127,7 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+</body>
 
 @section Scripts {
     @{
