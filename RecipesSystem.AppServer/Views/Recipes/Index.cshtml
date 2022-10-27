@@ -44,34 +44,42 @@
         <div class="tags-container">
             <h4>recipes</h4>
             <div class="tags-list">
-                @for (int i = 0; i < 8; i++)
+                @if(Model!=null)
                 {
-                    int size = @Model.Where(m => m.Tag == (Tags)i).Count();
-                    if (size > 0)
+                    @for (int i = 0; i < 8; i++)
                     {
-                        Tags t = (Tags)i;
-                        <a href="@Url.Action("TagTemplate", "Recipes",new{t=(Tags)i})">@t.ToString() </a>
+                        int size = @Model.Where(m => m.Tag == (Tags)i).Count();
+                        if (size > 0)
+                        {
+                            Tags t = (Tags)i;
+                            <a href="@Url.Action("TagTemplate", "Recipes",new{t=(Tags)i})">@t.ToString() </a>
+                        }
                     }
                 }
+
             </div>
         </div>
         <!-- end of tag container -->
         <!-- recipes list -->
         <div class="recipes-list">
-            @foreach (var item in Model)
+            @if(Model!=null)
             {
-               @if(item.Rate=="3"||item.Rate=="4"||item.Rate=="5")
+                @foreach (var item in Model)
                 {
-                <a href="@Url.Action("SingleRecipe", "Recipes" ,new {  id=item.Id }) " class="recipe">
+                    @if (item.Rate == "3" || item.Rate == "4" || item.Rate == "5")
+                    {
+                        <a href="@Url.Action("SingleRecipe", "Recipes" ,new {  id=item.Id }) " class="recipe">
 
-                    <img src=" @Url.Content(@item.ImageURL)"
+                            <img src=" @Url.Content(@item.ImageURL)"
                      class="img recipe-img"
                      alt="" />
-                    <h5> @Html.DisplayFor(modelItem => item.Description)</h5>
-                    <p>Prep : @Html.DisplayFor(modelItem => item.TimeToMake) | Cook : @Html.DisplayFor(modelItem => item.CookingTime)</p>
-                </a>
+                            <h5> @Html.DisplayFor(modelItem => item.Description)</h5>
+                            <p>Prep : @Html.DisplayFor(modelItem => item.TimeToMake) | Cook : @Html.DisplayFor(modelItem => item.CookingTime)</p>
+                        </a>
+                    }
                 }
             }
+
 </div>
     </section>
 </main>

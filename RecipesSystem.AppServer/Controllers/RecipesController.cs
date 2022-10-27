@@ -28,10 +28,11 @@ namespace RecipesSystem.AppServer.Controllers
             HebCalAdapter Hadapter = new HebCalAdapter();
             string Message = Hadapter.Check();
             ViewData["HebCalMessage"] = Message;
+
             WeatherAdapter Wadapter = new WeatherAdapter();
             Message = Wadapter.Check("Haifa");
             ViewData["WeatherMessage"] = Message;
-            ImaggaAdapter Iadapter = new ImaggaAdapter();
+
             return View(await _context.Recipe.ToListAsync());
            
         }
@@ -65,7 +66,7 @@ namespace RecipesSystem.AppServer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants")] Recipe recipe)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,PrepInstructions,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants,Holiday,Weather")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
@@ -153,14 +154,14 @@ namespace RecipesSystem.AppServer.Controllers
                     {
                         r.ImageURL=recipe.ImageURL;
                     }
-                    if (recipe.Tools==null)
+                    if (recipe.Name==null)
                     {
-                        r.Tools = model.Tools;
+                        r.Name = model.Name;
 
                     }
                     else
                     {
-                        r.Tools=recipe.Tools;
+                        r.Name = recipe.Name;
                     }
                     if(recipe.CookingTime==null)
                     {
@@ -256,14 +257,14 @@ namespace RecipesSystem.AppServer.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Recipe
+            var recipe = await _context.Recipe
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (student == null)
+            if (recipe == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(recipe);
         }
 
         // POST: Recipes/Delete/5
@@ -343,14 +344,14 @@ namespace RecipesSystem.AppServer.Controllers
                     {
                         r.ImageURL = recipe.ImageURL;
                     }
-                    if (recipe.Tools == null)
+                    if (recipe.Name == null)
                     {
-                        r.Tools = model.Tools;
+                        r.Name = model.Name;
 
                     }
                     else
                     {
-                        r.Tools = recipe.Tools;
+                        r.Name = recipe.Name;
                     }
                     if (recipe.CookingTime == null)
                     {
@@ -476,6 +477,7 @@ namespace RecipesSystem.AppServer.Controllers
 
         public async Task<IActionResult> Tags()
         {
+            //return View();
             return View(await _context.Recipe.ToListAsync());
         }
 

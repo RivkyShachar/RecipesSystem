@@ -7,23 +7,26 @@
 
 <main class="page">
     <section class="tags-wrapper">
-
-        @for (int i = 0; i < 8; i++)
+        @if (Model != null)
         {
-            int size = @Model.Where(m => m.Tag == (Tags)i).Count();
-            if (size > 0)
+            @for (int i = 0; i < 8; i++)
             {
-                var recipe = @Model.FirstOrDefault(m => m.Id >0);
-                Tags t = (Tags)i;
-                <a href="@Url.Action("TagTemplate", "Recipes",new{t=(Tags)i})" class="tag">
-                 <h5>@t.ToString()</h5>
-                    <img src="@Url.Content(@recipe.ImageURL)" @*יציג את אחת התמונות של המתכונים*@
-                    class="img recipe-img"
-                   alt="" />
-                  <p>@size.ToString() Recipes</p>@* כמות המתכונים שיש בכל קטגוריה*@
-                </a>
+                int size = @Model.Where(m => m.Tag == (Tags)i).Count();
+                if (size > 0)
+                {
+                    var recipe = @Model.FirstOrDefault(m => m.Id > 0);
+                    Tags t = (Tags)i;
+                    <a href="@Url.Action("TagTemplate", "Recipes",new{t=(Tags)i})" class="tag">
+                        <h5>@t.ToString()</h5>
+                        <img src="@Url.Content(@recipe.ImageURL)" @*יציג את אחת התמונות של המתכונים*@
+                 class="img recipe-img"
+                 alt="" />
+                        <p>@size.ToString() Recipes</p>@* כמות המתכונים שיש בכל קטגוריה*@
+                    </a>
+                }
             }
         }
+        
         <!-- end of single tag -->
     </section>
 </main>

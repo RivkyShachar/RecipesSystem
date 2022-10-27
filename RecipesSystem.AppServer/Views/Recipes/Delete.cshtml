@@ -12,6 +12,12 @@
     <h4>Recipe</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -24,24 +30,30 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PrepInstructions)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ingredients)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ImageURL)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ImageURL)
         </dd>
-       @* <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.KeyWord)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CookingTime)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.KeyWord)
+            @Html.DisplayFor(model => model.CookingTime)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TimeToMake)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TimeToMake)
-        </dd>*@
+        </dd>
     </dl>
     
     <form asp-action="Delete">

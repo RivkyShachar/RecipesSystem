@@ -49,6 +49,11 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Name" contextmenu="Tools" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Description" class="control-label"  ></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
@@ -85,11 +90,7 @@
                 <input asp-for="Diners" class="form-control" />
                 <span asp-validation-for="Diners" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Tools" contextmenu="Tools" class="control-label" ></label>
-                <input asp-for="Tools" class="form-control" />
-                <span asp-validation-for="Tools" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Ingredients" class="control-label"></label>
                 <input asp-for=" Ingredients " class="form-control" />
@@ -108,6 +109,27 @@
                     <option value="7">APPETIZERS AND SNACKS</option>
                 </select >
                 <span asp-validation-for="Tag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Holiday" class="control-label"></label>
+                <select name="Tag" class="form-control">
+                    <option value="0">ROSHHASHANA</option>
+                    <option value="1">SUKOT</option>
+                    <option value="2">SHAVUOT</option>
+                    <option value="3">PESACH</option>
+                    <option value="4">CHANUKA</option>
+                    <option value="5">NOTHOLIDAY</option>
+                </select>
+                <span asp-validation-for="Holiday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weather" class="control-label"></label>
+                <select name="Tag" class="form-control">
+                    <option value="0">HOT</option>
+                    <option value="1">COLD</option>
+                    <option value="2">NICE</option>
+                </select>
+                <span asp-validation-for="Weather" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -16,32 +16,36 @@ namespace RecipesSystem.AppServer.Data
         {
         }
 
-      
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Recipe>()
-                .ToTable("Recipe");
-
+            modelBuilder.Entity<Recipe>().ToTable("Recipe");
+            modelBuilder.Entity<Recipe>().Property(c => c.Id).HasConversion<int>();
+            modelBuilder.Entity<Recipe>().Property(c => c.Name).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.Description).HasConversion<string>();
+            modelBuilder.Entity<Recipe>().Property(c => c.PrepInstructions).HasConversion<string>();
+            modelBuilder.Entity<Recipe>().Property(c => c.Ingredients).HasConversion<string>();
+            modelBuilder.Entity<Recipe>().Property(c => c.ImageURL).HasConversion<string>();
+            modelBuilder.Entity<Recipe>().Property(c => c.TimeToMake).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.CookingTime).HasConversion<string>();
+            modelBuilder.Entity<Recipe>().Property(c => c.Diners).HasConversion<int>();
+
             modelBuilder.Entity<Recipe>().Property(c => c.Tag).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.Note).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.Rate).HasConversion<string>();
-
-            modelBuilder.Entity<Recipe>()
-                .Property(c => c.Tag)
-                .HasConversion<string>();
+            modelBuilder.Entity<Recipe>().Property(c => c.Holiday).HasConversion<string>();
+            modelBuilder.Entity<Recipe>().Property(c => c.Weather).HasConversion<string>();
             modelBuilder.Entity<Nutriant>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired();
-                entity.Property(e => e.Value).IsRequired();
-                entity.Property(e => e.UnitOfMesurment).IsRequired();
-            });
+        entity.Property(e => e.Value).IsRequired();
+        entity.Property(e => e.UnitOfMesurment).IsRequired();
+    });
 
             base.OnModelCreating(modelBuilder);
-        }
+}
 
 
 
