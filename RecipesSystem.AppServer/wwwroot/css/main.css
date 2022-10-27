@@ -611,15 +611,16 @@ Tags Page
   padding-bottom: 3rem;
 }
 .tag {
-  background: var(--grey-500);
-  border-radius: var(--borderRadius);
-  text-align: center;
-  color: var(--white);
-  transition: var(--transition);
-  padding: 0.75rem 0;
+    background: var(--grey-500);
+    border-radius: var(--borderRadius);
+    text-align: center;
+    color: var(--white);
+    transition: var(--transition);
+    padding: 0.75rem 0;
+    
 }
 .tag:hover {
-  background: var(--primary-500);
+  background: var(--grey-500);
 }
 .tag h5,
 .tag p {

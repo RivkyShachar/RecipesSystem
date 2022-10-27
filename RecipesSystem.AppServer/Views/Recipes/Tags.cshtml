@@ -4,14 +4,44 @@
     ViewData["Title"] = "Tags";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
+<head>
+    <style>
+    .tags-wrapper {
+    display: grid;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    }
+    .tag {
+            background: mediumpurple;
+    border-radius: var(--borderRadius);
+    text-align: center;
+    color:white ;
+    transition: var(--transition);
+    padding: 0.75rem 0;
 
+    }
+    .tag:hover {
+                background: rebeccapurple;
+    }
+    .tag h5,
+    .tag p {
+    margin-bottom: 0;
+    }
+    .tag h5 {
+    font-weight: 600;
+    }
+  
+    </style>
+</head>
 <main class="page">
     <section class="tags-wrapper">
-        @if (Model != null)
-        {
-            @for (int i = 0; i < 8; i++)
+        @{
+           @if (Model != null)
+           {
+            @for (int i = 0; i < 12; i++)
             {
-                int size = @Model.Where(m => m.Tag == (Tags)i).Count();
+                    int size = 0;
+                    size = @Model.Where(m => m.Tag == (Tags)i).Count();
                 if (size > 0)
                 {
                     var recipe = @Model.FirstOrDefault(m => m.Id > 0);
@@ -26,7 +56,7 @@
                 }
             }
         }
-        
+        }
         <!-- end of single tag -->
     </section>
 </main>
