@@ -477,13 +477,13 @@ namespace RecipesSystem.AppServer.Controllers
             return View(await _context.Recipe.ToListAsync());
         }
 
-        public async Task<IActionResult> TagTemplate(Tags t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
-        {
+        //public async Task<IActionResult> TagTemplate(Tags t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+        //{
 
-            IEnumerable<Recipe> recipes = _context.Recipe.Where(m => m.Tag == t);
+        //    IEnumerable<Recipe> recipes = _context.Recipe.Where(m => m.Tag == t);
             
-            return View(recipes);
-        }
+        //    return View(recipes);
+        //}
       
     }
 }
