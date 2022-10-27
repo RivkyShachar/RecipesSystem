@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using RecipesSystem.AppServer.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<RecipesSystemAppServerContext>(options =>
@@ -9,6 +10,34 @@ builder.Services.AddDbContext<RecipesSystemAppServerContext>(options =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+
+CreateDbIfNotExists(app);
+static void CreateDbIfNotExists(IHost host)
+{
+    using (var scope = host.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        try
+        {
+            var context = services.GetRequiredService<RecipesSystemAppServerContext>();
+            DbInitializer.Initialize(context);
+        }
+        catch (Exception ex)
+        {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occurred creating the DB.");
+        }
+    }
+}
+
+
+
+
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
