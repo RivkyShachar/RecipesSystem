@@ -1,90 +1,124 @@
-﻿@model IEnumerable<RecipesSystem.AppServer.Models.Recipe>
+﻿@model RecipesSystem.AppServer.Models.Recipe
 
 @{
-    ViewData["Title"] = "OneRecipe";
+    ViewData["Title"] = "SingleRecipe";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
+<body>
+    <div class="nav-center">
+        <div class="nav-links">
+            <div class="nav-link contact-link">
+                <a href="@Url.Action("Edit", "Recipes",new{id=Model.Id}) " class="btn">Edit</a>
+            </div>
+            <div class="nav-link contact-link">
+                <a href="@Url.Action("Delete", "Recipes",new{id=Model.Id}) " class="btn">Delete</a>
+            </div>
+        </div>
+    </div>
 
-<h1>OneRecipe</h1>
+    <main class="page">
+        <div class="recipe-page">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrepInstructions)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ingredients)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageURL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TimeToMake)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CookingTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Diners)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tag)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+            <section class="recipe-hero">
 
-@if(Model!=null)
-{
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PrepInstructions)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Ingredients)
-                    </td>
-                    <td>
-                        <img src=@item.ImageURL @Html.DisplayFor(modelItem => item.ImageURL)/>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TimeToMake)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CookingTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Diners)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tag)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-}
+                <img src="@Url.Content(Model.ImageURL)"
+                     class="img recipe-hero-img" />
 
-}
-    </tbody>
-</table>
+                <article class="recipe-info">
+                    <h2>@Html.DisplayFor(modelItem => Model.Name)</h2>
+                    <p>
+                        @Html.DisplayFor(modelItem => Model.Description)
+                    </p>
+                    <div class="recipe-icons">
+                        <article>
+                            <i class="fas fa-clock"></i>
+                            <h5>prep time</h5>
+                            <p>@Html.DisplayFor(modelItem => Model.TimeToMake) </p>
+                        </article>
+                        <article>
+                            <i class="far fa-clock"></i>
+                            <h5>cook time</h5>
+                            <p>@Html.DisplayFor(modelItem => Model.CookingTime)</p>
+                        </article>
+                        <article>
+                            <i class="fas fa-user-friends"></i>
+                            <h5>serving</h5>
+                            <p>@Html.DisplayFor(modelItem => Model.Diners)</p>
+                        </article>
+                    </div>
+                    <div class="recipe-tags">
+                        Tags : <a href=@Html.Display(Model.Tag.ToString())></a>@*not good*@
+                    </div>
+                </article>
+            </section>
+            <!-- content -->
+            <section class="recipe-content">
+                <article>
+                    <h4>instructions</h4>
+                    <!-- single instruction -->
+                    <p>
+                        @Html.DisplayFor(modelItem => Model.PrepInstructions)
+                    </p>
+                    <div class="single-instruction">
+                        <header>
+                            <p>step 1</p>
+                            <div></div>
+                        </header>
+                        <p>
+                            step i and every . need to start over
+                            the loop is outside the class
+                        </p>
+                    </div>
+                    <!-- end of single instruction -->
+                    <!-- single instruction -->
+                    <div class="single-instruction">
+                        <header>
+                            <p>step 2</p>
+                            <div></div>
+                        </header>
+                        <p>
+                            Pabst pitchfork you probably haven't heard of them, asymmetrical
+                            seitan tousled succulents wolf banh mi man bun bespoke selfies
+                            freegan ethical hexagon.
+                        </p>
+                    </div>
+                    <!-- end of single instruction -->
+                    <!-- single instruction -->
+                    <div class="single-instruction">
+                        <header>
+                            <p>step 3</p>
+                            <div></div>
+                        </header>
+                        <p>
+                            Polaroid iPhone bitters chambray. Cornhole swag kombucha
+                            live-edge.
+                        </p>
+                    </div>
+                    <!-- end of single instruction -->
+                </article>
+                <article class="second-column">
+                    <div>
+                        <h4>ingredients</h4>
+                        <p>
+                            @Html.DisplayFor(modelItem => Model.Ingredients)
+                        </p>
+                        <p class="single-ingredient">1 1/2 cups dry pancake mix</p>
+                        <p class="single-ingredient">1/2 cup flax seed meal</p>
+                        <p class="single-ingredient">1 cup skim milk</p>
+                    </div>
+                    <div>
+                        <h4>Nutriant</h4>@*//שיניתי מכלים לערכים תזונתיים*@
+
+                        @if (Model.Nutriants != null)//צריך לבדוק איך עושים את הקשיור בין הטבלאות שייציג את הנתונים של המתכון הזה
+                            @foreach (var ntur in Model.Nutriants)@*//עובר על הערכים התזונתיים של המאכל ומציג אותם*@
+                            {
+                                <p class="single-tool">@Html.Display(ntur.Name,ntur.Value)</p>
+
+                            }
+
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+</body>
