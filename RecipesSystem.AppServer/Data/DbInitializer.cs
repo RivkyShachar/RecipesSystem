@@ -63,11 +63,12 @@ namespace RecipesSystem.AppServer.Data
             USDAadapter Uadapter = new USDAadapter();
             foreach(Recipe r in recipes)
             {
-                List<Nutrient> nutriants1 = Uadapter.Check(r.Name, r.Tag.ToString());
+                List<Nutrient> nutriants = Uadapter.Check(r.Name, r.Tag.ToString());
                 r.Nutriants = new List<Nutriant>();
-                Nutriant nutrient = new Nutriant();
-                foreach (Nutrient nutr in nutriants1)
+                
+                foreach (Nutrient nutr in nutriants)
                 {
+                    Nutriant nutrient = new Nutriant();
                     nutrient.Value = nutr.Value;
                     nutrient.Name = nutr.Name;
                     nutrient.UnitOfMesurment = nutr.UnitName;//לא בטוחה שזה המקביל שלו אבל נבדוק
