@@ -4,8 +4,8 @@ using System.Security.Policy;
 
 namespace RecipesSystem.AppServer.Models
 {
-    public enum Tags { BREADRECIPES, EVERYDAYCOOKING, LUNCHRECIPES, DINNERRECIPES, MAINDISHES, BREAKFASTANDBRUNCH, DRINKS, APPETIZERSANDSNACKS }
-    public enum Holidays { ROSHHASHANA,SUKOT,SHAVUOT,PESACH,CHANUKA,NOTHOLIDAY}
+    public enum Tags {SOUP, SALAD, DESERT, CAKE,COOKIES, BREADS, FISH, CHICKEN, MEAT, QUICHE, PASTA,PIZZA}
+    public enum Holidays { ROSH_HASHANA,SUKOT,SHAVUOT,PESACH,CHANUKA,PURIM,NOTHOLIDAY}
     public enum Weathers { COLD, HOT, NICE}
     public class Recipe
     {
