@@ -46,7 +46,7 @@
             <div class="tags-list">
                 @if(Model!=null)
                 {
-                    @for (int i = 0; i < 8; i++)
+                    @for (int i = 0; i < 11; i++)
                     {
                         int size = @Model.Where(m => m.Tag == (Tags)i).Count();
                         if (size > 0)
