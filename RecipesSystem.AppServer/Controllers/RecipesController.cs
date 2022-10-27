@@ -78,7 +78,7 @@ namespace RecipesSystem.AppServer.Controllers
                 {
                     _context.Add(recipe);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("OneRecipe", new {recipe.Id});
                 }
                 else
                     ModelState.AddModelError(string.Empty, Message);
@@ -126,7 +126,7 @@ namespace RecipesSystem.AppServer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag,Rate, Note")] Recipe recipe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,PrepInstructions,Ingredients,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants,Holiday,Weather")] Recipe recipe)
         {
             if (id != recipe.Id)
             {
@@ -167,7 +167,7 @@ namespace RecipesSystem.AppServer.Controllers
                     {
                         r.CookingTime = recipe.CookingTime;
                     }
-                  if(recipe.Ingredients==null)
+                    if(recipe.Ingredients==null)
                     {
                         r.Ingredients =model.Ingredients;
                     }
@@ -309,11 +309,6 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-
-
-
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult>Contact(int id, [Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag,Rate, Note")] Recipe recipe)
@@ -435,15 +430,6 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-
-
-
-
-
-
-
-
-
         public IActionResult Error404()
         {
             return View();
@@ -477,14 +463,31 @@ namespace RecipesSystem.AppServer.Controllers
             return View(await _context.Recipe.ToListAsync());
         }
 
+
+        public async Task<IActionResult> OneRecipe(int? id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var recipe = await _context.Recipe
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            return View(recipe);
+        }
+
         //public async Task<IActionResult> TagTemplate(Tags t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
         //{
 
         //    IEnumerable<Recipe> recipes = _context.Recipe.Where(m => m.Tag == t);
-            
+
         //    return View(recipes);
         //}
-      
+
     }
 }
 

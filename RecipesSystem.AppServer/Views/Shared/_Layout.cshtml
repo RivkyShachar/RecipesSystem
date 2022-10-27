@@ -16,26 +16,33 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <!-- main css -->
     <link rel="stylesheet" href="~/css/main.css" />
+
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-center">
+            <div class="nav-header">
+                <a href="@Url.Action("Index", "Recipes") " class="nav-logo">
+                    <img src="~/assets/logo.svg" alt="simply recipes" />
+                </a>
+                <button class="nav-btn btn">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+            <div class="nav-links">
+                <a href="@Url.Action("Index", "Recipes") " class="nav-link"> Home </a>
+                <a href="@Url.Action("About", "Recipes") " class="nav-link"> about </a>
+                <a href="@Url.Action("Tags", "Recipes") " class="nav-link"> tags </a>
+                <a href="@Url.Action("Recipes", "Recipes") " class="nav-link"> recipes </a>
+                <a href="@Url.Action("Create", "Recipes") " class="nav-link"> Add new recipe </a>
+
+            </div>
+        </div>
+    </nav>
     <header>
      <nav class="navbar navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
-              
-                @*<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>*@
+           
           </div>
         </nav>
     </header>
