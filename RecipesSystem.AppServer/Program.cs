@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-
+//add the recipes from the code to the db
 CreateDbIfNotExists(app);
 static void CreateDbIfNotExists(IHost host)
 {

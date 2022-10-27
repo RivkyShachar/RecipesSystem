@@ -32,7 +32,7 @@ namespace BL
             //add all the relevant nutrients to the recipe
             foreach(var i in myUSDA.foods)
             { 
-                if (recipeTitle.KeyWord == "x" || i.lowercaseDescription.Contains(recipeTitle.KeyWord))
+                if (i.lowercaseDescription.Contains(recipeTitle.Title.ToLower()) || i.lowercaseDescription.Contains(recipeTitle.KeyWord.ToLower()))
                 {
                     foreach(var j in i.foodNutrients)
                     { 
