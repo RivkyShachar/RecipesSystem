@@ -21,7 +21,7 @@ namespace RecipesSystem.AppServer.Models
                 return "Recipes for hot days";
             else if (temperature.Contains("Cold"))
                 return "Recipes for cold days";
-            return "_";
+            return "Nice weather";
 
         }
     }

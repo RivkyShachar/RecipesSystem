@@ -31,7 +31,7 @@ namespace RecipesSystem.AppServer.Models
             else if (holiday.Contains("ראש השנה"))
                 return "Recipes for rosh hashana";
             else
-                return "_";
+                return "No holiday";
         }
     }
 }

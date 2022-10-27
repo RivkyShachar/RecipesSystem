@@ -34,6 +34,8 @@ namespace BL
                                 holidays.Add(holiday);
                                 break;
                             }
+            if(holidays.Count == 0)
+                holidays.Add("No holiday");
             return holidays;
         }
     }

@@ -40,12 +40,12 @@
             <a href="@Url.Action("Tags", "Recipes") " class="nav-link"> tags </a>
             <a href="@Url.Action("Recipes", "Recipes") " class="nav-link"> recipes </a>
             <a href="@Url.Action("Create", "Recipes") " class="nav-link"> Add new recipe </a>
-             
-             @if (ViewData["HebCalMessage"]!="_")
+
+                @if (ViewData["HebCalMessage"] != "No holiday")
              {
                     <a href="@Url.Action("Tags", "Recipes") " class="nav-link"> @ViewData["HebCalMessage"] </a>
              }
-             @if (ViewData["WeatherMessage"] != "_")
+                @if (ViewData["WeatherMessage"] != "Nice weather")
              {
                     <a href="@Url.Action("Tags", "Recipes") " class="nav-link"> @ViewData["WeatherMessage"] </a>
              }
