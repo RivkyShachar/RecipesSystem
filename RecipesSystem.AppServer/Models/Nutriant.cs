@@ -9,5 +9,6 @@
         public double Value { get; set; }
 
         public string UnitOfMesurment { get; set; }
+        public int RecipeId { get; set; }
     }
 }

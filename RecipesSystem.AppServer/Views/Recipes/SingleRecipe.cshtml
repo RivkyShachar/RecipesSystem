@@ -5,119 +5,117 @@
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
 <body>
-<div class="nav-center">
-    <div class="nav-links">
-        <div class="nav-link contact-link">
-            <a href="@Url.Action("Contact", "Recipes",new{id=Model.Id}) " class="btn">Rate The Recipe </a>
+    <div class="nav-center">
+        <div class="nav-links">
+            <div class="nav-link contact-link">
+                <a href="@Url.Action("Contact", "Recipes",new{id=Model.Id}) " class="btn">Rate The Recipe </a>
+            </div>
         </div>
     </div>
-        </div>
 
-<main class="page">
-<div class="recipe-page">
-  
-        <section class="recipe-hero">
-         
-            <img src="@Url.Content(Model.ImageURL)"
-                 class="img recipe-hero-img" />
+    <main class="page">
+        <div class="recipe-page">
 
-            <article class="recipe-info">
-                <h2>@Html.DisplayFor(modelItem => Model.Description)</h2>
-                <p>
-                    //נצטרך לעשותץ אולי תיאור של מתכון קצת יותר ארוך לא יודעת לחשןב על משהו פה
-                    Shabby chic humblebrag banh mi bushwick, banjo kale chips
-                    meggings. Cred selfies sartorial, cloud bread disrupt blue bottle
-                    seitan. Dreamcatcher tousled bitters, health goth vegan venmo
-                    whatever street art lyft shabby chic pitchfork beard. Drinking
-                    vinegar poke tbh, iPhone coloring book polaroid truffaut tousled
-                    ramps pug trust fund letterpress. Portland four loko austin
-                    chicharrones bitters single-origin coffee. Leggings letterpress
-                    occupy pour-over.
-                </p>
-                <div class="recipe-icons">
-                    <article>
-                        <i class="fas fa-clock"></i>
-                        <h5>prep time</h5>
-                        <p>@Html.DisplayFor(modelItem => Model.TimeToMake) </p>
-                    </article>
-                    <article>
-                        <i class="far fa-clock"></i>
-                        <h5>cook time</h5>
-                        <p>@Html.DisplayFor(modelItem => Model.CookingTime)</p>
-                    </article>
-                    <article>
-                        <i class="fas fa-user-friends"></i>
-                        <h5>serving</h5>
-                        <p>@Html.DisplayFor(modelItem => Model.Diners)</p>
-                    </article>
-                </div>
-                <div class="recipe-tags">
-                    Tags : <a href=@Html.Display(Model.Tag.ToString())></a>@*not good*@
-                </div>
-            </article>
-        </section>
-        <!-- content -->
-        <section class="recipe-content">
-            <article>
-                <h4>instructions</h4>
-                <!-- single instruction -->
-                <div class="single-instruction">
-                    <header>
-                        <p>step 1</p>
-                        <div></div>
-                    </header>
-                    <p>
-                        I'm baby mustache man braid fingerstache small batch venmo
-                        succulents shoreditch.
-                    </p>
-                </div>
-                <!-- end of single instruction -->
-                <!-- single instruction -->
-                <div class="single-instruction">
-                    <header>
-                        <p>step 2</p>
-                        <div></div>
-                    </header>
-                    <p>
-                        Pabst pitchfork you probably haven't heard of them, asymmetrical
-                        seitan tousled succulents wolf banh mi man bun bespoke selfies
-                        freegan ethical hexagon.
-                    </p>
-                </div>
-                <!-- end of single instruction -->
-                <!-- single instruction -->
-                <div class="single-instruction">
-                    <header>
-                        <p>step 3</p>
-                        <div></div>
-                    </header>
-                    <p>
-                        Polaroid iPhone bitters chambray. Cornhole swag kombucha
-                        live-edge.
-                    </p>
-                </div>
-                <!-- end of single instruction -->
-            </article>
-            <article class="second-column">
-                <div>
-                    <h4>ingredients</h4>
-                    <p class="single-ingredient">1 1/2 cups dry pancake mix</p>
-                    <p class="single-ingredient">1/2 cup flax seed meal</p>
-                    <p class="single-ingredient">1 cup skim milk</p>
-                </div>
-                <div>
-                    <h4>Nutriant</h4>@*//שיניתי מכלים לערכים תזונתיים*@
+            <section class="recipe-hero">
 
-                    @if(Model.Nutriants!=null)//צריך לבדוק איך עושים את הקשיור בין הטבלאות שייציג את הנתונים של המתכון הזה
+                <img src="@Url.Content(Model.ImageURL)"
+                     class="img recipe-hero-img" />
+
+                <article class="recipe-info">
+                    <h2>@Html.DisplayFor(modelItem => Model.Name)</h2>
+                    <p>
+                        @Html.DisplayFor(modelItem => Model.Description)
+                    </p>
+                    <div class="recipe-icons">
+                        <article>
+                            <i class="fas fa-clock"></i>
+                            <h5>prep time</h5>
+                            <p>@Html.DisplayFor(modelItem => Model.TimeToMake) </p>
+                        </article>
+                        <article>
+                            <i class="far fa-clock"></i>
+                            <h5>cook time</h5>
+                            <p>@Html.DisplayFor(modelItem => Model.CookingTime)</p>
+                        </article>
+                        <article>
+                            <i class="fas fa-user-friends"></i>
+                            <h5>serving</h5>
+                            <p>@Html.DisplayFor(modelItem => Model.Diners)</p>
+                        </article>
+                    </div>
+                    <div class="recipe-tags">
+                        Tags : <a href=@Html.Display(Model.Tag.ToString())></a>@*not good*@
+                    </div>
+                </article>
+            </section>
+            <!-- content -->
+            <section class="recipe-content">
+                <article>
+                    <h4>instructions</h4>
+                    <!-- single instruction -->
+                    <p>
+                        @Html.DisplayFor(modelItem => Model.PrepInstructions)
+                    </p>
+                    <div class="single-instruction">
+                        <header>
+                            <p>step 1</p>
+                            <div></div>
+                        </header>
+                        <p>
+                            step i and every . need to start over 
+                            the loop is outside the class
+                        </p>
+                    </div>
+                    <!-- end of single instruction -->
+                    <!-- single instruction -->
+                    <div class="single-instruction">
+                        <header>
+                            <p>step 2</p>
+                            <div></div>
+                        </header>
+                        <p>
+                            Pabst pitchfork you probably haven't heard of them, asymmetrical
+                            seitan tousled succulents wolf banh mi man bun bespoke selfies
+                            freegan ethical hexagon.
+                        </p>
+                    </div>
+                    <!-- end of single instruction -->
+                    <!-- single instruction -->
+                    <div class="single-instruction">
+                        <header>
+                            <p>step 3</p>
+                            <div></div>
+                        </header>
+                        <p>
+                            Polaroid iPhone bitters chambray. Cornhole swag kombucha
+                            live-edge.
+                        </p>
+                    </div>
+                    <!-- end of single instruction -->
+                </article>
+                <article class="second-column">
+                    <div>
+                        <h4>ingredients</h4>
+                        <p>
+                        @Html.DisplayFor(modelItem => Model.Ingredients)
+                    </p>
+                        <p class="single-ingredient">1 1/2 cups dry pancake mix</p>
+                        <p class="single-ingredient">1/2 cup flax seed meal</p>
+                        <p class="single-ingredient">1 cup skim milk</p>
+                    </div>
+                    <div>
+                        <h4>Nutriant</h4>@*//שיניתי מכלים לערכים תזונתיים*@
+
+                        @if (Model.Nutriants != null)//צריך לבדוק איך עושים את הקשיור בין הטבלאות שייציג את הנתונים של המתכון הזה
                             @foreach (var ntur in Model.Nutriants)@*//עובר על הערכים התזונתיים של המאכל ומציג אותם*@
                             {
                                 <p class="single-tool">@Html.Display(ntur.Name,ntur.Value)</p>
-                              
+
                             }
 
-                </div>
-            </article>
-        </section>
-    </div>
-</main>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
 </body>
