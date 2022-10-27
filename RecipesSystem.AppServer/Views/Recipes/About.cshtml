@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<RecipesSystem.AppServer.Models.Recipe>
 @{
     ViewData["Title"] = "About";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
@@ -17,7 +17,6 @@
                 Taiyaki tumblr flexitarian jean shorts brunch, aesthetic salvia
                 retro.
             </p>
-            <a href="@Url.Action("Contact", "Recipes") " class="btn"> contact </a>
         </article>
         <!-- needs fixes -->
         <img src="~/assets/about.jpeg"
@@ -27,33 +26,29 @@
     <section class="featured-recipes">
         <h5 class="featured-title">Look At This Awesomesouce!</h5>
         <div class="recipes-list">
-            <!-- single recipe -->
-            <a href="@Url.Action("SingleRecipe", "Recipes") " class="recipe">
-                <img src="~/assets/recipes/recipe-1.jpeg"
+            @{
+                int count = 0;
+                @foreach(var item in Model)//הצגת 3 מתכונים הכי מומלצים
+                 {
+                if(count<3)
+                {
+                 <a href="@Url.Action("SingleRecipe", "Recipes",new{id=item.Id}) " class="recipe">
+                    <img src="@Url.Content(@item.ImageURL)" @*יציג את אחת התמונות של המתכונים*@
                      class="img recipe-img"
                      alt="" />
-                <h5>Carne Asada</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            <!-- end of single recipe -->
-            <!-- single recipe -->
-            <a href="@Url.Action("SingleRecipe", "Recipes") " class="recipe">
-                <img src="~/assets/recipes/recipe-2.jpeg"
-                     class="img recipe-img"
-                     alt="" />
-                <h5>Greek Ribs</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            <!-- end of single recipe -->
-            <!-- single recipe -->
-            <a href="@Url.Action("SingleRecipe", "Recipes") " class="recipe">
-                <img src="~/assets/recipes/recipe-3.jpeg"
-                     class="img recipe-img"
-                     alt="" />
-                <h5>Vegetable Soup</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            <!-- end of single recipe -->
+                    <h5> @Html.DisplayFor(modelItem => item.Description)</h5>
+                    <p>Prep : @Html.DisplayFor(modelItem => item.TimeToMake) | Cook : @Html.DisplayFor(modelItem => item.CookingTime)</p>
+                 </a>
+                 count++;//לא יאפשר יותר מ3 מתכוניפ שיוצגו באודות
+               }
+                }
+
+                }
+            
+            
+
+            
+        
         </div>
     </section>
 </main>

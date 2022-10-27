@@ -288,9 +288,12 @@ namespace RecipesSystem.AppServer.Controllers
         }
 
 
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            return View();
+            //יקבל רשימה של המתכונים הכי מומלצים ויציחג שלוש מתוכם
+            var TopRecipes=_context.Recipe.Where(r=>r.Rate=="5").ToList();
+
+            return View(TopRecipes);
         }
 
     
