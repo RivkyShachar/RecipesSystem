@@ -57,10 +57,22 @@
                         @Html.DisplayFor(modelItem => Model.PrepInstructions)
                     </p>
                     @{
-
-
-
-
+                        string str = Model.PrepInstructions;
+                        List<string> x = str.Split(". ").ToList();
+                        int s = 1;
+                        foreach(var i in x)
+                        {
+                                    <div class="single-instruction">
+                                        <header>
+                                            <p>step @s</p>
+                                            <div></div>
+                                        </header>
+                                        <p>
+                                            @i;
+                                        </p>
+                            </div>
+                            s++;
+                        }
                     }
                     <div class="single-instruction">
                         <header>
