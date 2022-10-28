@@ -314,7 +314,7 @@ namespace RecipesSystem.AppServer.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult>Contact(int id, [Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag,Rate, Note")] Recipe recipe)
+        public async Task<IActionResult>Contact(int id, [Bind("Id,Name,Description,PrepInstructions,Ingredients,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants,Holiday,Weather")] Recipe recipe)
         {
             if (id != recipe.Id)
             {
@@ -458,10 +458,6 @@ namespace RecipesSystem.AppServer.Controllers
                     {
                         r.Holiday = Holidays.NOTHOLIDAY;
                     }
-
-
-
-
 
                     _context.Remove(model);
                     _context.Add(r);

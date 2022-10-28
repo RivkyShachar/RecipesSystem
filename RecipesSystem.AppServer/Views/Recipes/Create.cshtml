@@ -24,33 +24,37 @@
             vertical-align: middle;
             width: 100%;
         }
+        .control-label{
+
+        }  
 
     </style>
 
 
 </head>
 <body>
-<div class="row">
-    <div class="col-md-4">
+    <div class="page">
+        <div class="form contact-form">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" contextmenu="Tools" class="control-label"></label>
+                <div class="form-row">
+                <label asp-for="Name" contextmenu="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                <div class="form-row">
                 <label asp-for="Description" class="control-label"  ></label>
-                <input asp-for="Description" class="form-control" />
+                    <textarea name="Description" id="Description" class="form-textarea"></textarea>
+                   @* <input asp-for="Description" class="form-control" />*@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                <div class="form-row">
                 <label asp-for="PrepInstructions" class="control-label"></label>
-               
-                <input asp-for="PrepInstructions" class="form-control" />
-                <span asp-validation-for="PrepInstructions" class="text-danger"></span>
+                    <textarea name="PrepInstructions" id="PrepInstructions" class="form-textarea"></textarea>
+               @* <input asp-for="PrepInstructions" class="form-control" />*@
+                    <span asp-validation-for="PrepInstructions" class="form-danger"></span>
             </div>
-            <div class="form-group">
+                <div class="form-row">
                 <label asp-for="ImageURL" class="control-label"></label>
                 <input asp-for="ImageURL" class="form-control" />
  
@@ -61,28 +65,29 @@
                 <input type="file" name="ImageUpload" id="ImageUpload" class="form-control file-input" accept="image/*" />    
                 
             </div>*@
-            <div class="form-group">
+                <div class="form-row">
                 <label asp-for="TimeToMake" class="control-label"></label>
                 <input asp-for="TimeToMake" class="form-control" />
                 <span asp-validation-for="TimeToMake" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                <div class="form-row">
                 <label asp-for=" CookingTime" class="control-label"></label>
                 <input asp-for="CookingTime" class="form-control" />
                 <span asp-validation-for=" CookingTime" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                <div class="form-row">
                 <label asp-for="Diners" class="control-label"></label>
                 <input asp-for="Diners" class="form-control" />
                 <span asp-validation-for="Diners" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+                <div class="form-row">
                 <label asp-for="Ingredients" class="control-label"></label>
-                <input asp-for=" Ingredients " class="form-control" />
-                <span asp-validation-for="Ingredients" class="text-danger"></span>
+                    <textarea name="Ingredients" id="Ingredients" class="form-textarea"></textarea>
+                  @*  <input asp-for=" Ingredients " class="form-control" />*@
+                    <span asp-validation-for="Ingredients" class="form-danger"></span>
             </div>
-            <div  class="form-group">
+                <div class="form-row">
                 <label asp-for="Tag" class="control-label"></label>
                 <select name="Tag"  class="form-control">
                     <option value="0">Soup</option>
@@ -100,29 +105,7 @@
                 </select >
                 <span asp-validation-for="Tag" class="text-danger"></span>
             </div>
-          @*  <div class="form-group">
-                <label asp-for="Holiday" class="control-label"></label>
-                <select name="Tag" class="form-control">
-                    <option value="0">Rosh-hashana</option>
-                    <option value="1">Sukot</option>
-                    <option value="2">Shavuot</option>
-                    <option value="3">Pesach</option>
-                    <option value="4">Chanuka</option>
-                    <option value="5">purim</option>
-                    <option value="6">No holiday</option>
-                </select>
-                <span asp-validation-for="Holiday" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Weather" class="control-label"></label>
-                <select name="Tag" class="form-control">
-                    <option value="0">Hot</option>
-                    <option value="1">Cold</option>
-                    <option value="2">Nice</option>
-                </select>
-                <span asp-validation-for="Weather" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
+                <div class="form-row">
                 <input type="submit" onclick = "location.href='@Url.Action("Details","Recipes")'" value="Submit" class="btn btn-primary" />
             </div>
 

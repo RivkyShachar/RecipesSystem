@@ -4,41 +4,83 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
-
-<h1>Edit</h1>
-
-<h4>Recipe</h4>
+<h1>Edit Your Recipe</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="page">
+    <div class="form contact-form">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
+            <div class="form-row">
+                <label asp-for="Name" contextmenu="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-row">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea name="Description" id="Description" class="form-textarea"></textarea>
+                @* <input asp-for="Description" class="form-control" />*@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-row">
                 <label asp-for="PrepInstructions" class="control-label"></label>
-                <input asp-for="PrepInstructions" class="form-control" />
-                <span asp-validation-for="PrepInstructions" class="text-danger"></span>
+                <textarea name="PrepInstructions" id="PrepInstructions" class="form-textarea"></textarea>
+                @* <input asp-for="PrepInstructions" class="form-control" />*@
+                <span asp-validation-for="PrepInstructions" class="form-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-row">
                 <label asp-for="ImageURL" class="control-label"></label>
                 <input asp-for="ImageURL" class="form-control" />
+
                 <span asp-validation-for="ImageURL" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="KeyWord" class="control-label"></label>
-                <input asp-for="KeyWord" class="form-control" />
-                <span asp-validation-for="KeyWord" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            @*  <div class="form-group">@*העלאת תמונה בצורת בחירה של קובץ*@
+            @*  <label for="ImageUpload">Upload Image:</label>
+            <input type="file" name="ImageUpload" id="ImageUpload" class="form-control file-input" accept="image/*" />
+            </div>*@
+            <div class="form-row">
                 <label asp-for="TimeToMake" class="control-label"></label>
                 <input asp-for="TimeToMake" class="form-control" />
                 <span asp-validation-for="TimeToMake" class="text-danger"></span>
-            </div>*@
+            </div>
+            <div class="form-row">
+                <label asp-for=" CookingTime" class="control-label"></label>
+                <input asp-for="CookingTime" class="form-control" />
+                <span asp-validation-for=" CookingTime" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <label asp-for="Diners" class="control-label"></label>
+                <input asp-for="Diners" class="form-control" />
+                <span asp-validation-for="Diners" class="text-danger"></span>
+            </div>
+
+            <div class="form-row">
+                <label asp-for="Ingredients" class="control-label"></label>
+                <textarea name="Ingredients" id="Ingredients" class="form-textarea"></textarea>
+                @*  <input asp-for=" Ingredients " class="form-control" />*@
+                <span asp-validation-for="Ingredients" class="form-danger"></span>
+            </div>
+            <div class="form-row">
+                <label asp-for="Tag" class="control-label"></label>
+                <select name="Tag" class="form-control">
+                    <option value="0">Soup</option>
+                    <option value="1">Salad</option>
+                    <option value="2">Desert</option>
+                    <option value="3">Cakes</option>
+                    <option value="4">Cookies</option>
+                    <option value="5">Breads</option>
+                    <option value="6">Fish</option>
+                    <option value="7">Chicken</option>
+                    <option value="8">Meat</option>
+                    <option value="9">Quiche</option>
+                    <option value="10">Pasta</option>
+                    <option value="11">Pizza</option>
+                </select>
+                <span asp-validation-for="Tag" class="text-danger"></span>
+            </div>
+
+
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
