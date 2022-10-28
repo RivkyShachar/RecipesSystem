@@ -412,6 +412,57 @@ namespace RecipesSystem.AppServer.Controllers
                             r.Nutriants.Add(item);
                         }
                     }
+                    WeatherAdapter Wadapter = new WeatherAdapter();
+                    string Message = Wadapter.Check("Haifa");
+                    if(Message== "Recipes for hot days")//פונקציה שמכניסה לי את הנתון של מצז האויר הנוכחי לפי ההמלצה
+                    {
+                        r.Weather = Weathers.HOT;
+                    }
+                    else if(Message== "Recipes for cold days")
+                    {
+                        r.Weather = Weathers.COLD;
+                    }
+                    else
+                    {
+                        r.Weather = Weathers.NICE;
+                    }
+                    HebCalAdapter Hadapter = new HebCalAdapter();
+                    string MsgHeb = Hadapter.Check();
+                    if (MsgHeb== "recipes for sukot")
+                    {
+                        r.Holiday = Holidays
+                            .SUKOT;
+                    }
+                    else if (MsgHeb ==" Recipes for pesach"  )
+                    {
+                       
+                        r.Holiday = Holidays.PESACH;
+                    }
+                    else if (MsgHeb == "Recipes for purim")
+                    {
+                        r.Holiday = Holidays.PURIM;
+                    }
+                    else if (MsgHeb == "Recipes for rosh hashana")
+                    {
+                        r.Holiday = Holidays.ROSH_HASHANA;
+                    }
+                    else if (MsgHeb == "Recipes for chanuka")
+                    {
+                        r.Holiday = Holidays.CHANUKA;
+                    }
+                    else if (MsgHeb == "Recipes for shavuot")
+                    {
+                        r.Holiday = Holidays.SHAVUOT;
+                    }
+                    else
+                    {
+                        r.Holiday = Holidays.NOTHOLIDAY;
+                    }
+
+
+
+
+
                     _context.Remove(model);
                     _context.Add(r);
                     //_context.Update(r);
@@ -431,6 +482,8 @@ namespace RecipesSystem.AppServer.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(recipe);
+
+
         }
 
         public IActionResult Error404()

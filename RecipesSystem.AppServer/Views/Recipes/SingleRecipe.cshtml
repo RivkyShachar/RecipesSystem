@@ -65,52 +65,16 @@
                         {
                                     <div class="single-instruction">
                                         <header>
-                                            <p>step @s</p>
+                                            <p>step @s.ToString()</p>
                                             <div></div>
                                         </header>
                                         <p>
-                                            @i;
+                                            @i.ToString();
                                         </p>
                             </div>
                             s++;
                         }
-                    }
-           @*         <div class="single-instruction">
-                        <header>
-                            <p>step 1</p>
-                            <div></div>
-                        </header>
-                        <p>
-                            step i and every . need to start over 
-                            the loop is outside the class
-                        </p>
-                    </div>
-                    <!-- end of single instruction -->
-                    <!-- single instruction -->
-                    <div class="single-instruction">
-                        <header>
-                            <p>step 2</p>
-                            <div></div>
-                        </header>
-                        <p>
-                            Pabst pitchfork you probably haven't heard of them, asymmetrical
-                            seitan tousled succulents wolf banh mi man bun bespoke selfies
-                            freegan ethical hexagon.
-                        </p>
-                    </div>
-                    <!-- end of single instruction -->
-                    <!-- single instruction -->
-                    <div class="single-instruction">
-                        <header>
-                            <p>step 3</p>
-                            <div></div>
-                        </header>
-                        <p>
-                            Polaroid iPhone bitters chambray. Cornhole swag kombucha
-                            live-edge.
-                        </p>
-                    </div>
-                    <!-- end of single instruction -->*@
+                    }                
                 </article>
                 <article class="second-column">
                     <div>
@@ -120,15 +84,12 @@
                     </p>
                         @{//יכניס את נתוני המתשמש לתוך רשימה מסודרת ויבדיל בין הערכים של הרכיבים לפי רווח
                             string st = Model.Ingredients;
-                            List<string> Ingredient = st.Split(" ").ToList();
+                            List<string> Ingredient = st.Split(".").ToList();
                             foreach (var igredient in Ingredient)
                             {
-                                <p class="single-ingredient">@igredient</p> 
+                                <p class="single-ingredient">@igredient.ToString()</p> 
                             }
-                        }
-                       @* <p class="single-ingredient">1 1/2 cups dry pancake mix</p>
-                        <p class="single-ingredient">1/2 cup flax seed meal</p>
-                        <p class="single-ingredient">1 cup skim milk</p>*@
+                        }  
                     </div>
                     <div>
                         <h4>Nutriant</h4>@*//שיניתי מכלים לערכים תזונתיים*@
