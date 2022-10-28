@@ -457,6 +457,9 @@ namespace RecipesSystem.AppServer.Controllers
             {
                 return NotFound();
             }
+            //Nutriant nutriant= null;
+            //recipe.Nutriants = new List<Nutriant>();
+            //foreach(var item in recipe.Nutriants)
             return View(recipe);
         }
 

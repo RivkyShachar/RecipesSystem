@@ -53,9 +53,9 @@
                 <article>
                     <h4>instructions</h4>
                     <!-- single instruction -->
-                    <p>
+@*                    <p>
                         @Html.DisplayFor(modelItem => Model.PrepInstructions)
-                    </p>
+                    </p>*@
                     @{
                         string str = Model.PrepInstructions;
                         List<string> x = str.Split(". ").ToList();
@@ -74,7 +74,7 @@
                             s++;
                         }
                     }
-                    <div class="single-instruction">
+@*                    <div class="single-instruction">
                         <header>
                             <p>step 1</p>
                             <div></div>
@@ -108,7 +108,7 @@
                             Polaroid iPhone bitters chambray. Cornhole swag kombucha
                             live-edge.
                         </p>
-                    </div>
+                    </div>*@
                     <!-- end of single instruction -->
                 </article>
                 <article class="second-column">
@@ -116,14 +116,23 @@
                         <h4>ingredients</h4>
                         <p>
                         @Html.DisplayFor(modelItem => Model.Ingredients)
-                    </p>
-                        <p class="single-ingredient">1 1/2 cups dry pancake mix</p>
+                        </p>
+                    @{
+                        string str1 = Model.Ingredients;
+                        List<string> x1 = str1.Split(", ").ToList();
+                        int s1 = 1;
+                        foreach(var i in x1)
+                        {
+                            <p class="single-ingredient">@i</p>
+                            s1++;
+                        }
+                    }
+                        @*<p class="single-ingredient">1 1/2 cups dry pancake mix</p>
                         <p class="single-ingredient">1/2 cup flax seed meal</p>
-                        <p class="single-ingredient">1 cup skim milk</p>
+                        <p class="single-ingredient">1 cup skim milk</p>*@
                     </div>
                     <div>
                         <h4>Nutriant</h4>@*//שיניתי מכלים לערכים תזונתיים*@
-
                         @if (Model.Nutriants != null)//צריך לבדוק איך עושים את הקשיור בין הטבלאות שייציג את הנתונים של המתכון הזה
                             @foreach (var ntur in Model.Nutriants)@*//עובר על הערכים התזונתיים של המאכל ומציג אותם*@
                             {
