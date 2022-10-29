@@ -7,10 +7,10 @@
 <body>
     <div class="nav-center">
         <div class="nav-links">
-            <div class="nav-link contact-link">
+            <div class="nav-link">
                 <a href="@Url.Action("Edit", "Recipes",new{id=Model.Id}) " class="btn">Edit</a>
             </div>
-            <div class="nav-link contact-link">
+            <div class="nav-link">
                 <a href="@Url.Action("Delete", "Recipes",new{id=Model.Id}) " class="btn">Delete</a>
             </div>
         </div>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="recipe-tags">
                         Tags :<a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Tag})">@Model.Tag.ToString() </a>
-                        <a href=@Html.Display(Model.Tag.ToString())></a>@*not good*@
+                       
                     </div>
                 </article>
             </section>

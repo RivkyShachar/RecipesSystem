@@ -73,8 +73,8 @@ namespace RecipesSystem.AppServer.Controllers
                 //add the nutrients
                 GetNutriants(recipe);
                 ImaggaAdapter Iadapter = new ImaggaAdapter();
-                string Message = Iadapter.Check(recipe.Description, recipe.ImageURL,recipe.Tag.ToString());
-                if (Message == "\"good image\"")//בדיקה עם התמונה טובה
+                string Message = Iadapter.Check(recipe.Name, recipe.ImageURL,recipe.Tag.ToString());
+                if (Message == "\"good image\"")//בדיקה אם התמונה טובה
                 {
                     _context.Add(recipe);
                     await _context.SaveChangesAsync();
