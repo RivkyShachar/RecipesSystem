@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Security.Policy;
 
@@ -9,7 +10,10 @@ namespace RecipesSystem.AppServer.Models
     public enum Weathers { COLD, HOT, NICE}
     public class Recipe
     {
+        //need to add more error maegag
         public int Id { get; set; }
+        [Required]
+        [StringLength(50,ErrorMessage = "Name cannot be longer than 50 characters.")]
         public string Name { get; set; }
 
         [DisplayName("Description of the recipe")]
@@ -25,13 +29,15 @@ namespace RecipesSystem.AppServer.Models
         public string ImageURL { get; set; }
 
         [DisplayName("preparation time")]
+        [StringLength(10, ErrorMessage = "Making time cannot be longer than 10 characters.")]
         public string TimeToMake { get; set; }//זמן הכנה
 
         [DisplayName(" Cooking Time")]
+        [StringLength(10, ErrorMessage = "Cooking time cannot be longer than 10 characters.")]
         public string  CookingTime { get; set; }//זמן בישול
 
         [DisplayName("Diners size")]
-        public int Diners { get; set; }//כמה סועדים 
+        public int Diners { get; set; }//כמה סועדים neet to add an error if its a minus 
 
         [DisplayName("Tags")]
         public Tags Tag { get; set; }

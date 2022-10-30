@@ -43,8 +43,9 @@
                             <p>@Html.DisplayFor(modelItem => Model.Diners)</p>
                         </article>
                     </div>
-                    <div class="recipe-tags">
-                        Tags : <a href=@Html.Display(Model.Tag.ToString())></a>@*not good*@
+                    <div class="recipe-tags">                                              
+                        Tags :<a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Tag})">@Model.Tag.ToString() </a>
+                        <a href=@Html.Display(Model.Tag.ToString())></a>@*not good*@
                     </div>
                 </article>
             </section>
@@ -53,9 +54,9 @@
                 <article>
                     <h4>instructions</h4>
                     <!-- single instruction -->
-@*                    <p>
-                        @Html.DisplayFor(modelItem => Model.PrepInstructions)
-                    </p>*@
+                    <p>
+                        @*@Html.DisplayFor(modelItem => Model.PrepInstructions)*@
+                    </p>
                     @{
                         string str = Model.PrepInstructions;
                         List<string> x = str.Split(". ").ToList();
@@ -64,72 +65,31 @@
                         {
                                     <div class="single-instruction">
                                         <header>
-                                            <p>step @s</p>
+                                            <p>step @s.ToString()</p>
                                             <div></div>
                                         </header>
                                         <p>
-                                            @i;
+                                            @i.ToString();
                                         </p>
                             </div>
                             s++;
                         }
-                    }
-@*                    <div class="single-instruction">
-                        <header>
-                            <p>step 1</p>
-                            <div></div>
-                        </header>
-                        <p>
-                            step i and every . need to start over 
-                            the loop is outside the class
-                        </p>
-                    </div>
-                    <!-- end of single instruction -->
-                    <!-- single instruction -->
-                    <div class="single-instruction">
-                        <header>
-                            <p>step 2</p>
-                            <div></div>
-                        </header>
-                        <p>
-                            Pabst pitchfork you probably haven't heard of them, asymmetrical
-                            seitan tousled succulents wolf banh mi man bun bespoke selfies
-                            freegan ethical hexagon.
-                        </p>
-                    </div>
-                    <!-- end of single instruction -->
-                    <!-- single instruction -->
-                    <div class="single-instruction">
-                        <header>
-                            <p>step 3</p>
-                            <div></div>
-                        </header>
-                        <p>
-                            Polaroid iPhone bitters chambray. Cornhole swag kombucha
-                            live-edge.
-                        </p>
-                    </div>*@
-                    <!-- end of single instruction -->
+                    }                
                 </article>
                 <article class="second-column">
                     <div>
                         <h4>ingredients</h4>
                         <p>
-                        @Html.DisplayFor(modelItem => Model.Ingredients)
-                        </p>
-                    @{
-                        string str1 = Model.Ingredients;
-                        List<string> x1 = str1.Split(", ").ToList();
-                        int s1 = 1;
-                        foreach(var i in x1)
-                        {
-                            <p class="single-ingredient">@i</p>
-                            s1++;
-                        }
-                    }
-                        @*<p class="single-ingredient">1 1/2 cups dry pancake mix</p>
-                        <p class="single-ingredient">1/2 cup flax seed meal</p>
-                        <p class="single-ingredient">1 cup skim milk</p>*@
+                       @* @Html.DisplayFor(modelItem => Model.Ingredients)*@
+                    </p>
+                        @{//יכניס את נתוני המתשמש לתוך רשימה מסודרת ויבדיל בין הערכים של הרכיבים לפי רווח
+                            string st = Model.Ingredients;
+                            List<string> Ingredient = st.Split(".").ToList();
+                            foreach (var igredient in Ingredient)
+                            {
+                                <p class="single-ingredient">@igredient.ToString()</p> 
+                            }
+                        }  
                     </div>
                     <div>
                         <h4>Nutriant</h4>@*//שיניתי מכלים לערכים תזונתיים*@

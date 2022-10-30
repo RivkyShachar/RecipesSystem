@@ -100,7 +100,7 @@
                 </select >
                 <span asp-validation-for="Tag" class="text-danger"></span>
             </div>
-            <div class="form-group">
+          @*  <div class="form-group">
                 <label asp-for="Holiday" class="control-label"></label>
                 <select name="Tag" class="form-control">
                     <option value="0">Rosh-hashana</option>
@@ -121,7 +121,7 @@
                     <option value="2">Nice</option>
                 </select>
                 <span asp-validation-for="Weather" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" onclick = "location.href='@Url.Action("Details","Recipes")'" value="Submit" class="btn btn-primary" />
             </div>
