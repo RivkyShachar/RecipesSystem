@@ -39,11 +39,11 @@
 
                 @if (ViewData["HebCalMessage"] != "No holiday")//כאשר יש חג יפתח כפתור נוסף שבו יהיה את המתכונים שהומלצו בזמן החגים
              {
-                    <a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Holiday})" class="nav-link"> @ViewData["HebCalMessage"] </a>
+                   @*a href="@Url.Action("TagTemplate", "Recipes",new{t=Holidays})" class="nav-link"> @ViewData["HebCalMessage"] </a>*@
              }
                 @if (ViewData["WeatherMessage"] != "Nice weather")//כאשר מזג האויר חם/קר יפתח כפתור שכאשר נלחץ עליו נקבל את המתכונים שהומלצו לקור/לחום
              {
-                    <a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Weather})" class="nav-link"> @ViewData["WeatherMessage"] </a>
+                    @*<a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Weather})" class="nav-link"> @ViewData["WeatherMessage"] </a>*@
              }
 
 

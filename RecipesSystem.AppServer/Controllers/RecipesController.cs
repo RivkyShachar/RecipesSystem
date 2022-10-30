@@ -287,7 +287,6 @@ namespace RecipesSystem.AppServer.Controllers
             return _context.Recipe.Any(e => e.Id == id);
         }
 
-
         public async Task<IActionResult> About()
         {
             //יקבל רשימה של המתכונים הכי מומלצים ויציחג שלוש מתוכם
@@ -314,15 +313,12 @@ namespace RecipesSystem.AppServer.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult>Contact(int id, [Bind("Id,Name,Description,PrepInstructions,Ingredients,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants,Holiday,Weather")] Recipe recipe)
+        public async Task<IActionResult>Contact(int id, [Bind("Id,Name,Description,PrepInstructions,Ingredients,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants, Rate,Note,Holiday,Weather")] Recipe recipe)
         {
             if (id != recipe.Id)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
-            {
                 try
                 {
                     var model = await _context.Recipe.FindAsync(id);
@@ -476,8 +472,7 @@ namespace RecipesSystem.AppServer.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
-            return View(recipe);
+
 
 
         }
