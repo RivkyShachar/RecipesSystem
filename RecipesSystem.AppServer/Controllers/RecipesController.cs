@@ -73,8 +73,8 @@ namespace RecipesSystem.AppServer.Controllers
                 //add the nutrients
                 GetNutriants(recipe);
                 ImaggaAdapter Iadapter = new ImaggaAdapter();
-                string Message = Iadapter.Check(recipe.Description, recipe.ImageURL,recipe.Tag.ToString());
-                if (Message == "\"good image\"")//בדיקה עם התמונה טובה
+                string Message = Iadapter.Check(recipe.Name, recipe.ImageURL,recipe.Tag.ToString());
+                if (Message == "\"good image\"")//בדיקה אם התמונה טובה
                 {
                     _context.Add(recipe);
                     await _context.SaveChangesAsync();
@@ -314,7 +314,7 @@ namespace RecipesSystem.AppServer.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult>Contact(int id, [Bind("Id,Description,PrepInstructions,Tools,Ingredients,TimeToName,ImageURL,TimeToMake,CookingTime,Diners,Tag,Rate, Note")] Recipe recipe)
+        public async Task<IActionResult>Contact(int id, [Bind("Id,Name,Description,PrepInstructions,Ingredients,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants,Holiday,Weather")] Recipe recipe)
         {
             if (id != recipe.Id)
             {
@@ -458,10 +458,6 @@ namespace RecipesSystem.AppServer.Controllers
                     {
                         r.Holiday = Holidays.NOTHOLIDAY;
                     }
-
-
-
-
 
                     _context.Remove(model);
                     _context.Add(r);

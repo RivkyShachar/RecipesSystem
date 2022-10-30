@@ -7,10 +7,10 @@
 <body>
     <div class="nav-center">
         <div class="nav-links">
-            <div class="nav-link contact-link">
+            <div class="nav-link">
                 <a href="@Url.Action("Edit", "Recipes",new{id=Model.Id}) " class="btn">Edit</a>
             </div>
-            <div class="nav-link contact-link">
+            <div class="nav-link">
                 <a href="@Url.Action("Delete", "Recipes",new{id=Model.Id}) " class="btn">Delete</a>
             </div>
         </div>
@@ -47,7 +47,8 @@
                         </article>
                     </div>
                     <div class="recipe-tags">
-                        Tags : <a href=@Html.Display(Model.Tag.ToString())></a>@*not good*@
+                        Tags :<a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Tag})">@Model.Tag.ToString() </a>
+                       
                     </div>
                 </article>
             </section>
@@ -57,54 +58,42 @@
                     <h4>instructions</h4>
                     <!-- single instruction -->
                     <p>
-                        @Html.DisplayFor(modelItem => Model.PrepInstructions)
+                        @*@Html.DisplayFor(modelItem => Model.PrepInstructions)*@
                     </p>
-                    <div class="single-instruction">
-                        <header>
-                            <p>step 1</p>
-                            <div></div>
-                        </header>
-                        <p>
-                            step i and every . need to start over
-                            the loop is outside the class
-                        </p>
-                    </div>
-                    <!-- end of single instruction -->
-                    <!-- single instruction -->
-                    <div class="single-instruction">
-                        <header>
-                            <p>step 2</p>
-                            <div></div>
-                        </header>
-                        <p>
-                            Pabst pitchfork you probably haven't heard of them, asymmetrical
-                            seitan tousled succulents wolf banh mi man bun bespoke selfies
-                            freegan ethical hexagon.
-                        </p>
-                    </div>
-                    <!-- end of single instruction -->
-                    <!-- single instruction -->
-                    <div class="single-instruction">
-                        <header>
-                            <p>step 3</p>
-                            <div></div>
-                        </header>
-                        <p>
-                            Polaroid iPhone bitters chambray. Cornhole swag kombucha
-                            live-edge.
-                        </p>
-                    </div>
-                    <!-- end of single instruction -->
+                    @{
+                        string str = Model.PrepInstructions;
+                        List<string> x = str.Split(". ").ToList();
+                        int s = 1;
+                        foreach (var i in x)
+                        {
+                            <div class="single-instruction">
+                                <header>
+                                    <p>step @s.ToString()</p>
+                                    <div></div>
+                                </header>
+                                <p>
+                                    @i.ToString();
+                                </p>
+                            </div>
+                            s++;
+                        }
+                    }
                 </article>
                 <article class="second-column">
                     <div>
                         <h4>ingredients</h4>
                         <p>
-                            @Html.DisplayFor(modelItem => Model.Ingredients)
+                            @* @Html.DisplayFor(modelItem => Model.Ingredients)*@
                         </p>
-                        <p class="single-ingredient">1 1/2 cups dry pancake mix</p>
-                        <p class="single-ingredient">1/2 cup flax seed meal</p>
-                        <p class="single-ingredient">1 cup skim milk</p>
+                        @{
+                            //יכניס את נתוני המתשמש לתוך רשימה מסודרת ויבדיל בין הערכים של הרכיבים לפי רווח
+                            string st = Model.Ingredients;
+                            List<string> Ingredient = st.Split(".").ToList();
+                            foreach (var igredient in Ingredient)
+                            {
+                                <p class="single-ingredient">@igredient.ToString()</p>
+                            }
+                        }
                     </div>
                     <div>
                         <h4>Nutriant</h4>@*//שיניתי מכלים לערכים תזונתיים*@
