@@ -24,32 +24,32 @@ namespace RecipesSystem.AppServer.Data
                     PrepInstructions="instructions",
                     Ingredients="the ingridents",
                     TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=new List<Nutriant>(),Holiday=Holidays.PESACH,Weather=Weathers.COLD},
+                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=new List<Nutriant>(),Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
                 new Recipe{Name="cake",Description="write description2",
                     PrepInstructions="instructions",
                     Ingredients="the ingridents",
                     TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.PESACH,Weather=Weathers.COLD},
+                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
                 new Recipe{Name="cake",Description="write description3",
                     PrepInstructions="instructions",
                     Ingredients="the ingridents",
                     TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.PESACH,Weather=Weathers.COLD},
+                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
                 new Recipe{Name="cake",Description="write description4",
                     PrepInstructions="instructions",
                     Ingredients="the ingridents",
                     TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.PESACH,Weather=Weathers.COLD},
+                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
                 new Recipe{Name="cake",Description="write description5",
                     PrepInstructions="instructions",
                     Ingredients="the ingridents",
                     TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.PESACH,Weather=Weathers.COLD},
+                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
                 new Recipe{Name="cake",Description="write description6",
                     PrepInstructions="instructions",
                     Ingredients="the ingridents",
                     TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.PESACH,Weather=Weathers.COLD},
+                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
 
             };
             foreach (Recipe r in recipes)
@@ -61,11 +61,12 @@ namespace RecipesSystem.AppServer.Data
 
             //nutriants for the recipes
             USDAadapter Uadapter = new USDAadapter();
+           
             foreach(Recipe r in recipes)
             {
+
                 List<Nutrient> nutriants = Uadapter.Check(r.Name, r.Tag.ToString());
-                r.Nutriants = new List<Nutriant>();
-                
+                r.Nutriants = new List<Nutriant>();               
                 foreach (Nutrient nutr in nutriants)
                 {
                     Nutriant nutrient = new Nutriant();

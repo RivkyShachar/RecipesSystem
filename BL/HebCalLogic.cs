@@ -25,6 +25,7 @@ namespace BL
 
             //will contain the relevant holidays
             List<string> holidays = new List<string>();
+          
             foreach (var item in myHolyday.items)
                 if (item.category == "holiday")
                     if (item.hebrew!=null)
@@ -34,6 +35,7 @@ namespace BL
                                 holidays.Add(holiday);
                                 break;
                             }
+            
             if(holidays.Count == 0)
                 holidays.Add("No holiday");
             return holidays;

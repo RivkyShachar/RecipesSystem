@@ -11,7 +11,7 @@
                 <a href="@Url.Action("Contact", "Recipes",new{id=Model.Id}) " class="btn">Rate The Recipe </a>
             </div>
         </div>
-    </div>
+    
 
     <main class="page">
         <div class="recipe-page">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="recipe-tags">                                              
                         Tags :<a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Tag})">@Model.Tag.ToString() </a>
-                        <a href=@Html.Display(Model.Tag.ToString())></a>@*not good*@
+                        <a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Weather})">@Model.Tag.ToString() ></a>
                     </div>
                 </article>
             </section>

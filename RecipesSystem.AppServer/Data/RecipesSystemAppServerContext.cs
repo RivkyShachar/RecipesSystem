@@ -40,8 +40,8 @@ namespace RecipesSystem.AppServer.Data
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired();
-        entity.Property(e => e.Value).IsRequired();
-        entity.Property(e => e.UnitOfMesurment).IsRequired();
+               entity.Property(e => e.Value).IsRequired();
+                entity.Property(e => e.UnitOfMesurment).IsRequired();
     });
 
             base.OnModelCreating(modelBuilder);

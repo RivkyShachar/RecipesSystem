@@ -532,10 +532,21 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-        public async Task<IActionResult> TagTemplate(Tags t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+        public async Task<IActionResult> TagTemplate(Tags? t, Weathers? Weather,Holidays? holyday)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
         {
+            IEnumerable<Recipe> recipes=new List<Recipe>();
 
-            IEnumerable<Recipe> recipes = _context.Recipe.Where(m => m.Tag == t);
+            if (t != null) {
+                recipes = _context.Recipe.Where(m => m.Tag == t); 
+            }
+            else if(Weather!=null)
+            {
+                recipes = _context.Recipe.Where(m => m.Weather == Weather);
+            }
+            else
+            {
+                recipes = _context.Recipe.Where(m => m.Holiday == holyday);
+            }
 
             return View(recipes);
         }
