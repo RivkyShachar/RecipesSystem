@@ -25,32 +25,9 @@ namespace RecipesSystem.AppServer.Data
                     Ingredients="the ingridents",
                     TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
                     CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=new List<Nutriant>(),Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
-                new Recipe{Name="cake",Description="write description2",
-                    PrepInstructions="instructions",
-                    Ingredients="the ingridents",
-                    TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
-                new Recipe{Name="cake",Description="write description3",
-                    PrepInstructions="instructions",
-                    Ingredients="the ingridents",
-                    TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
-                new Recipe{Name="cake",Description="write description4",
-                    PrepInstructions="instructions",
-                    Ingredients="the ingridents",
-                    TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
-                new Recipe{Name="cake",Description="write description5",
-                    PrepInstructions="instructions",
-                    Ingredients="the ingridents",
-                    TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
-                new Recipe{Name="cake",Description="write description6",
-                    PrepInstructions="instructions",
-                    Ingredients="the ingridents",
-                    TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=null,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
-
+                
+                
+                
             };
             foreach (Recipe r in recipes)
             {
