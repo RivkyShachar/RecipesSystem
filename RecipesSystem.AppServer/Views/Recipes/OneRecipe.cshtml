@@ -88,7 +88,7 @@
                         @{
                             //יכניס את נתוני המתשמש לתוך רשימה מסודרת ויבדיל בין הערכים של הרכיבים לפי רווח
                             string st = Model.Ingredients;
-                            List<string> Ingredient = st.Split(".").ToList();
+                            List<string> Ingredient = st.Split(", ").ToList();
                             foreach (var igredient in Ingredient)
                             {
                                 <p class="single-ingredient">@igredient.ToString()</p>

@@ -500,12 +500,19 @@ namespace RecipesSystem.AppServer.Controllers
             {
                 return NotFound();
             }
-            var recipe = await _context.Recipe
-                .FirstOrDefaultAsync(m => m.Id == id);
+            //Recipe recipe = _context.Recipe
+            //    .Include(e => e.Nutriants)
+            //    .Where(e => e.Id == id)
+            //    .FirstOrDefault(e=>e.Id==id);
+
+            var recipe = await _context.Recipe.FirstOrDefaultAsync(m => m.Id == id);
             if (recipe == null)
             {
                 return NotFound();
             }
+            //Nutriant nutriant= null;
+            //recipe.Nutriants = new List<Nutriant>();
+            //foreach(var item in recipe.Nutriants)
             return View(recipe);
         }
 
