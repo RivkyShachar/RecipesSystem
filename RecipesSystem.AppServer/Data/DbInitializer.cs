@@ -55,6 +55,7 @@ namespace RecipesSystem.AppServer.Data
                     Ingredients="2 pounds beef chuck shoulder steak or veal chops, 1 medium onion diced, 1 tablespoon oil or chicken fat, 1 teaspoon salt, dash of pepper (optional), dash of paprika (optional), ",
                     TimeToMake="30 min",ImageURL="https://www.kosher.com/resized/details.slide/t/a/Tasty-Yom-Tov-Meat-(2)-H_preview.jpeg",
                     CookingTime="2  and ahalf hr",Diners=4,Tag=Tags.MEAT,Nutriants=new List<Nutriant>(),Holiday=Holidays.PURIM,Weather=Weathers.NICE},
+
            
             };
             foreach (Recipe r in recipes)
