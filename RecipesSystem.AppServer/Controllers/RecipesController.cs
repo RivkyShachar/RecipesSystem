@@ -30,7 +30,7 @@ namespace RecipesSystem.AppServer.Controllers
             ViewData["HebCalMessage"] = Message;
 
             WeatherAdapter Wadapter = new WeatherAdapter();
-            Message = Wadapter.Check("Haifa");
+            Message = Wadapter.Check("Jerusalem");
             ViewData["WeatherMessage"] = Message;
 
             return View(await _context.Recipe.ToListAsync());
@@ -77,7 +77,9 @@ namespace RecipesSystem.AppServer.Controllers
                 if (Message == "\"good image\"")//בדיקה אם התמונה טובה
                 {
                     _context.Add(recipe);
+                   
                     await _context.SaveChangesAsync();
+                   
                     return RedirectToAction("OneRecipe", new {recipe.Id});
                 }
                 else
@@ -89,7 +91,7 @@ namespace RecipesSystem.AppServer.Controllers
         //use the api server to insert the nutrients of the recipe
         public void GetNutriants(Recipe recipe)
         {
-
+            
             USDAadapter Uadapter = new USDAadapter();
             List<DP.USDAparamsDTO.Nutrient> nutriants = Uadapter.Check(recipe.Name, recipe.Tag.ToString());
             recipe.Nutriants= new List<Nutriant>();
@@ -409,7 +411,7 @@ namespace RecipesSystem.AppServer.Controllers
                         }
                     }
                     WeatherAdapter Wadapter = new WeatherAdapter();
-                    string Message = Wadapter.Check("Haifa");
+                    string Message = Wadapter.Check("Jerusalem");
                     if(Message== "Recipes for hot days")//פונקציה שמכניסה לי את הנתון של מצז האויר הנוכחי לפי ההמלצה
                     {
                         r.Weather = Weathers.HOT;
@@ -488,6 +490,7 @@ namespace RecipesSystem.AppServer.Controllers
             return View(await _context.Recipe.ToListAsync());
         }
 
+       
         public async Task<IActionResult> SingleRecipe(int? id)
         {
 
@@ -495,19 +498,12 @@ namespace RecipesSystem.AppServer.Controllers
             {
                 return NotFound();
             }
-            //Recipe recipe = _context.Recipe
-            //    .Include(e => e.Nutriants)
-            //    .Where(e => e.Id == id)
-            //    .FirstOrDefault(e=>e.Id==id);
-
             var recipe = await _context.Recipe.FirstOrDefaultAsync(m => m.Id == id);
             if (recipe == null)
             {
                 return NotFound();
             }
-            //Nutriant nutriant= null;
-            //recipe.Nutriants = new List<Nutriant>();
-            //foreach(var item in recipe.Nutriants)
+            //GetNutriants(id);
             return View(recipe);
         }
 
@@ -534,23 +530,16 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-        public async Task<IActionResult> TagTemplate(Tags? t, Weathers? Weather,Holidays? holyday)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+        public async Task<IActionResult> TagTemplate(Tags? t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
         {
             IEnumerable<Recipe> recipes=new List<Recipe>();
 
-            if (t != null) {
-                recipes = _context.Recipe.Where(m => m.Tag == t); 
-            }
-            else if(Weather!=null)
-            {
-                recipes = _context.Recipe.Where(m => m.Weather == Weather);
-            }
-            else
-            {
-                recipes = _context.Recipe.Where(m => m.Holiday == holyday);
-            }
-
+            if (t != null) 
+                recipes = _context.Recipe.Where(m => m.Tag == t);
+               
+            
             return View(recipes);
+
         }
 
     }
