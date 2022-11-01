@@ -8,7 +8,7 @@
     <div class="nav-center">
         <div class="nav-links">
             <div class="nav-link contact-link">
-                <a href="@Url.Action("Contact", "Recipes",new{id=Model.Id}) " class="btn">Rate The Recipe </a>
+                <a href="@Url.Action("Rate", "Recipes",new{id=Model.Id}) " class="btn">Rate The Recipe </a>
             </div>
         </div>
   </div>  
@@ -45,11 +45,13 @@
                     </div>
                     <div class="recipe-tags">                                              
                         Tags :<a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Tag})">@Model.Tag.ToString() </a>
-                        <a href="@Url.Action("Holyday_Weather", "Recipes",new{t=(int)Model.Weather})">@Model.Weather.ToString() </a>
                         @{
+                            if(Model.Weather!=Weathers.NICE){
+                        <a href="@Url.Action("Weather", "Recipes",new{t=(int)Model.Weather})">@Model.Weather.ToString() </a>
+                     }
                             if (Model.Holiday!=Holidays.NOTHOLIDAY)
                             {
-                                   <a href="@Url.Action("TagTemplate", "Recipes",new{t=(int)Model.Holiday})">@Model.Holiday.ToString() </a>
+                                   <a href="@Url.Action("Holyday", "Recipes",new{t=(int)Model.Holiday})">@Model.Holiday.ToString() </a>
                             }
                          
                         }

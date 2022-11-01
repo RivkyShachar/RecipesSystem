@@ -299,7 +299,7 @@ namespace RecipesSystem.AppServer.Controllers
         }
 
     
-        public async Task<IActionResult> Contact(int? id)
+        public async Task<IActionResult> Rate(int? id)
         {
             if (id == null || _context.Recipe == null)
             {
@@ -316,7 +316,7 @@ namespace RecipesSystem.AppServer.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult>Contact(int id, [Bind("Id,Name,Description,PrepInstructions,Ingredients,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants, Rate,Note,Holiday,Weather")] Recipe recipe)
+        public async Task<IActionResult>Rate(int id, [Bind("Id,Name,Description,PrepInstructions,Ingredients,ImageURL,TimeToMake,CookingTime,Diners,Tag,Nutriants, Rate,Note,Holiday,Weather")] Recipe recipe)
         {
             if (id != recipe.Id)
             {

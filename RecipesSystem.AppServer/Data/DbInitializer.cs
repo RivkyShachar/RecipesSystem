@@ -33,6 +33,7 @@ namespace RecipesSystem.AppServer.Data
                     Ingredients="1 unbaked Flaky Pie Crust (what I used) or All Butter Pie Crust*, 4 large eggs, 1/2 cup whole milk*, 1/2 cup heavy cream or heavy whipping cream*, 1/4 teaspoon each salt and pepper*, 1 cup shredded or crumbled cheese such as feta,cheddar,goat cheese,or gruyere, up to 2 cups add-ins (see recipe note), optional toppings for serving: extra cheese,chopped herbs,hollandaise sauce,& freshly ground pepper to taste, ",
                     TimeToMake="2 hr and 40 min",ImageURL="https://sallysbakingaddiction.com/wp-content/uploads/2019/04/quiche-2.jpg",
                     CookingTime="1 hr and 20 min",Diners=8,Tag=Tags.QUICHE,Nutriants=new List<Nutriant>(),Holiday=Holidays.ROSH_HASHANA,Weather=Weathers.NICE},
+
                 new Recipe{Name="Chicken",Description="Wings are always a supper go-to because they defrost and cook quickly. This will soon become a go-to for you as well! A few seconds of prep is all you need for these delicious crispy wings. Serve with yellow rice and salad and the meal is complete!",
                     PrepInstructions="Prepare the Wings:. Preheat the oven to 375 degrees Fahrenheit. Line a baking sheet with two sheets of Gefen Parchment Paper. Spread the wings out onto the baking sheet Shake a little of each spice on top of the wings, Do not mix, Leave as is and bake uncovered for 45 minutes or until the tops are crispy. If towards the end the top doesn’t look crispy enough raise the heat to 400 degrees Fahrenheit. " +
                     "Prepare the Yellow Rice:. In a pot heat the olive oil and add in the spices Allow to cook and become fragrant about for about 40 to 60 seconds.  Add in the rice and mix to coat in the spices Pour over the water and mix. Bring to boil uncovered. Once boiling, mix once more and lower to a simmer Cover the pot. Cook on low flame 15 to 20 minutes Turn off flame and keep covered another 10 minutes before fluffing with a fork. " +
@@ -41,29 +42,24 @@ namespace RecipesSystem.AppServer.Data
                     "Yellow Rice:, 2 tablespoons Tuscanini Olive Oil, 1 teaspoon onion powder, 1 teaspoon garlic powder, 1 and 1/4 teaspoons salt, 1/4 teaspoon Gefen Cumin, 3/4 teaspoon Pereg Turmeric, 2 cups jasmine rice, 4 and 1/2 cups water",
                     TimeToMake="1 hr ",ImageURL="https://www.kosher.com/resized/details.slide/t/u/Tuchinsky_Rena_Crispy_Wings_with_Yellow_Rice_and_Cucumber_Salad.jpg",
                     CookingTime="20 min",Diners=6,Tag=Tags.CHICKEN,Nutriants=new List<Nutriant>(),Holiday=Holidays.PESACH,Weather=Weathers.NICE},
+
                 new Recipe{Name="Maple Salmon",Description="This maple glazed salmon is delicious and very easy to prepare. I love maple syrup in everything and decided to use it in the marinade. My husband totally loved it; he wasn't a salmon fan until now.",
                     PrepInstructions="Stir maple syrup, soy sauce, garlic, garlic salt, and pepper together in a small bowl. Cut salmon into 4 equal-sized fillets; place in a shallow glass baking dish and coat with maple syrup mixture Cover the dish and marinate salmon in the refrigerator for 30 minutes, turning once halfway. Preheat the oven to 400 degrees F (200 degrees C). Place the baking dish in the preheated oven and bake salmon uncovered until flesh easily flakes with a fork, about 20 minutes. ",
                     Ingredients="¼ cup maple syrup, 2 tablespoons soy sauce, 1 clove garlic, minced, ¼ teaspoon garlic salt, ⅛ teaspoon ground black pepper, 1 pound salmon",
                     TimeToMake="40 min",ImageURL="https://www.allrecipes.com/thmb/aos_70aMtlxbmU3HDv1_X6z9K2g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/862371-cd7a4b6c481f444382e3f69273b982f9.jpg",
                     CookingTime="20 min",Diners=4,Tag=Tags.FISH,Nutriants=new List<Nutriant>(),Holiday=Holidays.SUKOT,Weather=Weathers.NICE},
+
                 new Recipe{Name="Special Donuts",Description="There are never enough to last eight days! The sooner you eat these after making them, the better they are, although you will want to give them time to cool first!",
                     PrepInstructions="Combine ﬂour and 1/3 cup sugar in a large mixing bowl, and make a well in the center Place 1/4 cup warm water, 1 ounce fresh yeast, and 1 tablespoon sugar into the well, When yeast begins to bubble, add egg and margarine to the bowl. Begin to mix the dough and when the ingredients are somewhat blended, add the lemon rind, Mix well! Slowly add water, starting with 1/3 cup,  Knead the dough, and add more water, if necessary, to create a smooth, soft dough. Allow the dough to rise for 75 minutes, Roll out the dough on a lightly ﬂoured surface, to one inch thickness, Using a cup, cut out circles from the dough, Let rise for 20 minutes. Heat three to four inches of oil (See tip below) over a medium ﬂame in a four quart saucepan Drop in dough circles and deep-fry two to three minutes per side With a slotted spoon, remove doughnuts from oil and drain on paper towels, Cool. Decorate with confectioners’ sugar or ﬁll with custard, jelly, or caramel. ",
                     Ingredients="3 cups ﬂour, 1/3 cup sugar, 1/4 cup water, 1 ounce fresh yeast, 1 tablespoon sugar, 1 egg, 1/2 stick margarine softened, rind of 1 lemon, grated, 1/3 – 1/2 cup water, oil- for frying, ",
                     TimeToMake="1 hr and 30 min",ImageURL="https://www.kosher.com/resized/details.slide/s/u/sufganiyot.kosher-09742-D.jpg",
                     CookingTime="1 hr and 30 min",Diners=25,Tag=Tags.DESERT,Nutriants=new List<Nutriant>(),Holiday=Holidays.CHANUKA,Weather=Weathers.NICE},
+
                 new Recipe{Name="Meat",Description="",
                     PrepInstructions="Sauté the onion in oil until golden brown. Add meat and cook covered over a low flame for half an hour. Add one cup of water and seasoning and cook until tender. ",
                     Ingredients="2 pounds beef chuck shoulder steak or veal chops, 1 medium onion diced, 1 tablespoon oil or chicken fat, 1 teaspoon salt, dash of pepper (optional), dash of paprika (optional), ",
                     TimeToMake="30 min",ImageURL="https://www.kosher.com/resized/details.slide/t/a/Tasty-Yom-Tov-Meat-(2)-H_preview.jpeg",
                     CookingTime="2  and ahalf hr",Diners=4,Tag=Tags.MEAT,Nutriants=new List<Nutriant>(),Holiday=Holidays.PURIM,Weather=Weathers.NICE},
-
-
-                new Recipe{Name="cake",Description="write description1",
-                    PrepInstructions="instructions",
-                    Ingredients="the ingridents",
-                    TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=new List<Nutriant>(),Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
-
 
                 new Recipe{Name="banana cake ",Description="Breakfast banana cake ",
                     PrepInstructions="Preheat the oven to 190°C/fan 170°C/Gas Mark 5. Grease and line a 2lb (900g) loaf tin with nonstick baking paper. With an electric whisk, mix the eggs, sugar, cooled butter and a good pinch of salt together for 4 minutes until light and fluffy. Mash the banana and yogurt with a fork, add to the eggs with the vanilla extract and whisk again.  Add a spoonful of the flour to the blueberries and mix to coat. Stir the baking powder into the remaining flour and sift this over the top of the whisked eggs and banana. Fold through, then add the blueberries and fold again until everything’s just combined. Spoon into your prepared tin, even the top and sprinkle over the hazelnuts. Bake in the oven for 1 hour 10 minutes, until a skewer comes away clean.  Cool in the tin for 15 minutes, then turn out and cool completely on a wire rack. Serve with Greek yogurt and a drizzle of clear honey.",
@@ -135,19 +131,18 @@ namespace RecipesSystem.AppServer.Data
                     Ingredients=" 150g dried farfalle, or a similar-sized pasta shape, 2 courgettes, 1 tbsp olive oil, plus a little extra bunch of spring onions, ½ fresh red chilli, 15g fresh mint or basil, 1 lemon, 400g tin chickpeas, 50g feta cheese",
                     TimeToMake="15 min",ImageURL="https://realfood.tesco.com/media/images/1400x919-CourgetteChickpeaSalad-26dbea5e-47ee-4b44-8b76-f5403aae27e2-0-1400x919.jpg",
                     CookingTime="10 min",Diners=7,Tag=Tags.PASTA,Nutriants=new List<Nutriant>(),Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
-                new Recipe
-{
-    Name = "Easy Hamantaschen",
-    Description = "Hamantaschen are a favorite treat for the Purim holiday! It has always worked better for me if I cover the dough and refrigerate it overnight.",
-    PrepInstructions = "Preheat the oven to 350 degrees F (175 degrees C). Lightly grease cookie sheets.  Combine eggs and sugar in a large bowl; beat with an electric mixer until smooth and creamy. Stir in oil, orange juice, and vanilla. Combine flour and baking powder; stir into batter to form a stiff dough, adding more flour if needed.  Turn dough out onto a lightly floured surface and roll out into a 1/2-inch thickness. Cut into circles using a cookie cutter or the rim of a drinking glass; place 2 inches apart onto the prepared cookie sheets. Spoon about 2 teaspoons of preserves into center of each cookie. Pinch edges to form three corners.  Bake in the preheated oven until lightly browned, 12 to 15 minutes. Cool on the cookie sheets for 1 minute; transfer to a wire rack to cool completely.",
-    Ingredients = "3 large eggs, 1 cup granulated sugar, ¾ cup vegetable oil, ½ cup orange juice, 2 ½ teaspoons vanilla extract, 5 ½ cups all-purpose flour, 1 tablespoon baking powder, 1 cup fruit preserves, any flavor",
-    TimeToMake = "27 mins",
-    ImageURL = "https://img.mako.co.il/2012/02/23/JHBJSF8_c.jpg",
-    CookingTime = "12 mins",
-    Diners = 24,
-    Tag = Tags.COOKIES,
-    Nutriants = new List<Nutriant>(),
-    Holiday = Holidays.PURIM,
+
+                new Recipe{Name = "Easy Hamantaschen",
+                Description = "Hamantaschen are a favorite treat for the Purim holiday! It has always worked better for me if I cover the dough and refrigerate it overnight.",
+                PrepInstructions = "Preheat the oven to 350 degrees F (175 degrees C). Lightly grease cookie sheets.  Combine eggs and sugar in a large bowl; beat with an electric mixer until smooth and creamy. Stir in oil, orange juice, and vanilla. Combine flour and baking powder; stir into batter to form a stiff dough, adding more flour if needed.  Turn dough out onto a lightly floured surface and roll out into a 1/2-inch thickness. Cut into circles using a cookie cutter or the rim of a drinking glass; place 2 inches apart onto the prepared cookie sheets. Spoon about 2 teaspoons of preserves into center of each cookie. Pinch edges to form three corners.  Bake in the preheated oven until lightly browned, 12 to 15 minutes. Cool on the cookie sheets for 1 minute; transfer to a wire rack to cool completely.",
+                Ingredients = "3 large eggs, 1 cup granulated sugar, ¾ cup vegetable oil, ½ cup orange juice, 2 ½ teaspoons vanilla extract, 5 ½ cups all-purpose flour, 1 tablespoon baking powder, 1 cup fruit preserves, any flavor",
+                TimeToMake = "27 mins",
+                ImageURL = "https://img.mako.co.il/2012/02/23/JHBJSF8_c.jpg",
+                CookingTime = "12 mins",
+                Diners = 24,
+                Tag = Tags.COOKIES,
+                Nutriants = new List<Nutriant>(),
+                Holiday = Holidays.PURIM,
     Weather = Weathers.NICE
 },
 new Recipe
@@ -195,18 +190,8 @@ new Recipe
     Holiday = Holidays.CHANUKA,
     Weather = Weathers.NICE
 }
-//new Recipe{Name="",
-//    Description="",
-//    PrepInstructions="",
-//    Ingredients="",
-//    TimeToMake="",
-//    ImageURL="",
-//    CookingTime="",
-//    Diners=,
-//    Tag=Tags.,
-//    Nutriants=new List<Nutriant>,
-//    Holiday=Holidays.,
-//    Weather=Weathers.}
+
+
 
             };
             foreach (Recipe r in recipes)

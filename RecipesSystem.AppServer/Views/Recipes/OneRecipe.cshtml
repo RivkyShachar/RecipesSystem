@@ -48,7 +48,17 @@
                     </div>
                     <div class="recipe-tags">
                         Tags :<a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Tag})">@Model.Tag.ToString() </a>
-                       
+                        @{
+                            if (Model.Weather != Weathers.NICE)
+                            {
+                                <a href="@Url.Action("Weather", "Recipes",new{t=(int)Model.Weather})">@Model.Weather.ToString() </a>
+                            }
+                            if (Model.Holiday != Holidays.NOTHOLIDAY)
+                            {
+                                <a href="@Url.Action("Holyday", "Recipes",new{t=(int)Model.Holiday})">@Model.Holiday.ToString() </a>
+                            }
+
+                        }
                     </div>
                 </article>
             </section>

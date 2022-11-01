@@ -49,9 +49,9 @@
                     Tags t = (Tags)i;
                     <a href="@Url.Action("TagTemplate", "Recipes",new{t=(Tags)i})" class="tag">
                         <h5>@t.ToString()</h5>
-                        <img src="@Url.Content(@recipe.ImageURL)" @*יציג את אחת התמונות של המתכונים*@
+                        <img src="@Url.Content(@recipe.ImageURL)" 
                  class="img recipe-img"
-                 alt="" />
+                     alt="" />@*יציג את אחת התמונות של המתכונים*@
                         <p>@size.ToString() Recipes</p>@* כמות המתכונים שיש בכל קטגוריה*@
                     </a>
                 }
