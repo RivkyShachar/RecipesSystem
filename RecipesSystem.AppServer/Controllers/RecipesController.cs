@@ -411,12 +411,12 @@ namespace RecipesSystem.AppServer.Controllers
                         }
                     }
                     WeatherAdapter Wadapter = new WeatherAdapter();
-                    string Message = Wadapter.Check("Jerusalem");
-                    if(Message== "Recipes for hot days")//פונקציה שמכניסה לי את הנתון של מצז האויר הנוכחי לפי ההמלצה
+                    int Message = Wadapter.Check("Jerusalem");
+                    if(Message== 1)//פונקציה שמכניסה לי את הנתון של מצז האויר הנוכחי לפי ההמלצה
                     {
                         r.Weather = Weathers.HOT;
                     }
-                    else if(Message== "Recipes for cold days")
+                    else if(Message== 0)
                     {
                         r.Weather = Weathers.COLD;
                     }
@@ -425,30 +425,30 @@ namespace RecipesSystem.AppServer.Controllers
                         r.Weather = Weathers.NICE;
                     }
                     HebCalAdapter Hadapter = new HebCalAdapter();
-                    string MsgHeb = Hadapter.Check();
-                    if (MsgHeb== "recipes for sukot")
+                    int MsgHeb = Hadapter.Check();
+                    if (MsgHeb== 1)
                     {
                         r.Holiday = Holidays
                             .SUKOT;
                     }
-                    else if (MsgHeb ==" Recipes for pesach"  )
+                    else if (MsgHeb ==3 )
                     {
                        
                         r.Holiday = Holidays.PESACH;
                     }
-                    else if (MsgHeb == "Recipes for purim")
+                    else if (MsgHeb == 5)
                     {
                         r.Holiday = Holidays.PURIM;
                     }
-                    else if (MsgHeb == "Recipes for rosh hashana")
+                    else if (MsgHeb == 0)
                     {
                         r.Holiday = Holidays.ROSH_HASHANA;
                     }
-                    else if (MsgHeb == "Recipes for chanuka")
+                    else if (MsgHeb == 4)
                     {
                         r.Holiday = Holidays.CHANUKA;
                     }
-                    else if (MsgHeb == "Recipes for shavuot")
+                    else if (MsgHeb ==2)
                     {
                         r.Holiday = Holidays.SHAVUOT;
                     }
