@@ -61,14 +61,6 @@ namespace RecipesSystem.AppServer.Data
                     TimeToMake="30 min",ImageURL="https://www.kosher.com/resized/details.slide/t/a/Tasty-Yom-Tov-Meat-(2)-H_preview.jpeg",
                     CookingTime="2  and ahalf hr",Diners=4,Tag=Tags.MEAT,Nutriants=new List<Nutriant>(),Holiday=Holidays.PURIM,Weather=Weathers.NICE},
 
-
-                new Recipe{Name="cake",Description="write description1",
-                    PrepInstructions="instructions",
-                    Ingredients="the ingridents",
-                    TimeToMake="x min",ImageURL="https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
-                    CookingTime="z min",Diners=2,Tag=Tags.PIZZA,Nutriants=new List<Nutriant>(),Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
-
-
                 new Recipe{Name="banana cake ",Description="Breakfast banana cake ",
                     PrepInstructions="Preheat the oven to 190°C/fan 170°C/Gas Mark 5. Grease and line a 2lb (900g) loaf tin with nonstick baking paper. With an electric whisk, mix the eggs, sugar, cooled butter and a good pinch of salt together for 4 minutes until light and fluffy. Mash the banana and yogurt with a fork, add to the eggs with the vanilla extract and whisk again.  Add a spoonful of the flour to the blueberries and mix to coat. Stir the baking powder into the remaining flour and sift this over the top of the whisked eggs and banana. Fold through, then add the blueberries and fold again until everything’s just combined. Spoon into your prepared tin, even the top and sprinkle over the hazelnuts. Bake in the oven for 1 hour 10 minutes, until a skewer comes away clean.  Cool in the tin for 15 minutes, then turn out and cool completely on a wire rack. Serve with Greek yogurt and a drizzle of clear honey.",
                     Ingredients="2 medium eggs, 200g muscovado sugar, 100g butter, melted and cooled, 3 really ripe large bananas, 75g full fat Greek yogurt, 1tsp vanilla extract, 200g plain flour, 1tsp baking powder, 110g blueberries, 25g (1oz) chopped hazelnuts, Greek yogurt to serve, honey to serve",
