@@ -4,15 +4,9 @@
     ViewData["Title"] = "TagTemplate";
     Layout = "~/Views/Shared/LustigLayout.cshtml";
 }
-
 <main class="page">
     <div class="featured-recipes">
-        @{
 
-            var r = Model.First(m => m.Id > 0);
-                     
-        }
-        <h4>@r.Tag.ToString()</h4>
         <!-- recipes list -->
         <div class="recipes-list">
             <!-- single recipe -->
@@ -22,7 +16,7 @@
 
                     <img src=" @Url.Content(@item.ImageURL)"
                      class="img recipe-img"
-                     alt="">
+                     alt="" />
                     <h5> @Html.DisplayFor(modelItem => item.Description)</h5>
                     <p>Prep : @Html.DisplayFor(modelItem => item.TimeToMake) | Cook : @Html.DisplayFor(modelItem => item.CookingTime)</p>
                 </a>
@@ -33,4 +27,5 @@
     </div>
 
 </main>
+
 
