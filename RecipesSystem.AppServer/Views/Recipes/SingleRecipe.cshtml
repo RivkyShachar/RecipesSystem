@@ -45,7 +45,14 @@
                     </div>
                     <div class="recipe-tags">                                              
                         Tags :<a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Tag})">@Model.Tag.ToString() </a>
-                        <a href="@Url.Action("TagTemplate", "Recipes",new{t=Model.Weather})">@Model.Tag.ToString() ></a>
+                        <a href="@Url.Action("Holyday_Weather", "Recipes",new{t=(int)Model.Weather})">@Model.Weather.ToString() </a>
+                        @{
+                            if (Model.Holiday!=Holidays.NOTHOLIDAY)
+                            {
+                                   <a href="@Url.Action("TagTemplate", "Recipes",new{t=(int)Model.Holiday})">@Model.Holiday.ToString() </a>
+                            }
+                         
+                        }
                     </div>
                 </article>
             </section>
@@ -65,11 +72,11 @@
                         {
                                     <div class="single-instruction">
                                         <header>
-                                            <p>step @s.ToString()</p>
+                                            <p>step @s</p>
                                             <div></div>
                                         </header>
                                         <p>
-                                            @i.ToString();
+                                            @i
                                         </p>
                             </div>
                             s++;
@@ -84,10 +91,10 @@
                     </p>
                         @{//יכניס את נתוני המתשמש לתוך רשימה מסודרת ויבדיל בין הערכים של הרכיבים לפי רווח
                             string st = Model.Ingredients;
-                            List<string> Ingredient = st.Split(". ").ToList();
-                            foreach (var igredient in Ingredient)
+                            List<string> Ingredient = st.Split(", ").ToList();
+                            foreach (var ingredient in Ingredient)
                             {
-                                <p class="single-ingredient">@igredient.ToString()</p> 
+                                <p class="single-ingredient">@ingredient</p> 
                             }
                         }  
                     </div>

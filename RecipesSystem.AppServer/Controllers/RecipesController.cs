@@ -95,9 +95,10 @@ namespace RecipesSystem.AppServer.Controllers
             USDAadapter Uadapter = new USDAadapter();
             List<DP.USDAparamsDTO.Nutrient> nutriants = Uadapter.Check(recipe.Name, recipe.Tag.ToString());
             recipe.Nutriants= new List<Nutriant>();
-            Nutriant nutrient=new Nutriant();
+           
             foreach(DP.USDAparamsDTO.Nutrient nutr in nutriants)
-            {
+            { 
+                Nutriant nutrient=new Nutriant();
                 nutrient.Value = nutr.Value;
                 nutrient.Name = nutr.Name;
                 nutrient.UnitOfMesurment = nutr.UnitName;//לא בטוחה שזה המקביל שלו אבל נבדוק

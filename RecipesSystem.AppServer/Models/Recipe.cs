@@ -17,10 +17,10 @@ namespace RecipesSystem.AppServer.Models
         public string Name { get; set; }
 
         [DisplayName("Description of the recipe")]
-        public string Description { get; set; }
+        public string Description { get; set; } = "";
 
         [DisplayName("Preparation instructions")]
-        public string PrepInstructions { get; set; }
+        public string PrepInstructions { get; set; } = "";
 
         [DisplayName("Ingredients")]
         public string Ingredients  { get; set; }//מרכיבים 
@@ -50,9 +50,9 @@ namespace RecipesSystem.AppServer.Models
 
         public string Rate { get; set; } ="";//rate of the recipe
 
-        public Holidays Holiday { get; set; }//the date of the rating
+        public Holidays Holiday { get; set; } = Holidays.NOTHOLIDAY;//the date of the rating
 
-        public Weathers Weather { get; set; }//the weather in the rating
+        public Weathers Weather { get; set; } = Weathers.NICE;//the weather in the rating
 
     }
   
