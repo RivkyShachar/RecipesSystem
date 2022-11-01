@@ -36,22 +36,25 @@
             <a href="@Url.Action("Tags", "Recipes") " class="nav-link"> tags </a>
             <a href="@Url.Action("Recipes", "Recipes") " class="nav-link"> recipes </a>
             <a href="@Url.Action("Create", "Recipes") " class="nav-link"> Add new recipe </a>
+            @{
 
-               @if (ViewData["HebCalMessage"] != "No holiday")//כאשר יש חג יפתח כפתור נוסף שבו יהיה את המתכונים שהומלצו בזמן החגים
-             {
-                    HebCalAdapter Hadapter = new HebCalAdapter();
+             HebCalAdapter Hadapter = new HebCalAdapter();
                     int msg= Hadapter.Check();
-                    Holidays holyday = (Holidays)msg;
-                    <a href="@Url.Action("Holyday_Weather", "Recipes",new{t=msg})" class="nav-link">Recipes for @holyday days</a>
-             }
-                @if (ViewData["WeatherMessage"] != "Nice weather")//כאשר מזג האויר חם/קר יפתח כפתור שכאשר נלחץ עליו נקבל את המתכונים שהומלצו לקור/לחום
-             {
-                    WeatherAdapter Wadapter = new WeatherAdapter();
+                WeatherAdapter Wadapter = new WeatherAdapter();
                    int Msg = Wadapter.Check("Jerusalem");
-                    Weathers weather = (Weathers)Msg;
-                    <a href="@Url.Action("Holyday_Weather", "Recipes",new{t=Msg})" class="nav-link">Recipes for @weather days</a>
+               @if (msg!= 6)//כאשר יש חג יפתח כפתור נוסף שבו יהיה את המתכונים שהומלצו בזמן החגים
+             {
+                   
+                    Holidays holyday = (Holidays)msg;
+                    <a href="@Url.Action("Holyday_Weather", "Recipes",new{t=msg})" class="nav-link">Recipes for @holyday.ToString().ToLower() days</a>
              }
-
+                @if (Msg!=2)//כאשר מזג האויר חם/קר יפתח כפתור שכאשר נלחץ עליו נקבל את המתכונים שהומלצו לקור/לחום
+             {
+                
+                    Weathers weather = (Weathers)Msg;
+                    <a href="@Url.Action("Holyday_Weather", "Recipes",new{t=Msg})" class="nav-link">Recipes for @weather.ToString().ToLower() days</a>
+             }
+                }
 
            
         </div>
