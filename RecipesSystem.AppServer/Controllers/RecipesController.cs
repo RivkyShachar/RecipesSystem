@@ -25,13 +25,13 @@ namespace RecipesSystem.AppServer.Controllers
         // GET: Recipes
         public async Task<IActionResult> Index()
         {
-            HebCalAdapter Hadapter = new HebCalAdapter();
-            string Message = Hadapter.Check();
-            ViewData["HebCalMessage"] = Message;
+            //HebCalAdapter Hadapter = new HebCalAdapter();
+            //string Message = Hadapter.Check();
+            //ViewData["HebCalMessage"] = Message;
 
-            WeatherAdapter Wadapter = new WeatherAdapter();
-            Message = Wadapter.Check("Jerusalem");
-            ViewData["WeatherMessage"] = Message;
+            //WeatherAdapter Wadapter = new WeatherAdapter();
+            //Message = Wadapter.Check("Jerusalem");
+            //ViewData["WeatherMessage"] = Message;
 
             return View(await _context.Recipe.ToListAsync());
            
@@ -535,9 +535,19 @@ namespace RecipesSystem.AppServer.Controllers
             IEnumerable<Recipe> recipes=new List<Recipe>();
 
             if (t != null) 
-                recipes = _context.Recipe.Where(m => m.Tag == t);
+                recipes =  _context.Recipe.Where(m => m.Tag == t);
                
             
+            return View(recipes);
+
+        }
+
+        public async Task<IActionResult> Holyday_Weather(int t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+        {
+            IEnumerable<Recipe> recipes = new List<Recipe>();
+
+            if (t != null)
+                recipes = _context.Recipe.Where(m => m.Holiday==(Holidays)t||m.Weather==(Weathers)t);
             return View(recipes);
 
         }

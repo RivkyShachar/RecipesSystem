@@ -6,7 +6,7 @@ namespace RecipesSystem.AppServer.Models
 {
     public class HebCalAdapter
     {
-        public string Check()
+        public int Check()
         {
             //conect to gateway server
             string Url = $"http://localhost:5149/api/HebCal";
@@ -19,19 +19,19 @@ namespace RecipesSystem.AppServer.Models
 
             string holiday= response.Content;
             if (holiday.Contains("סוכות"))
-                return "recipes for sukot";
+                return 1;
             else if (holiday.Contains("חנוכה"))
-                return "Recipes for chanuka";
+                return 4;
             else if (holiday.Contains("פסח"))
-                return "Recipes for pesach";
+                return 3;
             else if (holiday.Contains("שבועות"))
-                return "Recipes for shavuot";
+                return 2;
             else if (holiday.Contains("פורים"))
-                return "Recipes for purim";
+                return 5;
             else if (holiday.Contains("ראש השנה"))
-                return "Recipes for rosh hashana";
+                return 0;
             else
-                return "No holiday";
+                return 6;
         }
     }
 }
