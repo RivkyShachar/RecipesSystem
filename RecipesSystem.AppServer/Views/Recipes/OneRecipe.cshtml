@@ -51,11 +51,11 @@
                         @{
                             if (Model.Weather != Weathers.NICE)
                             {
-                                <a href="@Url.Action("Holyday_Weather", "Recipes",new{t=(int)Model.Weather})">@Model.Weather.ToString() </a>
+                                <a href="@Url.Action("Weather", "Recipes",new{t=(int)Model.Weather})">@Model.Weather.ToString() </a>
                             }
                             if (Model.Holiday != Holidays.NOTHOLIDAY)
                             {
-                                <a href="@Url.Action("TagTemplate", "Recipes",new{t=(int)Model.Holiday})">@Model.Holiday.ToString() </a>
+                                <a href="@Url.Action("Holyday", "Recipes",new{t=(int)Model.Holiday})">@Model.Holiday.ToString() </a>
                             }
 
                         }
