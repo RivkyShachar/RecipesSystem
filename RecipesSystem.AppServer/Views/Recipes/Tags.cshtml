@@ -42,9 +42,10 @@
             {
                     int size = 0;
                     size = @Model.Where(m => m.Tag == (Tags)i).Count();
+
                 if (size > 0)
                 {
-                    var recipe = @Model.FirstOrDefault(m => m.Id > 0);
+                    var recipe = @Model.FirstOrDefault(m => m.Id > 0&&m.Tag==(Tags)i);
                     Tags t = (Tags)i;
                     <a href="@Url.Action("TagTemplate", "Recipes",new{t=(Tags)i})" class="tag">
                         <h5>@t.ToString()</h5>
