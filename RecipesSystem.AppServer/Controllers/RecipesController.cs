@@ -543,15 +543,22 @@ namespace RecipesSystem.AppServer.Controllers
 
         }
 
-        public async Task<IActionResult> Holyday_Weather(int t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+        public async Task<IActionResult> Weather(int t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
         {
-            IEnumerable<Recipe> recipes = new List<Recipe>();
-
-            if (t != null)
-                recipes = _context.Recipe.Where(m => m.Holiday==(Holidays)t||m.Weather==(Weathers)t);
+            IEnumerable<Recipe> recipes = new List<Recipe>();        
+            recipes = _context.Recipe.Where(m =>m.Weather==(Weathers)t);
             return View(recipes);
 
         }
+        public async Task<IActionResult> Holyday(int t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+        {
+            IEnumerable<Recipe> recipes = new List<Recipe>();
+            recipes = _context.Recipe.Where(m => m.Holiday == (Holidays)t );
+            return View(recipes);
+
+        }
+
+
 
     }
 }
