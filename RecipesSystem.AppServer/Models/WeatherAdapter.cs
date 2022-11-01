@@ -4,7 +4,7 @@ namespace RecipesSystem.AppServer.Models
 {
     public class WeatherAdapter
     {
-        public string Check(string City)
+        public int Check(string City)
         {
             //conect to gateway server
             string Url = $"http://localhost:5149/api/Weather?city={City}";
@@ -17,11 +17,11 @@ namespace RecipesSystem.AppServer.Models
 
             string temperature= response.Content;
 
-            if (temperature.Contains("Hot"))
-                return "Recipes for hot days";
-            else if (temperature.Contains("Cold"))
-                return "Recipes for cold days";
-            return "Nice weather";
+            if (temperature.Contains("HOT"))
+                return 1;
+            else if (temperature.Contains("COLD"))
+                return 0;
+            return 2;
 
         }
     }

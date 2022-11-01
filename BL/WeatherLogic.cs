@@ -20,10 +20,10 @@ namespace BL
             //return if Cold/Hot/Nice according to the weather
             double currentWeather = myWeather.main.feels_like;
             if (currentWeather <= 22)
-                return "Cold";
+                return "COLD";
             else if (currentWeather <= 26)     
-                return "Nice";
-            else return "Hot";
+                return "NICE";
+            else return "HOT";
         }
     }
 }
