@@ -40,11 +40,11 @@ namespace BL
                         return "Error: the food is not kosher";
                     if (tag.tag.en == "food")
                         tags.Add("food");
-                    if ((data.Title.Contains(tag.tag.en) || data.Tag.ToLower()==tag.tag.en) && tag.confidence > 50)
+                    if (data.Title.ToLower().Contains(tag.tag.en.ToLower()) || data.Tag.ToLower()==tag.tag.en)
                         tags.Add("title");
-                    if (dairyFood.Contains(tag.tag.en) && tag.confidence > 50 && !tags.Contains("dairy"))
+                    if (dairyFood.Contains(tag.tag.en.ToLower()) && tag.confidence > 50 && !tags.Contains("dairy"))
                         tags.Add("dairy");
-                    if (meatyFood.Contains(tag.tag.en) && tag.confidence > 50 && !tags.Contains("meaty"))
+                    if (meatyFood.Contains(tag.tag.en.ToLower()) && tag.confidence > 50 && !tags.Contains("meaty"))
                         tags.Add("meaty");
                 }
             }
