@@ -94,7 +94,7 @@ namespace RecipesSystem.AppServer.Controllers
             
             USDAadapter Uadapter = new USDAadapter();
             List<DP.USDAparamsDTO.Nutrient> nutriants = Uadapter.Check(recipe.Name, recipe.Tag.ToString());
-            recipe.Nutriants= new List<Nutriant>();
+            List<Nutriant> Nutriants= new List<Nutriant>();
            
             foreach(DP.USDAparamsDTO.Nutrient nutr in nutriants)
             { 
@@ -102,7 +102,7 @@ namespace RecipesSystem.AppServer.Controllers
                 nutrient.Value = nutr.Value;
                 nutrient.Name = nutr.Name;
                 nutrient.UnitOfMesurment = nutr.UnitName;//לא בטוחה שזה המקביל שלו אבל נבדוק
-                recipe.Nutriants.Add(nutrient);
+                Nutriants.Add(nutrient);
             }
 
 
@@ -219,14 +219,8 @@ namespace RecipesSystem.AppServer.Controllers
                         r.PrepInstructions = recipe.PrepInstructions;
                     }                 
                
-                    r.Nutriants = new List<Nutriant>();
-                    if(model.Nutriants != null)
-                    { 
-                    foreach(var item in model.Nutriants)
-                    {
-                        r.Nutriants.Add(item);
-                    }
-                    }
+                   
+                
                     _context.Remove(model);
                     _context.Add(r);
                     //_context.Update(r);
@@ -338,14 +332,7 @@ namespace RecipesSystem.AppServer.Controllers
                     r.Tag = model.Tag;     
                     r.Description = model.Description;       
                     r.PrepInstructions = model.PrepInstructions;
-                    r.Nutriants = new List<Nutriant>();
-                    if (model.Nutriants != null)
-                    {
-                        foreach (var item in model.Nutriants)
-                        {
-                            r.Nutriants.Add(item);
-                        }
-                    }
+                 
                     WeatherAdapter Wadapter = new WeatherAdapter();
                     int Message = Wadapter.Check("Jerusalem");
                     if(Message== 1)//פונקציה שמכניסה לי את הנתון של מצז האויר הנוכחי לפי ההמלצה

@@ -36,16 +36,10 @@ namespace RecipesSystem.AppServer.Data
             modelBuilder.Entity<Recipe>().Property(c => c.Rate).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.Holiday).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.Weather).HasConversion<string>();
-            modelBuilder.Entity<Nutriant>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired();
-               entity.Property(e => e.Value).IsRequired();
-                entity.Property(e => e.UnitOfMesurment).IsRequired();
-    });
+          
 
             base.OnModelCreating(modelBuilder);
-}
+        }
 
 
 
