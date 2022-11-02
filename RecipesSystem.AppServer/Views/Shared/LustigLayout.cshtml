@@ -42,13 +42,13 @@
                     int msg= Hadapter.Check();
                 WeatherAdapter Wadapter = new WeatherAdapter();
                    int Msg = Wadapter.Check("Jerusalem");
-               @if (msg!= 6)//כאשר יש חג יפתח כפתור נוסף שבו יהיה את המתכונים שהומלצו בזמן החגים
+                    @if (msg != 6)//When there is a holiday, another button will open which will have the recipes recommended during the holidays
              {
                    
                     Holidays holyday = (Holidays)msg;
                     <a href="@Url.Action("Holyday", "Recipes",new{t=msg})" class="nav-link">Recipes for @holyday.ToString().ToLower() days</a>
              }
-                @if (Msg!=2)//כאשר מזג האויר חם/קר יפתח כפתור שכאשר נלחץ עליו נקבל את המתכונים שהומלצו לקור/לחום
+                    @if (Msg != 2)//When the weather is hot/cold, a button will open that when clicked we will receive the recipes recommended for cold/hot
              {
                         
                     Weathers weather = (Weathers)Msg;

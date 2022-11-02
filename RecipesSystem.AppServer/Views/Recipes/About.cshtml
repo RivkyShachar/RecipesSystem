@@ -28,18 +28,18 @@
         <div class="recipes-list">
             @{
                 int count = 0;
-                @foreach(var item in Model)//הצגת 3 מתכונים הכי מומלצים
+                @foreach (var item in Model)//Presentation of 3 most recommended recipes
                  {
                 if(count<3)
                 {
                  <a href="@Url.Action("SingleRecipe", "Recipes",new{id=item.Id}) " class="recipe">
-                    <img src="@Url.Content(@item.ImageURL)" @*יציג את אחת התמונות של המתכונים*@
+                            <img src="@Url.Content(@item.ImageURL)" @*will display one of the pictures of the recipes*@
                      class="img recipe-img"
                      alt="" />
                     <h5> @Html.DisplayFor(modelItem => item.Description)</h5>
                     <p>Prep : @Html.DisplayFor(modelItem => item.TimeToMake) | Cook : @Html.DisplayFor(modelItem => item.CookingTime)</p>
                  </a>
-                 count++;//לא יאפשר יותר מ3 מתכוניפ שיוצגו באודות
+                        count++;//Will not allow more than 3 methkonips to be presented in abouts
                }
                 }
 

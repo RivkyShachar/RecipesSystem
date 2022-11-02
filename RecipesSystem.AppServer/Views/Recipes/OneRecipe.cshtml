@@ -96,7 +96,7 @@
                             @* @Html.DisplayFor(modelItem => Model.Ingredients)*@
                         </p>
                         @{
-                            //יכניס את נתוני המתשמש לתוך רשימה מסודרת ויבדיל בין הערכים של הרכיבים לפי רווח
+                            //will insert the user's data into an ordered list and differentiate between the values ​​of the components by space
                             string st = Model.Ingredients;
                             List<string> Ingredient = st.Split(", ").ToList();
                             foreach (var igredient in Ingredient)
@@ -106,7 +106,7 @@
                         }
                     </div>
                     <div>
-                        <h4>Nutriant</h4>@*//שיניתי מכלים לערכים תזונתיים*@
+                        <h4>Nutriant</h4>
                         @{
 
                             List<Nutriant> nutriants = new List<Nutriant>();
@@ -118,12 +118,12 @@
                                 nutre.Value = nutr.Value;
                                 nutre.Name = nutr.Name;
                                 nutre.RecipeId = Model.Id;
-                                nutre.UnitOfMesurment = nutr.UnitName;//לא בטוחה שזה המקביל שלו אבל נבדוק
+                                nutre.UnitOfMesurment = nutr.UnitName;
                                 nutriants.Add(nutre);//add the nutriants to the list of the nutriants
                             }
 
-                            if (nutriant != null)//צריך לבדוק איך עושים את הקשיור בין הטבלאות שייציג את הנתונים של המתכון הזה
-                                foreach (var ntur in nutriant)@*//עובר על הערכים התזונתיים של המאכל ומציג אותם*@
+                            if (nutriant != null)
+                                foreach (var ntur in nutriant)@*//Goes over the nutritional values ​​of the food and presents them*@
                                 {
                                     <p class="single-tool">@ntur.Name : @ntur.Value</p>
 

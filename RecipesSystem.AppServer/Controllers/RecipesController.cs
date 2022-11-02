@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Build.Evaluation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using RecipesSystem.AppServer.Data;
 using RecipesSystem.AppServer.Models;
 using static DP.USDAparamsDTO;
@@ -27,15 +28,7 @@ namespace RecipesSystem.AppServer.Controllers
         // GET: Recipes
         public async Task<IActionResult> Index()
         {
-            //HebCalAdapter Hadapter = new HebCalAdapter();
-            //string Message = Hadapter.Check();
-            //ViewData["HebCalMessage"] = Message;
-
-            //WeatherAdapter Wadapter = new WeatherAdapter();
-            //Message = Wadapter.Check("Jerusalem");
-            //ViewData["WeatherMessage"] = Message;
-
-            return View(await _context.Recipe.ToListAsync());
+             return View(await _context.Recipe.ToListAsync());
            
         }
 
@@ -75,12 +68,12 @@ namespace RecipesSystem.AppServer.Controllers
                
                 ImaggaAdapter Iadapter = new ImaggaAdapter();
                 string Message = Iadapter.Check(recipe.Name, recipe.ImageURL,recipe.Tag.ToString());
-                if (Message == "\"good image\"")//בדיקה אם התמונה טובה
+                if (Message == "\"good image\"")//check uf the umage mach the recipe
                 {
                     _context.Add(recipe);
                    
                     await _context.SaveChangesAsync();
-                   
+                    //Allows the user to see the recipe he entered and decide whether to edit or delete it
                     return RedirectToAction("OneRecipe", new {recipe.Id});
                 }
                 else
@@ -88,9 +81,6 @@ namespace RecipesSystem.AppServer.Controllers
             }
             return View(recipe);
         }
-
-    
-   
 
         // GET: Recipes/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -129,7 +119,8 @@ namespace RecipesSystem.AppServer.Controllers
                     r.Id = recipe.Id;
                     r.Rate=recipe.Rate;
                     r.Note= recipe.Note;
-                    if(recipe.ImageURL==null)
+                    //Inserts the updated data into the database again after deleting the previous recipe that was edited
+                    if (recipe.ImageURL==null)
                     {
                         r.ImageURL=model.ImageURL;
                     }
@@ -202,12 +193,10 @@ namespace RecipesSystem.AppServer.Controllers
                     {
                         r.PrepInstructions = recipe.PrepInstructions;
                     }                 
-               
-                   
-                
+         
                     _context.Remove(model);
                     _context.Add(r);
-                    //_context.Update(r);
+                 
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -270,13 +259,13 @@ namespace RecipesSystem.AppServer.Controllers
 
         public async Task<IActionResult> About()
         {
-            //יקבל רשימה של המתכונים הכי מומלצים ויציחג שלוש מתוכם
+           //will receive a list of the most recommended recipes and display three of them
             var TopRecipes=_context.Recipe.Where(r=>r.Rate=="5").ToList();
 
             return View(TopRecipes);
         }
 
-    
+        //Allows the user to rate the recipe
         public async Task<IActionResult> Rate(int? id)
         {
             if (id == null || _context.Recipe == null)
@@ -319,8 +308,8 @@ namespace RecipesSystem.AppServer.Controllers
                  
                     WeatherAdapter Wadapter = new WeatherAdapter();
                     int Message = Wadapter.Check("Jerusalem");
-                    if(Message== 1)//פונקציה שמכניסה לי את הנתון של מצז האויר הנוכחי לפי ההמלצה
-                    {
+                    if(Message== 1)//A function that gives me the data of the current weather according to the recommendation
+                {
                         r.Weather = Weathers.HOT;
                     }
                     else if(Message== 0)
@@ -366,7 +355,7 @@ namespace RecipesSystem.AppServer.Controllers
 
                     _context.Remove(model);
                     _context.Add(r);
-                    //_context.Update(r);
+                   
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -397,7 +386,7 @@ namespace RecipesSystem.AppServer.Controllers
             return View(await _context.Recipe.ToListAsync());
         }
 
-       
+        //Presentation of a recipe and its details
         public async Task<IActionResult> SingleRecipe(int? id)
         {
 
@@ -410,17 +399,19 @@ namespace RecipesSystem.AppServer.Controllers
             {
                 return NotFound();
             }
-            //GetNutriants(id);
+           
             return View(recipe);
         }
 
+        //Allows you to see all the existing categories of the recipes
         public async Task<IActionResult> Tags()
         {
-            //return View();
+         
             return View(await _context.Recipe.ToListAsync());
         }
 
-
+        //The recipe the person just added to Recipes will be displayed here to
+        //allow them to make changes to the recipe as well
         public async Task<IActionResult> OneRecipe(int? id)
         {
 
@@ -437,7 +428,8 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-        public async Task<IActionResult> TagTemplate(Tags? t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+        //will display a list filtered by the category of the recipe
+        public async Task<IActionResult> TagTemplate(Tags? t)
         {
             IEnumerable<Recipe> recipes=new List<Recipe>();
 
@@ -449,14 +441,17 @@ namespace RecipesSystem.AppServer.Controllers
 
         }
 
-        public async Task<IActionResult> Weather(int t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+        //will display a filtered list according to the recipes recommended for the current weather
+        public async Task<IActionResult> Weather(int t)
         {
             IEnumerable<Recipe> recipes = new List<Recipe>();        
             recipes = _context.Recipe.Where(m =>m.Weather==(Weathers)t);
             return View(recipes);
 
         }
-        public async Task<IActionResult> Holyday(int t)//יציג רשימה מסוננת לפי הקטגוריה של המתכון
+
+        //will present a filtered list according to the recommended recipes for the upcoming holidays
+        public async Task<IActionResult> Holyday(int t)
         {
             IEnumerable<Recipe> recipes = new List<Recipe>();
             recipes = _context.Recipe.Where(m => m.Holiday == (Holidays)t );

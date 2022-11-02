@@ -20,17 +20,6 @@ namespace RecipesSystem.GetwayServer.Controllers
             return bl.IsHolidyWeek(today, SevenDaysFromNow);
         }
 
-        //// GET api/<HebCalController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        //// POST api/<HebCalController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+   
     }
 }

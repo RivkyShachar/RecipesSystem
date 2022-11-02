@@ -23,27 +23,24 @@ namespace RecipesSystem.AppServer.Models
         public string PrepInstructions { get; set; } = "";
 
         [DisplayName("Ingredients")]
-        public string Ingredients  { get; set; }//מרכיבים 
+        public string Ingredients  { get; set; }//Ingredients
 
         [DisplayName("Image URL")]
         public string ImageURL { get; set; }
 
         [DisplayName("preparation time")]
         [StringLength(10, ErrorMessage = "Making time cannot be longer than 10 characters.")]
-        public string TimeToMake { get; set; }//זמן הכנה
+        public string TimeToMake { get; set; }//Time To Make
 
         [DisplayName(" Cooking Time")]
         [StringLength(10, ErrorMessage = "Cooking time cannot be longer than 10 characters.")]
-        public string  CookingTime { get; set; }//זמן בישול
+        public string  CookingTime { get; set; }
 
         [DisplayName("Diners size")]
         public int Diners { get; set; }//כמה סועדים neet to add an error if its a minus 
 
         [DisplayName("Tags")]
         public Tags Tag { get; set; }
-
-        //[DisplayName("Nutriant")]
-        //public List<Nutriant> Nutriants { get; set; }
 
         [DisplayName("Write Note")]
         public string Note { get; set; } = "";//note about the recipe
