@@ -39,52 +39,48 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-row">
                 <label asp-for="Name" contextmenu="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                    <input asp-for="Name"  placeholder="Enter the name of the recipe" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
                 <div class="form-row">
                 <label asp-for="Description" class="control-label"  ></label>
-                    <textarea name="Description" id="Description" class="form-textarea"></textarea>
-                   @* <input asp-for="Description" class="form-control" />*@
+                    <input asp-for="Description" placeholder="Here you can describe your recipe" textarea name="Description" id="Description" class="form-textarea"></textarea>
+
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
                 <div class="form-row">
                 <label asp-for="PrepInstructions" class="control-label"></label>
-                    <textarea name="PrepInstructions" id="PrepInstructions" class="form-textarea"></textarea>
-               @* <input asp-for="PrepInstructions" class="form-control" />*@
+                    <input asp-for="PrepInstructions" placeholder="Enter a period and a space to go to the next step" textarea name="PrepInstructions" id="PrepInstructions" class="form-textarea"></input>
+      
                     <span asp-validation-for="PrepInstructions" class="form-danger"></span>
             </div>
                 <div class="form-row">
                 <label asp-for="ImageURL" class="control-label"></label>
-                <input asp-for="ImageURL" class="form-control" />
+                    <input asp-for="ImageURL" placeholder="Insert a link with a JPG extension" class="form-control" />
  
                 <span asp-validation-for="ImageURL" class="text-danger"></span>
             </div>
-          @*  <div class="form-group">@*העלאת תמונה בצורת בחירה של קובץ*@
-              @*  <label for="ImageUpload">Upload Image:</label>
-                <input type="file" name="ImageUpload" id="ImageUpload" class="form-control file-input" accept="image/*" />    
-                
-            </div>*@
+      
                 <div class="form-row">
                 <label asp-for="TimeToMake" class="control-label"></label>
-                <input asp-for="TimeToMake" class="form-control" />
+                    <input asp-for="TimeToMake" placeholder="Enter the recipe preparation time" class="form-control" />
                 <span asp-validation-for="TimeToMake" class="text-danger"></span>
             </div>
                 <div class="form-row">
                 <label asp-for=" CookingTime" class="control-label"></label>
-                <input asp-for="CookingTime" class="form-control" />
+                    <input asp-for="CookingTime" placeholder="Enter the baking/cooking time of the recipe" class="form-control" />
                 <span asp-validation-for=" CookingTime" class="text-danger"></span>
             </div>
                 <div class="form-row">
                 <label asp-for="Diners" class="control-label"></label>
-                <input asp-for="Diners" class="form-control" />
+                    <input asp-for="Diners" placeholder="Enter only positive values" class="form-control" />
                 <span asp-validation-for="Diners" class="text-danger"></span>
             </div>
 
                 <div class="form-row">
                 <label asp-for="Ingredients" class="control-label"></label>
-                    <textarea name="Ingredients" id="Ingredients" class="form-textarea"></textarea>
-                  @*  <input asp-for=" Ingredients " class="form-control" />*@
+                    <input asp-for="Ingredients" placeholder="Insert a comma to move to the next element" textarea name="Ingredients" id="Ingredients" class="form-textarea"></textarea>
+           
                     <span asp-validation-for="Ingredients" class="form-danger"></span>
             </div>
                 <div class="form-row">

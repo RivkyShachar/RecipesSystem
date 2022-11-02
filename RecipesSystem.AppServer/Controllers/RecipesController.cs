@@ -329,82 +329,16 @@ namespace RecipesSystem.AppServer.Controllers
                     r.Id = recipe.Id;
                     r.Rate = recipe.Rate;
                     r.Note = recipe.Note;
-                    if (recipe.ImageURL == null)
-                    {
-                        r.ImageURL = model.ImageURL;
-                    }
-                    else
-                    {
-                        r.ImageURL = recipe.ImageURL;
-                    }
-                    if (recipe.Name == null)
-                    {
-                        r.Name = model.Name;
-
-                    }
-                    else
-                    {
-                        r.Name = recipe.Name;
-                    }
-                    if (recipe.CookingTime == null)
-                    {
-                        r.CookingTime = model.CookingTime;
-                    }
-                    else
-                    {
-                        r.CookingTime = recipe.CookingTime;
-                    }
-                    if (recipe.Ingredients == null)
-                    {
-                        r.Ingredients = model.Ingredients;
-                    }
-                    else
-                    {
-                        r.Ingredients = recipe.Ingredients;
-                    }
-                    if (recipe.Diners == 0)
-                    {
-                        r.Diners = model.Diners;
-                    }
-                    else
-                    {
-                        r.Diners = recipe.Diners;
-                    }
-                    if (recipe.TimeToMake == null)
-                    {
-                        r.TimeToMake = model.TimeToMake;
-                    }
-                    else
-                    {
-                        r.TimeToMake = recipe.TimeToMake;
-                    }
-                    if (recipe.Tag == 0)
-                    {
-                        r.Tag = model.Tag;
-                    }
-                    else
-                    {
-                        r.Tag = recipe.Tag;
-                    }
-                    if (recipe.Tag == 0)
-                    {
-                        r.Description = model.Description;
-                    }
-                    else
-                    {
-                        r.Description = recipe.Description;
-                    }
-                    if (recipe.Tag == 0)
-                    {
-                        r.PrepInstructions = model.PrepInstructions;
-                    }
-                    else
-                    {
-                        r.PrepInstructions = recipe.PrepInstructions;
-                    }
-
-                    r.Nutriants = new Nutriant[7];
-                    int counter = 0;
+                    r.ImageURL = model.ImageURL;
+                    r.Name = model.Name;
+                    r.CookingTime = model.CookingTime;
+                    r.Ingredients = model.Ingredients;
+                    r.Diners = model.Diners;
+                    r.TimeToMake = model.TimeToMake;
+                    r.Tag = model.Tag;     
+                    r.Description = model.Description;       
+                    r.PrepInstructions = model.PrepInstructions;
+                    r.Nutriants = new List<Nutriant>();
                     if (model.Nutriants != null)
                     {
                         foreach (var item in model.Nutriants)
