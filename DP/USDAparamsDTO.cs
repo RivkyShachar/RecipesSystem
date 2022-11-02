@@ -15,7 +15,7 @@ namespace DP
         public class RecipeTitle
         {
             public string Title;
-            public string KeyWord = "";
+            public string Tag;
         }
     }
 }

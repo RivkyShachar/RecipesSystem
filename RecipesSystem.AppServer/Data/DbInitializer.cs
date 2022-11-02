@@ -1,5 +1,7 @@
-﻿using RecipesSystem.AppServer.Controllers;
+﻿using Microsoft.EntityFrameworkCore;
+using RecipesSystem.AppServer.Controllers;
 using RecipesSystem.AppServer.Models;
+using System.Diagnostics.Metrics;
 using System.IO;
 using static DP.ImaggaModel;
 using static DP.USDAparamsDTO;
@@ -9,7 +11,7 @@ namespace RecipesSystem.AppServer.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(RecipesSystemAppServerContext context)
+        public async static void Initialize(RecipesSystemAppServerContext context)
         {
             context.Database.EnsureCreated();
 
@@ -194,6 +196,7 @@ new Recipe
 
 
             };
+
             foreach (Recipe r in recipes)
             {
                 context.Recipe.Add(r);
