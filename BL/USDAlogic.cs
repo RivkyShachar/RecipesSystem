@@ -7,6 +7,7 @@ using System.Text;
 using static DP.USDAparamsDTO;
 using Root = DP.USDAmodel.Root;
 using System.Linq;
+using System.Reflection;
 
 namespace BL
 {
@@ -18,10 +19,11 @@ namespace BL
 
 
         //returns all the nutrients of the recipe
-        public List<Nutrient> GetNutrientsValues(RecipeTitle recipeTitle)
+        public Nutrient[] GetNutrientsValues(RecipeTitle recipeTitle)
         {
             //sent the recipe title to get all the recipe
-            List<Nutrient> nutrients=new List<Nutrient>();//שינוי
+            Nutrient[] nutrients=new Nutrient[7];//שינוי
+            int counter = 0;
             List<string> nutrientsNames = new List<string>();
             DAL.USDAadapter dal = new DAL.USDAadapter();
             Root myUSDA = null;
@@ -32,25 +34,24 @@ namespace BL
             //add all the relevant nutrients to the recipe
             foreach(var i in myUSDA.foods)
             { 
-                if (i.lowercaseDescription.Contains(recipeTitle.Title.ToLower()) || i.lowercaseDescription.Contains(recipeTitle.KeyWord.ToLower()))
+                if (i.lowercaseDescription.Contains(recipeTitle.Title.ToLower()) || i.lowercaseDescription.Contains(recipeTitle.Tag.ToLower()))
                 {
                     foreach(var j in i.foodNutrients)
                     { 
-                        if (theNutrients.Contains(j.nutrientName) && !nutrientsNames.Contains(j.nutrientName))
+                        if (theNutrients.Contains(j.nutrientName) && !nutrientsNames.Contains(j.nutrientName) &&counter!=7)
                         {
-                           Nutrient nutrient = new Nutrient();
-                            nutrient.Value = j.value;
-                            nutrient.Name = j.nutrientName;
-                            nutrient.UnitName = j.unitName;
-
-                            //add all the nutrients into the list
-                            nutrients.Add(nutrient);
+                            nutrients[counter]= new Nutrient { Name=j.nutrientName, UnitName= j.unitName, Value= j.value };
                             nutrientsNames.Add(j.nutrientName);
+                            counter++;
                          }
                      }
                 }
             }
-            return nutrients;
+            if(counter==7)
+            {
+                return nutrients;
+            }
+            return null;
 
         }
     }

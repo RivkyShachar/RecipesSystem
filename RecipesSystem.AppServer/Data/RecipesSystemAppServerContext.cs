@@ -11,6 +11,7 @@ namespace RecipesSystem.AppServer.Data
     public class RecipesSystemAppServerContext : DbContext
     {
         public DbSet<Recipe> Recipe { get; set; }
+        public DbSet<Nutriant> Nutriant { get; set; }
         public RecipesSystemAppServerContext(DbContextOptions<RecipesSystemAppServerContext> options)
             : base(options)
         {
@@ -36,16 +37,23 @@ namespace RecipesSystem.AppServer.Data
             modelBuilder.Entity<Recipe>().Property(c => c.Rate).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.Holiday).HasConversion<string>();
             modelBuilder.Entity<Recipe>().Property(c => c.Weather).HasConversion<string>();
+            //modelBuilder.Entity<N>().ToTable("Recipe");
             modelBuilder.Entity<Nutriant>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired();
-               entity.Property(e => e.Value).IsRequired();
+                entity.Property(e => e.Value).IsRequired();
                 entity.Property(e => e.UnitOfMesurment).IsRequired();
-    });
-
+                entity.Property(e => e.RecipeId).IsRequired();
+            });
+            ////modelBuilder.Entity<Nutriant>().ToTable("Nutriant");
+            ////modelBuilder.Entity<Nutriant>().Property(c => c.Id).HasConversion<int>();
+            ////modelBuilder.Entity<Nutriant>().Property(c => c.Name).HasConversion<string>();
+            ////modelBuilder.Entity<Nutriant>().Property(c => c.Value).HasConversion<double>();
+            ////modelBuilder.Entity<Nutriant>().Property(c => c.UnitOfMesurment).HasConversion<string>();
+            ////modelBuilder.Entity<Nutriant>().Property(c => c.RecipeId).HasConversion<int>();
             base.OnModelCreating(modelBuilder);
-}
+        }
 
 
 

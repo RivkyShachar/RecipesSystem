@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ using Microsoft.Build.Evaluation;
 using Microsoft.EntityFrameworkCore;
 using RecipesSystem.AppServer.Data;
 using RecipesSystem.AppServer.Models;
+using static DP.USDAparamsDTO;
 
 
 namespace RecipesSystem.AppServer.Controllers
@@ -93,16 +95,13 @@ namespace RecipesSystem.AppServer.Controllers
         {
             
             USDAadapter Uadapter = new USDAadapter();
-            List<DP.USDAparamsDTO.Nutrient> nutriants = Uadapter.Check(recipe.Name, recipe.Tag.ToString());
-            recipe.Nutriants= new List<Nutriant>();
+            Nutrient[] nutriants = Uadapter.Check(recipe.Name, recipe.Tag.ToString());
+            recipe.Nutriants= new Nutriant[7];
+            int counter = 0;
            
-            foreach(DP.USDAparamsDTO.Nutrient nutr in nutriants)
-            { 
-                Nutriant nutrient=new Nutriant();
-                nutrient.Value = nutr.Value;
-                nutrient.Name = nutr.Name;
-                nutrient.UnitOfMesurment = nutr.UnitName;//לא בטוחה שזה המקביל שלו אבל נבדוק
-                recipe.Nutriants.Add(nutrient);
+            foreach(Nutrient nutr in nutriants)
+            {
+                nutriants[counter++] = nutr;
             }
 
 
@@ -219,18 +218,19 @@ namespace RecipesSystem.AppServer.Controllers
                         r.PrepInstructions = recipe.PrepInstructions;
                     }                 
                
-                    r.Nutriants = new List<Nutriant>();
-                    if(model.Nutriants != null)
-                    { 
-                    foreach(var item in model.Nutriants)
+                    r.Nutriants = new Nutriant[7];
+                    int counter = 0;
+                    if (model.Nutriants != null)
                     {
-                        r.Nutriants.Add(item);
+                        foreach (var item in model.Nutriants)
+                        {
+                            model.Nutriants[counter++] = item;
+                        }
+                        _context.Remove(model);
+                        _context.Add(r);
+                        //_context.Update(r);
+                        await _context.SaveChangesAsync();
                     }
-                    }
-                    _context.Remove(model);
-                    _context.Add(r);
-                    //_context.Update(r);
-                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -403,13 +403,14 @@ namespace RecipesSystem.AppServer.Controllers
                         r.PrepInstructions = recipe.PrepInstructions;
                     }
 
-                    r.Nutriants = new List<Nutriant>();
+                    r.Nutriants = new Nutriant[7];
+                    int counter = 0;
                     if (model.Nutriants != null)
                     {
                         foreach (var item in model.Nutriants)
                         {
-                            r.Nutriants.Add(item);
-                        }
+                        model.Nutriants[counter++] = item;
+                    }
                     }
                     WeatherAdapter Wadapter = new WeatherAdapter();
                     int Message = Wadapter.Check("Jerusalem");

@@ -43,7 +43,7 @@ namespace RecipesSystem.AppServer.Models
         public Tags Tag { get; set; }
 
         [DisplayName("Nutriant")]
-        public List<Nutriant> Nutriants { get; set; }
+        public Nutriant[] Nutriants { get; set; }
 
         [DisplayName("Write Note")]
         public string Note { get; set; } = "";//note about the recipe
