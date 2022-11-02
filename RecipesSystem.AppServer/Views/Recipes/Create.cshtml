@@ -44,13 +44,13 @@
             </div>
                 <div class="form-row">
                 <label asp-for="Description" class="control-label"  ></label>
-                    <input asp-for="Description" placeholder="Here you can describe your recipe" textarea name="Description" id="Description" class="form-textarea"></textarea>
+                    <textarea placeholder="Here you can describe your recipe" name="Description" id="Description" class="form-textarea"></textarea>
 
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
                 <div class="form-row">
                 <label asp-for="PrepInstructions" class="control-label"></label>
-                    <input asp-for="PrepInstructions" placeholder="Enter a period and a space to go to the next step" textarea name="PrepInstructions" id="PrepInstructions" class="form-textarea"></input>
+                    <textarea placeholder="Enter a period and a space to go to the next step"  name="PrepInstructions" id="PrepInstructions" class="form-textarea"></textarea>
       
                     <span asp-validation-for="PrepInstructions" class="form-danger"></span>
             </div>
@@ -79,7 +79,7 @@
 
                 <div class="form-row">
                 <label asp-for="Ingredients" class="control-label"></label>
-                    <input asp-for="Ingredients" placeholder="Insert a comma to move to the next element" textarea name="Ingredients" id="Ingredients" class="form-textarea"></textarea>
+                    <textarea placeholder="Insert a comma to move to the next element" name="Ingredients" id="Ingredients" class="form-textarea"></textarea>
            
                     <span asp-validation-for="Ingredients" class="form-danger"></span>
             </div>

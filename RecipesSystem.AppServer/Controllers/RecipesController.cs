@@ -70,8 +70,7 @@ namespace RecipesSystem.AppServer.Controllers
         {
             if (ModelState.IsValid)
             {
-                //add the nutrients
-                GetNutriants(recipe);
+               
                 ImaggaAdapter Iadapter = new ImaggaAdapter();
                 string Message = Iadapter.Check(recipe.Name, recipe.ImageURL,recipe.Tag.ToString());
                 if (Message == "\"good image\"")//בדיקה אם התמונה טובה
@@ -88,25 +87,8 @@ namespace RecipesSystem.AppServer.Controllers
             return View(recipe);
         }
 
-        //use the api server to insert the nutrients of the recipe
-        public void GetNutriants(Recipe recipe)
-        {
-            
-            USDAadapter Uadapter = new USDAadapter();
-            List<DP.USDAparamsDTO.Nutrient> nutriants = Uadapter.Check(recipe.Name, recipe.Tag.ToString());
-            List<Nutriant> Nutriants= new List<Nutriant>();
-           
-            foreach(DP.USDAparamsDTO.Nutrient nutr in nutriants)
-            { 
-                Nutriant nutrient=new Nutriant();
-                nutrient.Value = nutr.Value;
-                nutrient.Name = nutr.Name;
-                nutrient.UnitOfMesurment = nutr.UnitName;//לא בטוחה שזה המקביל שלו אבל נבדוק
-                Nutriants.Add(nutrient);
-            }
-
-
-        }
+    
+   
 
         // GET: Recipes/Edit/5
         public async Task<IActionResult> Edit(int? id)

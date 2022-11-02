@@ -121,7 +121,7 @@
                             if (nutriant != null)//צריך לבדוק איך עושים את הקשיור בין הטבלאות שייציג את הנתונים של המתכון הזה
                                 foreach (var ntur in nutriant)@*//עובר על הערכים התזונתיים של המאכל ומציג אותם*@
                                 {
-                                    <p class="single-tool">@Html.Display(ntur.Name,ntur.Value)</p>
+                                    <p class="single-tool">@ntur.Name : @ntur.Value</p>
 
                                 }
                         }
