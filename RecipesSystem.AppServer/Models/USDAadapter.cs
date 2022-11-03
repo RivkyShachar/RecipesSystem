@@ -10,8 +10,6 @@ namespace RecipesSystem.AppServer.Models
 
             //send the title of the recipe to the server
             return controller.Get(Title,Tag);
-
-            
         }
 
     }

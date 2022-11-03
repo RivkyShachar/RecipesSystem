@@ -63,9 +63,6 @@
                 <article>
                     <h4>instructions</h4>
                     <!-- single instruction -->
-                    <p>
-                        @*@Html.DisplayFor(modelItem => Model.PrepInstructions)*@
-                    </p>
                     @{
                         string str = Model.PrepInstructions;
                         List<string> x = str.Split(".  ").ToList();
@@ -83,14 +80,19 @@
                             </div>
                             s++;
                         }
+                        @if (Model.Note != "")
+                        {
+                            <h4>Comments</h4>
+                            <p>
+                                @Html.DisplayFor(modelItem => Model.Note)
+                                (Rated with @Html.DisplayFor(modelItem => Model.Rate) stars)
+                            </p>
+                        }
                     }                
                 </article>
                 <article class="second-column">
                     <div>
                         <h4>ingredients</h4>
-                        <p>
-                       @* @Html.DisplayFor(modelItem => Model.Ingredients)*@
-                    </p>
                         @{
                             //will insert the user's data into an ordered list and differentiate between the values ​​of the components by space
                             string st = Model.Ingredients;
@@ -102,7 +104,7 @@
                         }  
                     </div>
                     <div>
-                        <h4>Nutriant</h4>
+                        
 
                         @{
 
@@ -120,11 +122,17 @@
                             }
 
                             if (nutriant != null)
+                            {
+                                if(nutriant.Count>0)
+                                {
+                                    <h4>Nutriant</h4>
+                                } 
                                 foreach (var ntur in nutriant)@*//Goes over the nutritional values ​​of the food and presents them*@
                                 {
                                     <p class="single-tool">@ntur.Name : @ntur.Value</p>
 
                                 }
+                            }
                         }
   
                     </div>
