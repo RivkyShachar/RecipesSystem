@@ -11,11 +11,11 @@ namespace RecipesSystem.AppServer.Data
 {
     public class DbInitializer
     {
-        public async static void Initialize(RecipesSystemAppServerContext context)
+        public static void Initialize(RecipesSystemAppServerContext context)
         {
             context.Database.EnsureCreated();
 
-            // Look for any students.
+            // Look for any recipe.
             if (context.Recipe.Any())
             {
                 return;   // DB has been seeded
@@ -24,7 +24,8 @@ namespace RecipesSystem.AppServer.Data
             var recipes = new Recipe[]
             {
 
-                new Recipe{Name="Quiche",Description="This is a perfect base quiche recipe and it’s all baked in a super flaky homemade pie crust.  Use a combination of milk and heavy cream for the richest, creamiest filling and add your favorites such as bacon, feta cheese, ham, white cheddar cheese, crab meat or spinach.  ",
+                new Recipe{Name="Quiche",
+                    Description="This is a perfect base quiche recipe and it’s all baked in a super flaky homemade pie crust.  Use a combination of milk and heavy cream for the richest, creamiest filling and add your favorites such as bacon, feta cheese, ham, white cheddar cheese, crab meat or spinach.  ",
                     PrepInstructions="Prepare pie crust: I like to make sure my pie dough is prepared before I begin the quiche Make pie dough the night before because it needs to chill in the refrigerator for at least 2 hours before rolling out and blind baking (next step)." +
                     " Roll out the chilled pie dough: On a floured work surface, roll out one of the disks of chilled dough (use the 2nd pie crust for another recipe) Turn the dough about a quarter turn after every few rolls until you have a circle 12 inches in diameter Carefully place the dough into a 9-inch pie dish Tuck it in with your fingers, making sure it is completely smooth To make a lovely edge, I do not trim excess dough around the edges Instead, fold the excess dough back over the edge and use your hands to mold the edge into a rim around the pie Crimp the edges with a fork or use your fingers to flute the edges Chill the pie crust in the refrigerator for at least 30 minutes and up to 5 days Cover the pie crust with plastic wrap if chilling for longer than 30 minutes.  While the crust is chilling, preheat oven to 375°F (190°C).  " +
                     " Partially blind bake: Line the chilled pie crust with parchment paper Fill with pie weights or dried beans Make sure the weights are evenly distributed around the pie dish Bake until the edges of the crust are starting to brown, about 15-16 minutes. Remove pie from the oven and carefully lift the parchment paper (with the weights) out of the pie Prick holes all around the bottom crust with a fork Return the pie crust to the oven Bake until the bottom crust is just beginning to brown, about 7-8 minutes Remove from the oven and set aside (Crust can still be warm when you pour in the filling You can partially pre-bake the crust up to 3 days ahead of time Cover cooled crust tightly and refrigerate until ready to fill). " +
@@ -36,7 +37,8 @@ namespace RecipesSystem.AppServer.Data
                     TimeToMake="2 hr and 40 min",ImageURL="https://sallysbakingaddiction.com/wp-content/uploads/2019/04/quiche-2.jpg",
                     CookingTime="1 hr and 20 min",Diners=8,Tag=Tags.QUICHE,Holiday=Holidays.ROSH_HASHANA,Weather=Weathers.NICE},
 
-                new Recipe{Name="Chicken",Description="Wings are always a supper go-to because they defrost and cook quickly. This will soon become a go-to for you as well! A few seconds of prep is all you need for these delicious crispy wings. Serve with yellow rice and salad and the meal is complete!",
+                new Recipe{Name="Chicken",
+                    Description="Wings are always a supper go-to because they defrost and cook quickly. This will soon become a go-to for you as well! A few seconds of prep is all you need for these delicious crispy wings. Serve with yellow rice and salad and the meal is complete!",
                     PrepInstructions="Prepare the Wings:.  Preheat the oven to 375 degrees Fahrenheit.  Line a baking sheet with two sheets of Gefen Parchment Paper.  Spread the wings out onto the baking sheet Shake a little of each spice on top of the wings, Do not mix, Leave as is and bake uncovered for 45 minutes or until the tops are crispy.  If towards the end the top doesn’t look crispy enough raise the heat to 400 degrees Fahrenheit.  " +
                     "Prepare the Yellow Rice:. In a pot heat the olive oil and add in the spices Allow to cook and become fragrant about for about 40 to 60 seconds.  Add in the rice and mix to coat in the spices Pour over the water and mix. Bring to boil uncovered. Once boiling, mix once more and lower to a simmer Cover the pot. Cook on low flame 15 to 20 minutes Turn off flame and keep covered another 10 minutes before fluffing with a fork.  " +
                     "Prepare the Cucumber Salad:.  Mix everything together Allow to sit for a little while before serving.",
@@ -45,13 +47,15 @@ namespace RecipesSystem.AppServer.Data
                     TimeToMake="1 hr ",ImageURL="https://www.kosher.com/resized/details.slide/t/u/Tuchinsky_Rena_Crispy_Wings_with_Yellow_Rice_and_Cucumber_Salad.jpg",
                     CookingTime="20 min",Diners=6,Tag=Tags.CHICKEN,Holiday=Holidays.PESACH,Weather=Weathers.NICE},
 
-                new Recipe{Name="Maple Salmon",Description="This maple glazed salmon is delicious and very easy to prepare. I love maple syrup in everything and decided to use it in the marinade. My husband totally loved it; he wasn't a salmon fan until now.",
+                new Recipe{Name="Maple Salmon",
+                    Description="This maple glazed salmon is delicious and very easy to prepare. I love maple syrup in everything and decided to use it in the marinade. My husband totally loved it; he wasn't a salmon fan until now.",
                     PrepInstructions="Stir maple syrup, soy sauce, garlic, garlic salt, and pepper together in a small bowl.  Cut salmon into 4 equal-sized fillets; place in a shallow glass baking dish and coat with maple syrup mixture Cover the dish and marinate salmon in the refrigerator for 30 minutes, turning once halfway.  Preheat the oven to 400 degrees F (200 degrees C).  Place the baking dish in the preheated oven and bake salmon uncovered until flesh easily flakes with a fork, about 20 minutes.  ",
                     Ingredients="¼ cup maple syrup, 2 tablespoons soy sauce, 1 clove garlic, minced, ¼ teaspoon garlic salt, ⅛ teaspoon ground black pepper, 1 pound salmon",
                     TimeToMake="40 min",ImageURL="https://www.allrecipes.com/thmb/aos_70aMtlxbmU3HDv1_X6z9K2g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/862371-cd7a4b6c481f444382e3f69273b982f9.jpg",
                     CookingTime="20 min",Diners=4,Tag=Tags.FISH,Holiday=Holidays.SUKOT,Weather=Weathers.NICE},
 
-                new Recipe{Name="Special Donuts",Description="There are never enough to last eight days! The sooner you eat these after making them, the better they are, although you will want to give them time to cool first!",
+                new Recipe{Name="Special Donuts",
+                    Description="There are never enough to last eight days! The sooner you eat these after making them, the better they are, although you will want to give them time to cool first!",
                     PrepInstructions="Combine ﬂour and 1/3 cup sugar in a large mixing bowl, and make a well in the center Place 1/4 cup warm water, 1 ounce fresh yeast, and 1 tablespoon sugar into the well, When yeast begins to bubble, add egg and margarine to the bowl.  Begin to mix the dough and when the ingredients are somewhat blended, add the lemon rind, Mix well! Slowly add water, starting with 1/3 cup,  Knead the dough, and add more water, if necessary, to create a smooth, soft dough.  Allow the dough to rise for 75 minutes, Roll out the dough on a lightly ﬂoured surface, to one inch thickness, Using a cup, cut out circles from the dough, Let rise for 20 minutes.  Heat three to four inches of oil (See tip below) over a medium ﬂame in a four quart saucepan Drop in dough circles and deep-fry two to three minutes per side With a slotted spoon, remove doughnuts from oil and drain on paper towels, Cool. Decorate with confectioners’ sugar or ﬁll with custard, jelly, or caramel.  ",
                     Ingredients="3 cups ﬂour, 1/3 cup sugar, 1/4 cup water, 1 ounce fresh yeast, 1 tablespoon sugar, 1 egg, 1/2 stick margarine softened, rind of 1 lemon, grated, 1/3 – 1/2 cup water, oil- for frying, ",
                     TimeToMake="1 hr and 30 min",ImageURL="https://www.kosher.com/resized/details.slide/s/u/sufganiyot.kosher-09742-D.jpg",
@@ -63,7 +67,8 @@ namespace RecipesSystem.AppServer.Data
                     TimeToMake="30 min",ImageURL="https://www.kosher.com/resized/details.slide/t/a/Tasty-Yom-Tov-Meat-(2)-H_preview.jpeg",
                     CookingTime="2  and ahalf hr",Diners=4,Tag=Tags.MEAT,Holiday=Holidays.PURIM,Weather=Weathers.NICE},
 
-                new Recipe{Name="banana cake ",Description="Breakfast banana cake ",
+                new Recipe{Name="banana cake ",
+                    Description="Breakfast banana cake ",
                     PrepInstructions="Preheat the oven to 190°C/fan 170°C/Gas Mark 5.  Grease and line a 2lb (900g) loaf tin with nonstick baking paper.  With an electric whisk, mix the eggs, sugar, cooled butter and a good pinch of salt together for 4 minutes until light and fluffy.  Mash the banana and yogurt with a fork, add to the eggs with the vanilla extract and whisk again.  Add a spoonful of the flour to the blueberries and mix to coat. Stir the baking powder into the remaining flour and sift this over the top of the whisked eggs and banana. Fold through, then add the blueberries and fold again until everything’s just combined. Spoon into your prepared tin, even the top and sprinkle over the hazelnuts. Bake in the oven for 1 hour 10 minutes, until a skewer comes away clean.  Cool in the tin for 15 minutes, then turn out and cool completely on a wire rack. Serve with Greek yogurt and a drizzle of clear honey.",
                     Ingredients="2 medium eggs, 200g muscovado sugar, 100g butter, melted and cooled, 3 really ripe large bananas, 75g full fat Greek yogurt, 1tsp vanilla extract, 200g plain flour, 1tsp baking powder, 110g blueberries, 25g (1oz) chopped hazelnuts, Greek yogurt to serve, honey to serve",
                     TimeToMake="15 min",ImageURL="https://realfood.tesco.com/media/images/HE-BREAKFASTBANANABREAD-5c7f66e2-cb73-4af1-8f22-bb898fef0327-0-472x310.jpg",
@@ -81,20 +86,17 @@ namespace RecipesSystem.AppServer.Data
                     TimeToMake="20 min",ImageURL="https://realfood.tesco.com/media/images/1400x919CarrotandTomatoSoupwithToastDippers-4d78fbbb-6032-423b-9e96-744be54c25cb-0-1400x919.jpg",
                     CookingTime="30 min",Diners=2,Tag=Tags.SOUP,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.COLD},
 
-
                 new Recipe{Name="salad with clementine",Description="salad with clementine",
                     PrepInstructions="Preheat the oven to 220ºC/425ºF/gas 7. Finely grate the zest of 2 clementines into a jam jar, then squeeze in the juice from all three. Add 4 tablespoons of extra virgin olive oil and 2 tablespoons of vinegar, followed by the honey (if using). Strip in the thyme leaves, then season with a pinch of sea salt and black pepper. Secure the lid on the jar and give it a good shake.  Scatter the almonds over a large baking tray and roast in the oven for 5 minutes and then finely slice into slivers.  Pick the grapes, then toss in ½ a tablespoon of olive oil and 1 tablespoon of vinegar on the same large baking tray, then roast for 10 minutes, or until bursting open.  Trim the gem lettuces and click apart the leaves, then arrange nicely on a serving platter with the salad leaves and roasted grapes. Tear over the mozzarella, then drizzle over half the clementine dressing (save the rest for another recipe, see tip). Scatter with the roasted almonds, then serve.",
                     Ingredients="3 clementines, Extra virgin olive oil, red wine vinegar, 1 teaspoon runny honey or maple syrup, 2 sprigs of fresh thyme, 50g whole almonds, ½ a bunch of red or black seedless grapes (250g), olive oil, 2 little gem lettuce, 100g salad leaves such as watercress or spinach or  rocket, 1 x 125g ball of mozzarella cheese",
                     TimeToMake="20 min",ImageURL="https://realfood.tesco.com/media/images/Jam-jar-WINTER-SALAD-tipsmas-1400x919-f589b092-2620-4200-a02b-818830c68bae-0-1400x919.png",
                     CookingTime="0 min",Diners=7,Tag=Tags.SALAD,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.HOT},
 
-
                 new Recipe{Name="salad with corn",Description="salad with corn",
                     PrepInstructions="Light the barbecue at least 40 mins before cooking or heat a griddle pan over a medium-high heat. Rub each corn cob with ½ tsp oil and season with salt. Griddle for 15-20 mins, turning every 2-3 mins until golden and charred, and the kernels are tender. Leave to cool until you can handle them.  Meanwhile, pierce the sweet potatoes all over with a fork and microwave on high in 2-min bursts for 10-15 mins on high (or in 2 batches for 6-10 mins) until tender throughout when pressed. Rub the sweet potato skins with ½ tbsp oil. While the sweetcorn is cooling, transfer the sweet potatoes to the barbecue or griddle pan and cook for 4-5 mins, turning every 1 min, until the skins are crisp and lightly charred.  Mix the remaining 1 tbsp oil, the lime juice, onion, chilli, beans and paprika in a bowl with some seasoning. Stand the corn cobs on a chopping board and use a sharp knife to slice off the kernels. Add the sweetcorn to the bowl with the parsley and most of the cheese. Toss everything together. Split the charred sweet potatoes using a sharp knife and spoon in the chilli sweetcorn. Scatter with the remaining cheese and a grind of black pepper, and serve with any remaining salad alongside.",
                     Ingredients="6 corn on the cobs, 6 small sweet potatoes, 2 ½ tbsp olive oil, ½ limed juiced, 1 red onion finely chopped, 1 to 2 red chillies (to taste) deseeded and finely chopped, 400g tin kidney beans drained and rinsed, 400g tin black beans drained and rinsed, 2 tsp smoked paprika, 30g pack fresh parsley finely chopped, 100g reduced-fat salad cheese crumbled",
                     TimeToMake="15 min",ImageURL="https://realfood.tesco.com/media/images/1400x919-Charred-chilli-corn-d76fcee9-39c6-4991-9a86-f44e77fae4e8-0-1400x919.jpg",
                     CookingTime="0 min",Diners=2,Tag=Tags.SALAD,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.HOT},
-
 
                 new Recipe{Name="Greek salad",Description="refreshing salad",
                     PrepInstructions="To make the dressing, mix together the olive oil, lemon, dill (if using), oregano and onion. Season well.  Remove the leaves from the Fire Pit Triple Grain Salad. Finely slice these and place them over the base of a platter.  In a bowl, toss together the remains of the Fire Pit Triple Grain Salad with the red onion, cucumber and tomatoes. Toss through the dressing and top with the feta and black olives to serve.",
@@ -135,66 +137,51 @@ namespace RecipesSystem.AppServer.Data
                     CookingTime="10 min",Diners=7,Tag=Tags.PASTA,Holiday=Holidays.NOTHOLIDAY,Weather=Weathers.NICE},
 
                 new Recipe{Name = "Easy Hamantaschen",
-                Description = "Hamantaschen are a favorite treat for the Purim holiday! It has always worked better for me if I cover the dough and refrigerate it overnight.",
-                PrepInstructions = "Preheat the oven to 350 degrees F (175 degrees C). Lightly grease cookie sheets.  Combine eggs and sugar in a large bowl; beat with an electric mixer until smooth and creamy. Stir in oil, orange juice, and vanilla. Combine flour and baking powder; stir into batter to form a stiff dough, adding more flour if needed.  Turn dough out onto a lightly floured surface and roll out into a 1/2-inch thickness. Cut into circles using a cookie cutter or the rim of a drinking glass; place 2 inches apart onto the prepared cookie sheets. Spoon about 2 teaspoons of preserves into center of each cookie. Pinch edges to form three corners.  Bake in the preheated oven until lightly browned, 12 to 15 minutes. Cool on the cookie sheets for 1 minute; transfer to a wire rack to cool completely.",
-                Ingredients = "3 large eggs, 1 cup granulated sugar, ¾ cup vegetable oil, ½ cup orange juice, 2 ½ teaspoons vanilla extract, 5 ½ cups all-purpose flour, 1 tablespoon baking powder, 1 cup fruit preserves, any flavor",
-                TimeToMake = "27 mins",
-                ImageURL = "https://img.mako.co.il/2012/02/23/JHBJSF8_c.jpg",
-                CookingTime = "12 mins",
-                Diners = 24,
-                Tag = Tags.COOKIES,
-            
-                Holiday = Holidays.PURIM,
-    Weather = Weathers.NICE
-},
-new Recipe
-{
-    Name = "Matzo Ball Soup",
-    Description = "This is an easy, short-cut version of Matzo Ball Soup, a warm and comforting Jewish Soup served during Passover.",
-    PrepInstructions = "Mince the garlic and dice the onion, celery, and carrots. Sauté the garlic, onion, celery, and carrots with the vegetable oil in a large pot over medium heat until the onions are soft and transparent (about five minutes).  Add the chicken breast, chicken broth, 2 cups water, some freshly cracked pepper, and one or two sprigs of dill to the pot. Place a lid on the pot and let it come up to a boil. Once it reaches a boil, turn the heat down to low and let it simmer for 30 minutes.  While the soup is simmering, mix the matzo ball dough. In a medium bowl, whisk together the eggs and vegetable oil. Add the matzo meal, salt, baking powder, and a little freshly cracked pepper to the eggs and oil. Stir until well combined. Finally, add 3 Tbsp water and stir until smooth again. Refrigerate the mixture for 30 minutes to allow the matzo meal time to absorb the moisture.  After the chicken soup has simmered, carefully remove the chicken breast and shred it with a fork. Return the shredded chicken to the soup. Taste the broth and adjust the salt if needed.  Once the matzo ball mix has refrigerated and stiffened up, begin to form it into ping pong sized balls. Drop the balls into the simmering soup as they are formed, returning the lid to the pot after each one. Once all the matzo balls are in the soup, let them simmer for 20 minutes without removing the lid. Make sure the soup is gently simmering the entire time.  Add a couple sprigs of fresh dill just before serving.",
-    Ingredients = "SOUp nutrients, 1 Tbsp vegetable or canola oil, 2 cloves garlic, 1 yellow onion, 3 carrots, 3 stalks celery, 1 chicken breast (about 3/4 lb.), 6 cups chicken broth, 2 cups water, Freshly cracked pepper, Few sprigs fresh dill, MATZO BALLS nutrients, 3 large eggs, 3 Tbsp vegetable or canola oil, 3/4 cup matzo meal, 1 tsp salt, 1/2 tsp baking powder, Freshly cracked pepper, 3 Tbsp water",
-    TimeToMake = "1 hr 40 mins",
-    ImageURL = "https://img.apmcdn.org/ad486d405c3014f90fdcd01924701a605c52d6f2/uncropped/62f97d-splendid-table-classic-matzo-ball-soup-lede.jpg",
-    CookingTime = "1 hr 30 mins",
-    Diners = 5,
-    Tag = Tags.SOUP,
+                    Description = "Hamantaschen are a favorite treat for the Purim holiday! It has always worked better for me if I cover the dough and refrigerate it overnight.",
+                    PrepInstructions = "Preheat the oven to 350 degrees F (175 degrees C). Lightly grease cookie sheets.  Combine eggs and sugar in a large bowl; beat with an electric mixer until smooth and creamy. Stir in oil, orange juice, and vanilla. Combine flour and baking powder; stir into batter to form a stiff dough, adding more flour if needed.  Turn dough out onto a lightly floured surface and roll out into a 1/2-inch thickness. Cut into circles using a cookie cutter or the rim of a drinking glass; place 2 inches apart onto the prepared cookie sheets. Spoon about 2 teaspoons of preserves into center of each cookie. Pinch edges to form three corners.  Bake in the preheated oven until lightly browned, 12 to 15 minutes. Cool on the cookie sheets for 1 minute; transfer to a wire rack to cool completely.",
+                    Ingredients = "3 large eggs, 1 cup granulated sugar, ¾ cup vegetable oil, ½ cup orange juice, 2 ½ teaspoons vanilla extract, 5 ½ cups all-purpose flour, 1 tablespoon baking powder, 1 cup fruit preserves, any flavor",
+                    TimeToMake = "27 mins",
+                    ImageURL = "https://img.mako.co.il/2012/02/23/JHBJSF8_c.jpg",
+                    CookingTime = "12 mins",
+                    Diners = 24,
+                    Tag = Tags.COOKIES,
+                    Holiday = Holidays.PURIM,
+                    Weather = Weathers.NICE},
 
-    Holiday = Holidays.PESACH,
-    Weather = Weathers.COLD
-},
-new Recipe
-{
-    Name = "Shopska Salata Bulgarian Tomato Salad",
-    Description = "Shopska salata is a salad that originated in the Shopluk region of Bulgaria. It is said to have been invented in the 1950s as part of a tourism promotion by the socialist party to highlight local ingredients. Different salads, from other Bulgarian regions, were also created, but only the shopska survived, and it's now considered a national dish.\r\n\r\nIn a practice common among Balkan countries like Serbia and Macedonia, this salad highlights the colors of the Bulgarian flag with bright red tomatoes, green cucumbers, red or green bell peppers, and onions. A light dressing of red wine vinaigrette is usually served on the side, but a generous amount of sirene cheese, similar to feta, is crumbled on top.\r\n\r\nThere are slight variations on the standard recipe, as every household has its take on the salad, but in general the basic ingredients remain unaltered. Since olive trees are not as plentiful ​in Bulgaria as they are elsewhere, sunflower oil is used in most cooking and salad dressings.",
-    PrepInstructions = "Gather the ingredients.  In a large bowl, place the tomatoes, cucumbers, peppers, onions, and parsley. Toss well to mix.  Place the oil, vinegar, salt and pepper in a screw-top jar. Close and shake until well incorporated.  Pour the dressing on top of the vegetables, turn into a serving bowl, and refrigerate until ready to serve. Alternatively, refrigerate the salad and dressing separately and allow each guest to add the desired amount on top of their salads.  When ready to serve, top the salad with crumbled cheese. Enjoy!",
-    Ingredients = "For the Salad:, 4 medium tomatoes- chopped, 1 large cucumber- unpeeled and chopped, 4 green or red bell peppers-roasted or raw- chopped, 1 large yellow onion-chopped, 2 tablespoons chopped fresh parsley, For the Dressing:, 1/2 cup sunflower oil, 1/4 cup red wine vinegar, Salt, to taste, Freshly ground black pepper- to taste, For Topping the Salad:, 1/2 cup Bulgarian Sirene cheese or feta cheese-crumbled",
-    TimeToMake = "20 mins",
-    ImageURL = "https://www.deliciousmeetshealthy.com/wp-content/uploads/2020/04/Shopska-Salad-7.jpg",
-    CookingTime = "0 mins",
-    Diners = 6,
-    Tag = Tags.SALAD,
+                new Recipe{Name = "Matzo Ball Soup",
+                    Description = "This is an easy, short-cut version of Matzo Ball Soup, a warm and comforting Jewish Soup served during Passover.",
+                    PrepInstructions = "Mince the garlic and dice the onion, celery, and carrots. Sauté the garlic, onion, celery, and carrots with the vegetable oil in a large pot over medium heat until the onions are soft and transparent (about five minutes).  Add the chicken breast, chicken broth, 2 cups water, some freshly cracked pepper, and one or two sprigs of dill to the pot. Place a lid on the pot and let it come up to a boil. Once it reaches a boil, turn the heat down to low and let it simmer for 30 minutes.  While the soup is simmering, mix the matzo ball dough. In a medium bowl, whisk together the eggs and vegetable oil. Add the matzo meal, salt, baking powder, and a little freshly cracked pepper to the eggs and oil. Stir until well combined. Finally, add 3 Tbsp water and stir until smooth again. Refrigerate the mixture for 30 minutes to allow the matzo meal time to absorb the moisture.  After the chicken soup has simmered, carefully remove the chicken breast and shred it with a fork. Return the shredded chicken to the soup. Taste the broth and adjust the salt if needed.  Once the matzo ball mix has refrigerated and stiffened up, begin to form it into ping pong sized balls. Drop the balls into the simmering soup as they are formed, returning the lid to the pot after each one. Once all the matzo balls are in the soup, let them simmer for 20 minutes without removing the lid. Make sure the soup is gently simmering the entire time.  Add a couple sprigs of fresh dill just before serving.",
+                    Ingredients = "SOUp nutrients, 1 Tbsp vegetable or canola oil, 2 cloves garlic, 1 yellow onion, 3 carrots, 3 stalks celery, 1 chicken breast (about 3/4 lb.), 6 cups chicken broth, 2 cups water, Freshly cracked pepper, Few sprigs fresh dill, MATZO BALLS nutrients, 3 large eggs, 3 Tbsp vegetable or canola oil, 3/4 cup matzo meal, 1 tsp salt, 1/2 tsp baking powder, Freshly cracked pepper, 3 Tbsp water",
+                    TimeToMake = "1 hr 40 mins",
+                    ImageURL = "https://img.apmcdn.org/ad486d405c3014f90fdcd01924701a605c52d6f2/uncropped/62f97d-splendid-table-classic-matzo-ball-soup-lede.jpg",
+                    CookingTime = "1 hr 30 mins",
+                    Diners = 5,
+                    Tag = Tags.SOUP,
+                    Holiday = Holidays.PESACH,
+                    Weather = Weathers.COLD},
 
-    Holiday = Holidays.SHAVUOT,
-    Weather = Weathers.NICE
-},
-new Recipe
-{
-    Name = "Ring doughnuts recipe",
-    Description = "The most delicous food in the world!",
-    PrepInstructions = "Sift the flour into a large bowl, add the salt, sugar and yeast and mix together. Place the butter, milk and vanilla extract together into a small pan and warm over a very gentle heat until the butter has melted and the milk is just warm but not boiling (you should be able to put your finger in it without burning it).  Stir in the egg. Make a well in the middle of the dry mix and gradually add the milk mixture and stir with a wooden spoon to form a rough dough. Tip out onto a floured surface and knead for 10 minutes adding more flour as necessary or until the dough is not sticky and slightly springy to touch. Place back into a clean, lightly oiled bowl, cover with a piece of greased cling film and leave to rise in a warm place for 1 ½ hours or until doubled in volume.  Punch down the dough with your fist, knead lightly then divide into 12 equal pieces. Roll them between your palms to form balls and then place on baking sheets well spaced apart. Cover with a piece of greased cling film and leave to rise again 45 minutes (check time) or until doubled in size. (This will make the doughnuts light and fluffy once cooked).  Roll over the top of the doughnuts to make them approx. 3cm in height – otherwise they will be huge! – and then using a lightly oiled 4cm pastry cutter, stamp out the middle of each doughnut and set aside. You can use these to make mini jam doughnuts later.  Pour the oil into a large saucepan to the depth of 10cm and heat to 180-190°C or when a small piece of dough dropped into it sizzles immediately and floats to the surface. Carefully lower 2 or 3 doughnuts at a time on a slotted spoon and fry for 30 seconds on each side or until golden brown.  Remove with a slotted spoon and drain on kitchen paper then roll in the cinnamon sugar to coat. Keep warm in a low oven. Repeat while you fry the rest of the doughnuts and then serve warm.",
-    Ingredients = "200g strong white bread flour+ extra for dusting, pinch fine salt, 15g caster sugar, 7g dried fast action yeast, 50g unsalted butter, 100ml whole milk, tsp vanilla extract, 1 medium free-range egg-beaten, sunflower or groundnut oil for deep-frying+ extra for greasing the bowl, 50g caster sugar (to mix the cinnamon with), 1 tsp ground cinnamon",
-    TimeToMake = "3 hr 30 mins",
-    ImageURL = "https://realfood.tesco.com/media/images/HE-RINGDOUGHNUT-893e5c58-5a90-44b5-b1f3-1c3a32d9cf72-0-472x310.jpg",
-    CookingTime = "5 mins",
-    Diners = 12,
-    Tag = Tags.COOKIES,
-
-    Holiday = Holidays.CHANUKA,
-    Weather = Weathers.NICE
-}
-
-
-
+                new Recipe{Name = "Shopska Salata Bulgarian Tomato Salad",
+                    Description = "Shopska salata is a salad that originated in the Shopluk region of Bulgaria. It is said to have been invented in the 1950s as part of a tourism promotion by the socialist party to highlight local ingredients. Different salads, from other Bulgarian regions, were also created, but only the shopska survived, and it's now considered a national dish.\r\n\r\nIn a practice common among Balkan countries like Serbia and Macedonia, this salad highlights the colors of the Bulgarian flag with bright red tomatoes, green cucumbers, red or green bell peppers, and onions. A light dressing of red wine vinaigrette is usually served on the side, but a generous amount of sirene cheese, similar to feta, is crumbled on top.\r\n\r\nThere are slight variations on the standard recipe, as every household has its take on the salad, but in general the basic ingredients remain unaltered. Since olive trees are not as plentiful ​in Bulgaria as they are elsewhere, sunflower oil is used in most cooking and salad dressings.",
+                    PrepInstructions = "Gather the ingredients.  In a large bowl, place the tomatoes, cucumbers, peppers, onions, and parsley. Toss well to mix.  Place the oil, vinegar, salt and pepper in a screw-top jar. Close and shake until well incorporated.  Pour the dressing on top of the vegetables, turn into a serving bowl, and refrigerate until ready to serve. Alternatively, refrigerate the salad and dressing separately and allow each guest to add the desired amount on top of their salads.  When ready to serve, top the salad with crumbled cheese. Enjoy!",
+                    Ingredients = "For the Salad:, 4 medium tomatoes- chopped, 1 large cucumber- unpeeled and chopped, 4 green or red bell peppers-roasted or raw- chopped, 1 large yellow onion-chopped, 2 tablespoons chopped fresh parsley, For the Dressing:, 1/2 cup sunflower oil, 1/4 cup red wine vinegar, Salt, to taste, Freshly ground black pepper- to taste, For Topping the Salad:, 1/2 cup Bulgarian Sirene cheese or feta cheese-crumbled",
+                    TimeToMake = "20 mins",
+                    ImageURL = "https://www.deliciousmeetshealthy.com/wp-content/uploads/2020/04/Shopska-Salad-7.jpg",
+                    CookingTime = "0 mins",
+                    Diners = 6,
+                    Tag = Tags.SALAD,
+                    Holiday = Holidays.SHAVUOT,
+                    Weather = Weathers.NICE},
+                new Recipe{Name = "Ring doughnuts recipe",    
+                    Description = "The most delicous food in the world!",
+                    PrepInstructions = "Sift the flour into a large bowl, add the salt, sugar and yeast and mix together. Place the butter, milk and vanilla extract together into a small pan and warm over a very gentle heat until the butter has melted and the milk is just warm but not boiling (you should be able to put your finger in it without burning it).  Stir in the egg. Make a well in the middle of the dry mix and gradually add the milk mixture and stir with a wooden spoon to form a rough dough. Tip out onto a floured surface and knead for 10 minutes adding more flour as necessary or until the dough is not sticky and slightly springy to touch. Place back into a clean, lightly oiled bowl, cover with a piece of greased cling film and leave to rise in a warm place for 1 ½ hours or until doubled in volume.  Punch down the dough with your fist, knead lightly then divide into 12 equal pieces. Roll them between your palms to form balls and then place on baking sheets well spaced apart. Cover with a piece of greased cling film and leave to rise again 45 minutes (check time) or until doubled in size. (This will make the doughnuts light and fluffy once cooked).  Roll over the top of the doughnuts to make them approx. 3cm in height – otherwise they will be huge! – and then using a lightly oiled 4cm pastry cutter, stamp out the middle of each doughnut and set aside. You can use these to make mini jam doughnuts later.  Pour the oil into a large saucepan to the depth of 10cm and heat to 180-190°C or when a small piece of dough dropped into it sizzles immediately and floats to the surface. Carefully lower 2 or 3 doughnuts at a time on a slotted spoon and fry for 30 seconds on each side or until golden brown.  Remove with a slotted spoon and drain on kitchen paper then roll in the cinnamon sugar to coat. Keep warm in a low oven. Repeat while you fry the rest of the doughnuts and then serve warm.",
+                    Ingredients = "200g strong white bread flour+ extra for dusting, pinch fine salt, 15g caster sugar, 7g dried fast action yeast, 50g unsalted butter, 100ml whole milk, tsp vanilla extract, 1 medium free-range egg-beaten, sunflower or groundnut oil for deep-frying+ extra for greasing the bowl, 50g caster sugar (to mix the cinnamon with), 1 tsp ground cinnamon",
+                    TimeToMake = "3 hr 30 mins",
+                    ImageURL = "https://realfood.tesco.com/media/images/HE-RINGDOUGHNUT-893e5c58-5a90-44b5-b1f3-1c3a32d9cf72-0-472x310.jpg",
+                    CookingTime = "5 mins",
+                    Diners = 12,
+                    Tag = Tags.COOKIES,
+                    Holiday = Holidays.CHANUKA,
+                    Weather = Weathers.NICE}
             };
 
             foreach (Recipe r in recipes)
@@ -202,9 +189,6 @@ new Recipe
                 context.Recipe.Add(r);
             }
             context.SaveChanges();
-
-
-           
         }
     }
 }

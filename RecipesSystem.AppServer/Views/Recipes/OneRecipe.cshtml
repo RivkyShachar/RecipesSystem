@@ -109,7 +109,6 @@
                         }
                     </div>
                     <div>
-                        <h4>Nutriant</h4>
                         @{
 
                             List<Nutriant> nutriants = new List<Nutriant>();
@@ -126,11 +125,18 @@
                             }
 
                             if (nutriant != null)
-                                foreach (var ntur in nutriant)@*//Goes over the nutritional values ​​of the food and presents them*@
+                            {
+                                if (nutriant.Count > 0)
                                 {
-                                    <p class="single-tool">@ntur.Name : @ntur.Value</p>
+                                    <h4>Nutriant</h4>
+                                }
+                                foreach (var ntur in nutriant)
+                                @*//Goes over the nutritional values ​​of the food and presents them*@
+                                {
+                                    <p class="single-nutriant">@ntur.Name : @ntur.Value</p>
 
                                 }
+                            }
                         }
 
                     </div>
