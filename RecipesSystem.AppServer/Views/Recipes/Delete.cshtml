@@ -74,8 +74,9 @@
     
     <form asp-action="Delete" class="text-danger">
         <input type="hidden" asp-for="Id" class="text-danger" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                <a href="@Url.Action("OneRecipe", "Recipes",new{id=Model.Id}) ">Back to Recipe</a>
+          
     </form>
 </div>
 </div>

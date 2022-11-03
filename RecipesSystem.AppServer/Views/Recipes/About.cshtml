@@ -8,14 +8,17 @@
 <main class="page">
     <section class="about-page">
         <article>
-            <h2>I'm baby coloring book poke taxidermy</h2>
+            <h2></h2>
             <p>
-                Taxidermy forage glossier letterpress heirloom before they sold out
-                you probably haven't heard of them banh mi biodiesel chia.
+                In this space, I am sharing fresh, flavorful, (mostly) healthy recipes that I love to make and
+                eat in my real, actual, every day life. You will find in each of my kosher recipes the nutritional
+                values ​​and depending on the weather or even holidays the recipes will be displayed accordingly. 
+                My goal is to inspire you with food that is both approachable AND exciting,
+                whether you’re cooking for yourself, your family, your roommates, or your friends.
             </p>
             <p>
-                Taiyaki tumblr flexitarian jean shorts brunch, aesthetic salvia
-                retro.
+                I want you to be so excited about these recipes that you eagerly await 5pm
+                when you can go home from work and start cooking.
             </p>
         </article>
         <!-- needs fixes -->
@@ -36,13 +39,13 @@
                             <img src="@Url.Content(@item.ImageURL)" @*will display one of the pictures of the recipes*@
                      class="img recipe-img"
                      alt="" />
-                    <h5> @Html.DisplayFor(modelItem => item.Description)</h5>
+                    <h5> @Html.DisplayFor(modelItem => item.Name)</h5>
                     <p>Prep : @Html.DisplayFor(modelItem => item.TimeToMake) | Cook : @Html.DisplayFor(modelItem => item.CookingTime)</p>
+                    <p>Rate : @Html.DisplayFor(modelItem => item.Rate) stars</p>
                  </a>
                         count++;//Will not allow more than 3 methkonips to be presented in abouts
                }
-                }
-
+                }   
                 }
             
             

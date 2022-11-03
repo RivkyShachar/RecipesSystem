@@ -13,6 +13,9 @@
             <div class="nav-link">
                 <a href="@Url.Action("Delete", "Recipes",new{id=Model.Id}) " class="btn">Delete</a>
             </div>
+            <div class="nav-link">
+                <a href="@Url.Action("Index", "Recipes") " class="btn">Save</a>
+            </div>
         </div>
     </div>
 
@@ -68,7 +71,7 @@
                     <h4>instructions</h4>
                     <!-- single instruction -->
                     <p>
-                        @*@Html.DisplayFor(modelItem => Model.PrepInstructions)*@
+                      
                     </p>
                     @{
                         string str = Model.PrepInstructions;
@@ -93,7 +96,7 @@
                     <div>
                         <h4>ingredients</h4>
                         <p>
-                            @* @Html.DisplayFor(modelItem => Model.Ingredients)*@
+                         
                         </p>
                         @{
                             //will insert the user's data into an ordered list and differentiate between the values ​​of the components by space
